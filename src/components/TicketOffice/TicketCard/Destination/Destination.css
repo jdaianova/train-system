@@ -1,0 +1,24 @@
+.Destination {
+    min-width: 210px;
+    padding-left: 39px;
+}
+
+.Destination-time {
+    font-family: 'Roboto-Bold';
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+}
+
+.Destination-city {
+    color: rgba(41, 41, 41, 1);
+    font-size: 18px;   
+}
+
+.Destination-city::first-letter {
+    text-transform: uppercase;   
+}
+
+.Destination-station {
+    color: rgba(146, 143, 148, 1);
+    font-size: 16px;
+}

@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "Roboto"; 
+    src: url("../../data/fonts/Roboto/Roboto-Light.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+  } 
+
+  @font-face {
+    font-family: "Roboto-Bold"; 
+    src: url("../../data/fonts/Roboto/Roboto-Bold.ttf") format("truetype"); 
+    font-style: bold; 
+  } 
+
+  @font-face {
+    font-family: "Roboto-Thin"; 
+    src: url("../../data/fonts/Roboto/Roboto-Thin.ttf") format("truetype"); 
+    font-style: thin; 
+  } 
+
+  @font-face {
+    font-family: "Roboto-ThinItalic"; 
+    src: url("../../data/fonts/Roboto/Roboto-ThinItalic.ttf") format("truetype"); 
+    font-style: italic; 
+  } 
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto";
+  }
+
+  .App {
+    width: 1920px;
+    padding-bottom: 10px;
+  }

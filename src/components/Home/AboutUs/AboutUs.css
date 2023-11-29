@@ -1,0 +1,26 @@
+.AboutUs {
+    padding: 144px 314px 91px 286px;
+}
+
+.AboutUs h2 {
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 42.19px;
+    margin-bottom: 30px;
+}
+
+.AboutUs__content {
+    border-left: 9px solid rgba(255, 168, 0, 1);
+    padding-left: 19px;
+    font-size: 24px;
+    line-height: 28.13px;
+    color: rgba(41, 41, 41, 1);
+}
+
+.AboutUs__content p {
+    margin-bottom: 25px;
+}
+
+.AboutUs__content strong {
+    font-family: 'Roboto-Bold';
+}

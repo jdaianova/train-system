@@ -1,0 +1,84 @@
+.HomeHeader {
+    width: 1920px;
+    height: 985px;
+    padding-left: 258px;
+    padding-top: 15px;
+    border-bottom: 8px solid #FFA800;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.HomeHeader::before {
+    content: "";
+    width: 1920px;
+    height: 985px;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: -5;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.HomeHeader__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -4;
+}
+
+.HomeHeader__menu {
+    position: absolute;
+    width: 1920px;
+    height: 94px;
+    left: 0px;
+    top: 64px;
+    background: #292929;
+    display: flex;
+    align-items: center;
+    padding-left: 258px;
+}
+
+.HomeHeader__menu-container {
+    width: 828px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.HomeHeader__menu-element {
+    font-size: 30px;
+    line-height: 35px;
+    color: #FFFFFF;
+}
+
+.HomeHeader__main {
+    width: 1349px;
+    display: flex;
+    padding-left: 91px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.HomeHeader__main-slogan {
+    width: 506px;
+    height: 170px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.HomeHeader__main-slogan h3 {
+    font-family: "Roboto-Thin";
+    font-size: 72px;
+    line-height: 84px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.Header__main-slogan h2 {
+    font-family: "Roboto-bold";
+    font-size: 72px;
+    line-height: 84px;
+    letter-spacing: 0em;
+    text-align: left;
+}

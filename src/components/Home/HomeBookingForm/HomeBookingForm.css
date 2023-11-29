@@ -1,0 +1,54 @@
+.HomeBookingForm {
+    background-color: rgba(41, 41, 41, 0.8);
+    width: 729px;
+    height: 566px;
+    padding: 73px 21px 10px;
+}
+
+.HomeBookingForm input {
+    width: 325px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 3px;
+    font-size: 18px;
+    line-height: 21px;
+    /* color: #E5E5E5; */
+    padding: 0 21px;
+}
+
+.HomeBookingForm label {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto';
+    font-size: 30px;
+    line-height: 55px;
+    color: #FFFFFF;
+}
+
+.HomeBookingForm label div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.HomeBookingForm__Form-date {
+    margin-top: 59px;
+    margin-bottom: 92px;
+}
+
+.HomeBookingForm_Form-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.HomeBookingForm button {
+    width: 323px;
+    height: 60px;
+    background: #FFA800;
+    border-radius: 5px;
+    font-family: 'Roboto-bold';
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #292929;
+}

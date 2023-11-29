@@ -1,0 +1,57 @@
+.Feedback {
+    padding: 150px 260px 100px 254px;
+}
+
+.Feedback__title {
+    text-transform: uppercase;
+    width: 1407px;
+    margin: auto;
+    height: 81px;
+    background-color: white;
+    font-size: 36px;
+}
+
+.slide {
+    height: 300px;
+    width: 200px;
+    background-color: white;
+}
+
+.FeedbackCard {
+    background-color: white;
+    padding: 33px 10px 137px;
+    display: flex;
+    flex-direction: row;
+}
+
+.FeedbackCard img {
+    border-radius: 50%;
+    width: 200px;
+    margin-right: 33px;
+}
+
+.FeedbackCard__info {
+    padding: 25px 100px 0px 0px;
+}
+
+.FeedbackCard__info h6 {
+    font-size: 24px;
+    font-family: "Roboto-bold";
+    margin-bottom: 20px;
+}
+
+.FeedbackCard__info-content {
+    font-family: "Roboto-ThinItalic";
+    color: rgba(146, 143, 148, 1);
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+}
+
+.FeedbackCard__info-content_leftquot {
+    margin-top: -10px;
+}
+
+.FeedbackCard__info-content_text font {
+    line-height: 0px;
+}

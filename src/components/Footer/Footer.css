@@ -1,0 +1,47 @@
+.Footer {
+    height: 519px;
+    background-color: rgba(45, 43, 47, 1);
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: rgba(255, 255, 255, 1);
+}
+
+.Footer h5 {
+    font-size: 30px;
+    font-family: "Roboto-Bold";
+}
+
+.Footer-container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.Footer__contacts,
+.Footer__subscribe {
+    width: 50%;
+    padding-top: 52px;
+}
+
+.Footer__contacts {
+    padding-left: 343px;
+}
+
+.Footer__subscribe {}
+
+.Footer__bottom {
+    padding: 22px 257px 33px 256px;
+    border-top: 1px solid rgba(229, 229, 229, 1);
+    height: 96px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Footer__bottom p {
+    text-transform: uppercase;
+    font-size: 24px;
+}

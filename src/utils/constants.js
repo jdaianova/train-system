@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://students.netoservices.ru/fe-diplom';

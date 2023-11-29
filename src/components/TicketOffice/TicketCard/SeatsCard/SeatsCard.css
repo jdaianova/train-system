@@ -1,0 +1,49 @@
+.SeatsCard {
+    width: 100%;
+    padding-top: 40px;
+}
+
+.SeatsRow {
+    padding-left: 27px;
+    padding-right: 22px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.SeatsRow-title, .SeatsRow-prep {
+    font-family: 'Roboto';
+    width: 86px;
+    font-size: 16px;
+    color: rgba(62, 60, 65, 1);
+    text-align: left;
+}
+
+.SeatsRow-amount {
+    width: 30px;
+    font-size: 16px;
+    font-family: 'Roboto-Bold';
+    color: rgba(255, 168, 0, 1);
+    text-align: right;
+}
+
+.SeatsRow-prep {
+    width: 22px;
+    text-align: right;
+    margin-right: -15px;
+}
+
+.SeatsRow-price {
+    width: 74px;
+    font-size: 24px;
+    font-family: 'Roboto-Bold';
+    color: rgba(45, 43, 47, 1);
+    text-align: right;
+}
+
+.SeatsRow-rub {
+    width: 16px;
+    height: 19px;
+}
