@@ -11,13 +11,13 @@ import TrainCard from "../TicketCard/TrainCard/TrainCard";
 import SeatsCard from "./SeatsCard/SeatsCard";
 
 const TicketCard = ({ ticket }) => {
-  // console.log(ticket);
-  //   console.log("--------------departure---------------");
-  //   console.log(new Date(ticket.departure.from.datetime));
-  //   console.log(new Date(ticket.departure.to.datetime));
-  //   console.log("--------------arrival---------------");
-  //   console.log(new Date(ticket.arrival.from.datetime));
-  //   console.log(new Date(ticket.arrival.to.datetime));
+  //console.log(ticket);
+  // console.log("--------------departure---------------");
+  // console.log(new Date(ticket.departure.from.datetime*1000));
+  // console.log(new Date(ticket.departure.to.datetime*1000));
+  // console.log("--------------arrival---------------");
+  // console.log(new Date(ticket.arrival.from.datetime*1000));
+  // console.log(new Date(ticket.arrival.to.datetime*1000));
   //   const durationHours = Math.trunc(ticket.departure.duration / 1000 / 60);
   //   const duration = ticket.departure.duration / 1000 / 60;
   //   const durationHours = Math.trunc(ticket.departure.duration / 1000 / 60);
@@ -44,7 +44,7 @@ const TicketCard = ({ ticket }) => {
       </div>
 
       <div className="TicketCard__seats">
-        <SeatsCard arrival={ticket.arrival} />
+        <SeatsCard info={ticket.arrival} />
 
         <div className="TicketCard__seats-comfort">
           <img src={cupIcon} alt="cup icon" />

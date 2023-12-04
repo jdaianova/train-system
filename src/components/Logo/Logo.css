@@ -1,6 +1,9 @@
+.Logo {
+    text-decoration: none;
+}
+
 .Logo h2 {
-    font-family: "Roboto-bold";
     font-size: 36px;
-    line-height: 42px;
+    font-weight: 900;
     color: #E5E5E5;
 }

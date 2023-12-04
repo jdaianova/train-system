@@ -2,7 +2,32 @@
     background-color: rgba(41, 41, 41, 0.8);
     width: 729px;
     height: 566px;
-    padding: 73px 21px 10px;
+    padding: 73px 20px 60px 20px;
+    display: flex;
+}
+
+.HomeBookingForm__Form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.HomeBookingForm_Form-direction,
+.HomeBookingForm__Form-date {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    font-size: 30px;
+    color: #FFFFFF;
+}
+
+.HomeBookingForm_Form-direction div,
+.HomeBookingForm__Form-date div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .HomeBookingForm input {
@@ -11,31 +36,13 @@
     background: #FFFFFF;
     border-radius: 3px;
     font-size: 18px;
-    line-height: 21px;
-    /* color: #E5E5E5; */
+    font-weight: 400;
     padding: 0 21px;
+    border: none;
 }
 
-.HomeBookingForm label {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Roboto';
-    font-size: 30px;
-    line-height: 55px;
-    color: #FFFFFF;
-}
-
-.HomeBookingForm label div {
-    display: flex;
-    justify-content: space-between;
-}
-
-.HomeBookingForm__Form-date {
-    margin-top: 59px;
-    margin-bottom: 92px;
-}
-
-.HomeBookingForm_Form-btn {
+.HomeBookingForm__Form-btn {
+    width: 100%;
     display: flex;
     justify-content: flex-end;
 }
@@ -45,10 +52,12 @@
     height: 60px;
     background: #FFA800;
     border-radius: 5px;
-    font-family: 'Roboto-bold';
+    border: none;
+    font-weight: 700;
     font-size: 24px;
-    line-height: 28px;
     text-align: center;
     text-transform: uppercase;
     color: #292929;
+    margin-top: 90px;
+    cursor: pointer;
 }

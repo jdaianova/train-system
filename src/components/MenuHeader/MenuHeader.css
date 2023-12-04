@@ -1,0 +1,25 @@
+.MenuHeader {
+    position: absolute;
+    width: 1920px;
+    height: 94px;
+    left: 0px;
+    top: 64px;
+    background: #292929;
+    display: flex;
+    align-items: center;
+    padding-left: 258px;
+}
+
+.MenuHeader-container {
+    width: 828px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.MenuHeader-element {
+    font-size: 30px;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}

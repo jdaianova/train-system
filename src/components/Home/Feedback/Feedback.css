@@ -9,6 +9,7 @@
     height: 81px;
     background-color: white;
     font-size: 36px;
+    font-weight: 500;
 }
 
 .slide {
@@ -36,12 +37,13 @@
 
 .FeedbackCard__info h6 {
     font-size: 24px;
-    font-family: "Roboto-bold";
+    font-weight: 500;
     margin-bottom: 20px;
 }
 
 .FeedbackCard__info-content {
-    font-family: "Roboto-ThinItalic";
+    font-weight: 300;
+    font-style: italic;
     color: rgba(146, 143, 148, 1);
     font-size: 18px;
     display: flex;

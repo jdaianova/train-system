@@ -1,7 +1,7 @@
 import './Destination.css';
 
 const Destination = ({time, city, station}) => {
-  const formattedTime = new Date(time).toLocaleTimeString().slice(0,-3);
+  const formattedTime = new Date(time*1000).toLocaleTimeString().slice(0,-3);
 
   return (
     <div className='Destination'>

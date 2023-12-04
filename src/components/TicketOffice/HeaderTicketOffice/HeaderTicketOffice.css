@@ -1,0 +1,13 @@
+.HeaderTicketOffice {
+    background-color: rgba(146, 143, 148, 1);
+    width: 1920px;
+    height: 596px;
+    padding-left: 215px;
+    padding-top: 15px;
+    background-image: url('../../../data/img/background_ticket-office.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}

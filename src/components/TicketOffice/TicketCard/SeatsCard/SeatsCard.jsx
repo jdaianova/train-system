@@ -1,14 +1,38 @@
 import "./SeatsCard.css";
 import SeatsRow from "./SeatsRow";
 
-const SeatsCard = ({ arrival }) => {
-  console.log(arrival);
+const SeatsCard = ({ info }) => {
+
   return (
     <div className="SeatsCard">
-      <SeatsRow title={"Сидячий"} amount={55} price={2121} />
-      <SeatsRow title={"Плацкарт"} amount={21} price={1950} />
-      <SeatsRow title={"Купе"} amount={2} price={777} />
-      <SeatsRow title={"Люкс"} amount={112} price={2000} />
+      {info.have_fourth_class && (
+        <SeatsRow
+          title={"Сидячий"}
+          amount={info.available_seats_info.fourth}
+          price={info.price_info.fourth.bottom_price}
+        />
+      )}
+      {info.have_third_class && (
+        <SeatsRow
+          title={"Плацкарт"}
+          amount={info.available_seats_info.third}
+          price={info.price_info.third.bottom_price}
+        />
+      )}
+      {info.have_second_class && (
+        <SeatsRow
+          title={"Купе"}
+          amount={info.available_seats_info.second}
+          price={info.price_info.second.bottom_price}
+        />
+      )}
+      {info.have_first_class && (
+        <SeatsRow
+          title={"Люкс"}
+          amount={info.available_seats_info.first}
+          price={info.price_info.first.bottom_price}
+        />
+      )}
     </div>
   );
 };

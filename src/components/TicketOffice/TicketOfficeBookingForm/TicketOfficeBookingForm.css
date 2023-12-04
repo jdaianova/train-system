@@ -1,0 +1,71 @@
+.TicketOfficeBookingForm {
+    background-color: rgba(41, 41, 41, 0.8);
+    width: 1490px;
+    height: 327px;
+    padding: 28px 44px 60px 44px;
+    display: flex;
+}
+
+.TicketOfficeBookingForm__Form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.TicketOfficeBookingForm__Form-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.TicketOfficeBookingForm_Form-direction, .TicketOfficeBookingForm__Form-date {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: 300; 
+    line-height: 55px;
+    color: #FFFFFF;
+}
+
+.TicketOfficeBookingForm_Form-direction {
+    margin-right: 35px;
+}
+
+.TicketOfficeBookingForm_Form-direction div, .TicketOfficeBookingForm__Form-date div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.TicketOfficeBookingForm input {
+    width: 325px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 400; 
+    line-height: 21px;
+    padding: 0 21px;
+    border: none;
+}
+
+.TicketOfficeBookingForm__Form-btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.TicketOfficeBookingForm button {
+    width: 323px;
+    height: 60px;
+    background: #FFA800;
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    font-weight: 700; 
+    text-align: center;
+    text-transform: uppercase;
+    color: #292929;
+    margin-top: 47px;
+    cursor: pointer;
+}

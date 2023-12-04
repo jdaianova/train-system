@@ -1,16 +1,14 @@
 import "./HomeHeader.css";
 
-import { nanoid } from "nanoid";
-//import {Link} from "react-router-dom";
-
 import backgroundImg from "../../../data/img/header-background.png";
 
 import Logo from "../../Logo/Logo";
 import HomeBookingForm from "../HomeBookingForm/HomeBookingForm";
+import MenuHeader from "../../MenuHeader/MenuHeader";
 
 export default function HomeHeader() {
   return (
-    <div className="HomeHeader">
+    <header id="home_header" className="HomeHeader">
       <img
         className="HomeHeader__background"
         src={backgroundImg}
@@ -18,19 +16,7 @@ export default function HomeHeader() {
       />
 
       <Logo />
-
-      <div className="HomeHeader__menu">
-        <nav className="HomeHeader__menu-container">
-
-          {["О нас", "Как это работает", "Отзывы", "Контакты"].map((element) => {
-            return (
-              <div key={nanoid()} className="HomeHeader__menu-element">
-                {element}
-              </div>
-            );
-          })}
-        </nav>
-      </div>
+      <MenuHeader />
 
       <div className="HomeHeader__main">
         <div className="HomeHeader__main-slogan">
@@ -40,6 +26,6 @@ export default function HomeHeader() {
 
         <HomeBookingForm />
       </div>
-    </div>
+    </header>
   );
 }

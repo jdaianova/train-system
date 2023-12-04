@@ -6,7 +6,7 @@ import TicketOffice from "../TicketOffice/TicketOffice";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route index element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/tickets" element={<TicketOffice />} />
     </Routes>
   );

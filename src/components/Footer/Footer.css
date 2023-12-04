@@ -10,7 +10,6 @@
 
 .Footer h5 {
     font-size: 30px;
-    font-family: "Roboto-Bold";
 }
 
 .Footer-container {
@@ -44,4 +43,8 @@
 .Footer__bottom p {
     text-transform: uppercase;
     font-size: 24px;
+}
+
+.Footer__bottom img {
+    cursor: pointer;
 }

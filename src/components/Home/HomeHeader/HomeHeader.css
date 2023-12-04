@@ -28,30 +28,6 @@
     z-index: -4;
 }
 
-.HomeHeader__menu {
-    position: absolute;
-    width: 1920px;
-    height: 94px;
-    left: 0px;
-    top: 64px;
-    background: #292929;
-    display: flex;
-    align-items: center;
-    padding-left: 258px;
-}
-
-.HomeHeader__menu-container {
-    width: 828px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.HomeHeader__menu-element {
-    font-size: 30px;
-    line-height: 35px;
-    color: #FFFFFF;
-}
-
 .HomeHeader__main {
     width: 1349px;
     display: flex;
@@ -68,17 +44,16 @@
 }
 
 .HomeHeader__main-slogan h3 {
-    font-family: "Roboto-Thin";
+    font-weight: 100;
     font-size: 72px;
     line-height: 84px;
     letter-spacing: 0em;
     text-align: left;
 }
 
-.Header__main-slogan h2 {
-    font-family: "Roboto-bold";
+.HomeHeader__main-slogan h2 {
+    font-weight: 700;
     font-size: 72px;
     line-height: 84px;
-    letter-spacing: 0em;
     text-align: left;
 }

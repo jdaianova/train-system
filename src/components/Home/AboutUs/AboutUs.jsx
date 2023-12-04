@@ -1,8 +1,10 @@
 import "./AboutUs.css";
 
 export default function AboutUs() {
+  //const example = '/routes/cities?name=%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0';
+
   return (
-    <section className="AboutUs">
+    <section id="about_us" className="AboutUs">
       <h2>О нас</h2>
       <div className="AboutUs__content">
         <p>

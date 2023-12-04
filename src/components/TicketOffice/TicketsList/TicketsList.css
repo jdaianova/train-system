@@ -1,3 +1,20 @@
 .TicketsList {
-padding: 50px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.TicketsList__pending {
+    width: 1920px;
+    background-image: url('../../../data/img/train.gif');
+    background-position: center;
+    background-size: cover;
+}
+
+.TicketsList__pending-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: gray;
 }

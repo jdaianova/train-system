@@ -1,0 +1,64 @@
+.OrderStatusBar {
+    width: 1920px;
+    height: 98px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.OrderStatusBar__element {
+    width: 324px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgba(62, 60, 65, 1);
+    position: relative;
+    padding-left: 72px;
+}
+
+.OrderStatusBar__element-arrow {
+    content: "";
+    width: 69px;
+    height: 69px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 14px;
+    right: -34px;
+    z-index: 999;
+    border-top: 1px solid rgba(229, 229, 229, 1);
+    border-right: 1px solid rgba(229, 229, 229, 1);
+}
+
+.OrderStatusBar__element:first-child {
+    padding-left: 230px;
+}
+
+.OrderStatusBar__element:last-child {
+    padding-right: 230px;
+}
+
+.OrderStatusBar__element-number {
+    width: 56px;
+    height: 56px;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 1);
+    font-size: 36px;
+    font-weight: 700;
+    margin-right: 21px;
+}
+
+.OrderStatusBar__element-name {
+    color: rgba(255, 255, 255, 1);
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.active-element {
+    background-color: rgba(255, 168, 0, 1);
+}

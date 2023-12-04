@@ -1,0 +1,43 @@
+.CheckBoxes {
+    border-bottom: 1px solid rgba(229, 229, 229, 1);
+    padding: 0px 34px;
+}
+
+.CheckBoxes__Box {
+    height: 59px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CheckBoxes__Box-icon {
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CheckBoxes__Box-icon img {
+
+}
+
+.CheckBoxes__Box-label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+    color: rgba(255, 255, 255, 1);
+    padding-left: 34px;
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
+.CheckBoxes__Box-slider {
+    width: 73px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+

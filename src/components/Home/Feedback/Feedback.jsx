@@ -27,7 +27,7 @@ export default function Feedback() {
         )
     };
     return (
-        <div className='Feedback'>
+        <section id='feedback' className='Feedback'>
 
             <div className='Feedback__title'>
                 <h4>отзывы</h4>
@@ -44,6 +44,6 @@ export default function Feedback() {
                 </Slider>
             </div>
 
-        </div>
+        </section>
     )
 };

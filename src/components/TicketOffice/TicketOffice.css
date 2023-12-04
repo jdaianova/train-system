@@ -1,0 +1,11 @@
+.TicketOffice {
+    display: flex;
+    flex-direction: column;
+}
+
+.TicketOffice__Content {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(247, 245, 249, 1);
+    padding: 95px 256px 193px 258px;
+}

@@ -5,7 +5,7 @@ import './HowItWorks.css';
 
 export default function HowItWorks() {
     return (
-        <div className="HowItWorks">
+        <section id='how_it_works' className="HowItWorks">
 
             <img
                 className="HowItWorks__background"
@@ -22,6 +22,6 @@ export default function HowItWorks() {
                 <HowItWorsIcons icons={icons}/>
             </div>
 
-        </div>
+        </section>
     )
 }

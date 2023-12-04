@@ -23,18 +23,17 @@
 }
 
 .HowItWorks__top h3 {
-    line-height: 42.19px;
     font-size: 36px;
+    font-weight: 500;
     color: rgba(255, 255, 255, 1);
     text-transform: uppercase;
 }
 
 .HowItWorks__top div {
     border: 1px solid rgba(255, 255, 255, 1);
-    line-height: 28.13px;
     font-size: 24px;
+    font-weight: 700;
     color: rgba(255, 255, 255, 1);
-    font-family: 'Roboto-Bold';
     padding: 15px 76px;
 }
 
@@ -68,8 +67,8 @@
     height: 162px;
     background-color: rgba(229, 229, 229, 0.2);
     position: absolute;
-    top: -12px;
-    left: -12px;
+    top: -13px;
+    left: -13px;
     z-index: -2;
 }
 
@@ -77,6 +76,8 @@
     width: 226px;
     color: rgba(229, 229, 229, 1);
     font-size: 24px;
+    font-weight: 400;
     line-height: 28.13px;
     text-align: center;
+    margin-top: 34px;
 }
