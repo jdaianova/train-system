@@ -1,37 +1,25 @@
-import React from "./InputCity.css";
-
+import "./InputCity.css";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { buildUrlCityId } from "../../../../utils/helpers";
+import { useDispatch } from "react-redux";
+import {
+  buildUrlCityId,
+  capitalizeLettersInCityName,
+} from "../../../../utils/helpers";
 import axios from "axios";
 import { BASE_URL } from "../../../../utils/constants";
 import { useEffect } from "react";
 import {
-  setFromCityId,
-  setFromCityName,
-  setToCityId,
-  setToCityName,
-} from "../../../../redux/ticketsFitersSlice";
+  setFromCityNameInForm,
+  setToCityNameInForm,
+} from "../../../../redux/formParams";
 
-const InputCity = ({ direction }) => {
-  const dispatch = useDispatch();
-  const initialCity = useSelector((state) =>
-    direction === "Откуда"
-      ? state.filters.fromCityName
-      : state.filters.toCityName
-  );
+const InputCity = ({ direction, initialCity }) => {
+   const dispatch = useDispatch();
+
   const [city, setCity] = useState(initialCity);
   const [searchListCities, setSearchListCities] = useState([]);
 
-  const handleSelectCity = (elem) => {
-    setCity(elem.name);
-    setSearchListCities([]);
-    direction === "Откуда"
-      ? dispatch(setFromCityId(elem._id))
-      : dispatch(setToCityId(elem._id));
-  };
-
-  async function getCityId(cityName) {
+  async function getListCities(cityName) {
     const url = buildUrlCityId(cityName);
     try {
       const response = await axios.get(`${BASE_URL}${url}`);
@@ -43,15 +31,15 @@ const InputCity = ({ direction }) => {
   }
 
   useEffect(() => {
-    getCityId(city);
-    direction === "Откуда"
-      ? dispatch(setFromCityName(city))
-      : dispatch(setToCityName(city));
-  }, [city, dispatch, direction]);
+    getListCities(city);
+  }, [city]);
 
-  const handleInput = (e) => {
-    e.preventDefault();
-    setCity(e.target.value);
+  const handleInput = (data) => {
+    const currentCity = capitalizeLettersInCityName(data);
+    setCity(currentCity);
+    direction === "Откуда"
+      ? dispatch(setFromCityNameInForm(currentCity))
+      : dispatch(setToCityNameInForm(currentCity));
   };
 
   return (
@@ -60,18 +48,18 @@ const InputCity = ({ direction }) => {
         type="text"
         placeholder={direction}
         value={city}
-        onChange={(e) => handleInput(e)}
+        onChange={(e) => handleInput(e.target.value)}
         required
       />
       {searchListCities.length >= 1 && (
         <div className="InputCity-search_list">
-          {searchListCities[0].name !== city &&
+          {searchListCities[0].name.toLowerCase() !== city.toLowerCase() &&
             searchListCities.map((elem) => {
               return (
                 <div
                   className="InputCity-search_list-element"
                   key={elem._id}
-                  onClick={() => handleSelectCity(elem)}
+                  onClick={() => handleInput(elem.name)}
                 >
                   {elem.name}
                 </div>

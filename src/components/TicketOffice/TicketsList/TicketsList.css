@@ -1,7 +1,9 @@
 .TicketsList {
+    flex-grow: 1;
     padding: 50px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .TicketsList__pending {

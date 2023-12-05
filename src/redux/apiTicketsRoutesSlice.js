@@ -17,3 +17,28 @@ export const apiTicketsRoutesSlice = createApi({
 
 export const { useGetTicketsRoutesQuery } = apiTicketsRoutesSlice;
 
+// // api.js
+// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+// const api = createApi({
+//   baseQuery: fetchBaseQuery({ baseUrl: '/api' }), // Замените '/api' на ваш базовый URL API
+//   endpoints: (builder) => ({
+//     getData1: builder.query({
+//       query: () => 'data1',
+//     }),
+//     getData2: builder.query({
+//       query: () => 'data2',
+//     }),
+//     postData: builder.mutation({
+//       query: (data) => ({
+//         url: 'post',
+//         method: 'POST',
+//         body: data,
+//       }),
+//     }),
+//   }),
+// });
+
+// export const { useGetData1Query, useGetData2Query, usePostDataMutation } = api;
+
+// export default api;

@@ -3,10 +3,10 @@ import "./OrderStatusBar.css";
 const OrderStatusBar = () => {
   return (
     <ul className="OrderStatusBar">
-          <li className="OrderStatusBar__element">
+          <li className="OrderStatusBar__element active-element">
             <div className="OrderStatusBar__element-number">1</div>
             <div className="OrderStatusBar__element-name">Билеты</div>
-            <div className="OrderStatusBar__element-arrow"></div>
+            <div className="OrderStatusBar__element-arrow active-element"></div>
           </li>
           <li className="OrderStatusBar__element">
             <div className="OrderStatusBar__element-number">2</div>

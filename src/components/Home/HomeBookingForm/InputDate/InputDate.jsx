@@ -1,22 +1,19 @@
 import { useState } from "react";
 import "./InputDate.css";
-import { useSelector, useDispatch } from "react-redux";
-import { setDateStart, setDateEnd } from "../../../../redux/ticketsFitersSlice";
+import { useDispatch } from "react-redux";
+import { setDateEndInForm, setDateStartInForm } from "../../../../redux/formParams";
 
-const InputDate = ({ direction }) => {
+const InputDate = ({ direction, initialDate }) => {
   const dispatch = useDispatch();
 
-  const initialDate = useSelector((state) =>
-    direction === "Откуда" ? state.filters.dateStart : state.filters.dateEnd
-  );
   const [date, setDate] = useState(initialDate);
 
   const handleChange = (e) => {
     e.preventDefault();
     setDate(e.target.value);
     direction === "Откуда"
-      ? dispatch(setDateStart(e.target.value))
-      : dispatch(setDateEnd(e.target.value));
+      ? dispatch(setDateStartInForm(e.target.value))
+      : dispatch(setDateEndInForm(e.target.value));
   };
 
   return (
