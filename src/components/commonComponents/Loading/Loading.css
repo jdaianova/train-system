@@ -1,0 +1,14 @@
+.Loading {
+    width: 1920px;
+    background-image: url('../../../data/img/train.gif');
+    background-position: center;
+    background-size: cover;
+}
+
+.Loading__pending {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}

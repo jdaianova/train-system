@@ -1,4 +1,4 @@
-import { ROUTES } from '../../utils/routes';
+import { ROUTES } from '../../../utils/routes';
 import './Logo.css';
 import { Link } from 'react-router-dom';
 

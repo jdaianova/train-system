@@ -1,6 +1,8 @@
 import "./Footer.css";
+
 import Logo from "../Logo/Logo";
-import footerArrow from "../../data/img/footer-arrow.png";
+
+import footerArrow from "../../../data/img/footer-arrow.png";
 
 export default function Footer() {
   return (

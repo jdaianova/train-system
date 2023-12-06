@@ -3,7 +3,7 @@ import HomeHeader from './HomeHeader/HomeHeader'
 import AboutUs from './AboutUs/AboutUs'
 import HowItWorks from './HowItWorks/HowItWorks'
 import Feedback from './Feedback/Feedback'
-import Footer from '../Footer/Footer'
+import Footer from '../commonComponents/Footer/Footer'
 
 const Home = () => {
   return (

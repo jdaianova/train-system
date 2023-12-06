@@ -1,6 +1,8 @@
-import { useState } from "react";
 import "./ErrorPopUp.css";
-import infoIcon from "../../data/img/info-icon.png";
+
+import { useState } from "react";
+
+import infoIcon from "../../../data/img/info-icon.png";
 
 const ErrorPopUp = ({ textErrorTop, textErrorBottom }) => {
   const [isVisible, setIsVisible] = useState(true);

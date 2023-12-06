@@ -2,9 +2,9 @@ import "./HomeHeader.css";
 
 import backgroundImg from "../../../data/img/header-background.png";
 
-import Logo from "../../Logo/Logo";
+import Logo from "../../commonComponents/Logo/Logo";
 import HomeBookingForm from "../HomeBookingForm/HomeBookingForm";
-import MenuHeader from "../../MenuHeader/MenuHeader";
+import MenuHeader from "../../commonComponents/MenuHeader/MenuHeader";
 
 export default function HomeHeader() {
   return (

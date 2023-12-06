@@ -1,5 +1,5 @@
 import "./MenuHeader.css";
-import { headerMenuElements } from "../../utils/constants";
+import { headerMenuElements } from "../../../utils/constants";
 import { HashLink } from "react-router-hash-link";
 
 const MenuHeader = () => {

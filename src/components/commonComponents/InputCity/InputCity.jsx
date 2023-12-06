@@ -1,21 +1,15 @@
 import "./InputCity.css";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import {
   buildUrlCityId,
   capitalizeLettersInCityName,
-} from "../../../../utils/helpers";
-import axios from "axios";
-import { BASE_URL } from "../../../../utils/constants";
-import { useEffect } from "react";
-import {
-  setFromCityNameInForm,
-  setToCityNameInForm,
-} from "../../../../redux/formParams";
+} from "../../../utils/helpers";
+import { BASE_URL } from "../../../utils/constants";
 
-const InputCity = ({ direction, initialCity }) => {
-   const dispatch = useDispatch();
-
+const InputCity = ({ direction, initialCity, setFormData }) => {
   const [city, setCity] = useState(initialCity);
   const [searchListCities, setSearchListCities] = useState([]);
 
@@ -23,10 +17,10 @@ const InputCity = ({ direction, initialCity }) => {
     const url = buildUrlCityId(cityName);
     try {
       const response = await axios.get(`${BASE_URL}${url}`);
-      //console.log(response.data);
       setSearchListCities(response.data);
+      return response.data;
     } catch (error) {
-      //console.error(error);
+      alert(error);
     }
   }
 
@@ -34,12 +28,19 @@ const InputCity = ({ direction, initialCity }) => {
     getListCities(city);
   }, [city]);
 
-  const handleInput = (data) => {
-    const currentCity = capitalizeLettersInCityName(data);
+  const handleChange = (cityName) => {
+    const currentCity = capitalizeLettersInCityName(cityName);
     setCity(currentCity);
+
     direction === "Откуда"
-      ? dispatch(setFromCityNameInForm(currentCity))
-      : dispatch(setToCityNameInForm(currentCity));
+      ? setFormData((prevFormData) => ({
+          ...prevFormData,
+          fromCityName: currentCity,
+        }))
+      : setFormData((prevFormData) => ({
+          ...prevFormData,
+          toCityName: currentCity,
+        }));
   };
 
   return (
@@ -48,7 +49,7 @@ const InputCity = ({ direction, initialCity }) => {
         type="text"
         placeholder={direction}
         value={city}
-        onChange={(e) => handleInput(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
         required
       />
       {searchListCities.length >= 1 && (
@@ -59,7 +60,7 @@ const InputCity = ({ direction, initialCity }) => {
                 <div
                   className="InputCity-search_list-element"
                   key={elem._id}
-                  onClick={() => handleInput(elem.name)}
+                  onClick={() => handleChange(elem.name)}
                 >
                   {elem.name}
                 </div>

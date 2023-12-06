@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  fromCityName: "",
+  toCityName: "",
   fromCityId: "",
   toCityId: "",
   dateStart: "",
@@ -14,6 +16,12 @@ export const ticketsFilterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
+    setFromCityName: (state, action) => {
+      state.fromCityName = action.payload
+    },
+    setToCityName: (state, action) => {
+      state.toCityName = action.payload
+    },
     setFromCityId: (state, action) => {
       state.fromCityId = action.payload
     },
@@ -39,12 +47,14 @@ export const ticketsFilterSlice = createSlice({
 })
 
 export const {
-  setHaveWifi,
-  setIsExpress,
-  setHaveFirstClass,
+  setFromCityName,
+  setToCityName,
   setFromCityId,
   setToCityId,
   setDateStart,
-  setDateEnd } = ticketsFilterSlice.actions;
+  setDateEnd,
+  setHaveWifi,
+  setIsExpress,
+  setHaveFirstClass, } = ticketsFilterSlice.actions;
 
 export default ticketsFilterSlice.reducer
