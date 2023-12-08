@@ -1,7 +1,8 @@
 import "./TrainRoute.css";
 import Destination from "../Destination/Destination";
+import Arrow from "../../commonTicketsComponents/Arrow";
 
-const TrainRoute = ({route, arrowImg}) => {
+const TrainRoute = ({ route }) => {
   return (
     <div className="TrainRoute">
       <Destination
@@ -14,7 +15,12 @@ const TrainRoute = ({route, arrowImg}) => {
         <p>
           {12} : {12}
         </p>
-        <img src={arrowImg} alt="arrow of route" />
+        <Arrow
+          direction={"left-to-right"}
+          width={30}
+          height={20}
+          color={"rgba(255, 168, 0, 0.79)"}
+        />
       </div>
 
       <Destination

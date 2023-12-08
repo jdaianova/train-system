@@ -8,24 +8,3 @@
     color: rgba(41, 41, 41, 1);
     font-size: 16px;
 }
-
-.TrainCard-icon img {
-    width: 86px;
-    margin-bottom: 17px;
-}
-
-.TrainCard-trainNumber {}
-
-.TrainCard__start {
-    color: rgba(146, 143, 148, 1);
-}
-
-.TrainCard__from {}
-
-.TrainCard__to {}
-
-.TrainCard__from::first-letter, .TrainCard__to::first-letter {
-    text-transform: uppercase;
-}
-
-.TrainCard__name {}

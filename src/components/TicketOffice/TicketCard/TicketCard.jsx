@@ -1,16 +1,17 @@
 import "./TicketCard.css";
 
-import arrowArrival from "../../../data/img/arrow-arrival.png";
-import arrowDeparture from "../../../data/img/arrow-departure.png";
+
+import { Link } from "react-router-dom";
+
 import cupIcon from "../../../data/img/cup-icon.png";
 import expressIcon from "../../../data/img/express-icon.png";
 
 import TrainRoute from "../TicketCard/TrainRoute/TrainRoute";
 import TrainCard from "../TicketCard/TrainCard/TrainCard";
 import SeatsCard from "./SeatsCard/SeatsCard";
-import { Link } from "react-router-dom";
 
 const TicketCard = ({ ticket }) => {
+  console.log(ticket);
   return (
     <div className="TicketCard">
       <TrainCard
@@ -20,13 +21,9 @@ const TicketCard = ({ ticket }) => {
       />
 
       <div className="TicketCard__routes">
-        {ticket.arrival && (
-          <TrainRoute route={ticket.arrival} arrowImg={arrowArrival} />
-        )}
+        {ticket.departure && <TrainRoute route={ticket.departure} />}
 
-        {ticket.departure && (
-          <TrainRoute route={ticket.departure} arrowImg={arrowDeparture} />
-        )}
+        {ticket.arrival && <TrainRoute route={ticket.arrival} />}
       </div>
 
       <div className="TicketCard__seats">
@@ -37,7 +34,7 @@ const TicketCard = ({ ticket }) => {
           <img src={expressIcon} alt="express icon" />
           <img src={cupIcon} alt="cup icon" />
         </div>
-        <Link to={'seats'}>
+        <Link to={"seats"}>
           <button>Выбрать места</button>
         </Link>
       </div>

@@ -1,0 +1,61 @@
+.Seats-container {
+    width: 959px;
+}
+
+.Seats__section {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.Seats-container h3 {
+    font-size: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+}
+
+.Seats {
+    border: 1px solid rgb(196, 196, 196);
+}
+
+.Seats__header {
+    flex-direction: row;
+    padding-top: 36px;
+    padding-bottom: 32px;
+}
+
+.Seats__header__icon-arrow {
+    width: 76px;
+    height: 60px;
+    background-color: rgba(255, 168, 0, 1);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Seats__header__button {
+    width: 325px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: 700;
+    border: 1px solid rgba(41, 41, 41, 1);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.Seats__schedule {
+    background-color: rgba(247, 246, 246, 1);
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

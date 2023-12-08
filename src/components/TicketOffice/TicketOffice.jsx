@@ -8,15 +8,13 @@ import OrderStatusBar from "./OrderStatusBar/OrderStatusBar";
 import Loading from "../commonComponents/Loading/Loading";
 
 import { useGetTicketsRoutesQuery } from "../../redux/apSlice";
-//import { useSelector } from "react-redux";
-//import { buildUrlRoutes } from "../../utils/helpers";
-
-const url =
-  "/routes?from_city_id=641037eb5c49ea004632ee6e&to_city_id=641037eb5c49ea004632ee6f&date_start=2023-12-12&date_end=2023-12-18";
+import { TicketOfficeRoutes } from "../Routes/Routes";
+import { useSelector } from "react-redux";
+import { buildUrlRoutes } from "../../utils/helpers";
 
 const TicketOffice = () => {
-  //const filters = useSelector((state) => state.filters);
-  //const url = buildUrlRoutes(filters);
+  const filters = useSelector((state) => state.filters);
+  const url = buildUrlRoutes(filters);
   const listOfTickets = useGetTicketsRoutesQuery({ url });
 
   return (
@@ -31,7 +29,7 @@ const TicketOffice = () => {
           typeof listOfTickets !== "undefined" && (
             <div className="TicketOffice__Content">
               <SideBar />
-              <TicketsList listOfTickets={listOfTickets} />
+              {TicketOfficeRoutes(listOfTickets)}
             </div>
           )}
       </div>

@@ -2,24 +2,27 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "../Home/Home";
 import TicketOffice from "../TicketOffice/TicketOffice";
+import TicketsList from "../TicketOffice/TicketsList/TicketsList";
 import Seats from "../TicketOffice/Seats/Seats";
+import Passengers from "../TicketOffice/Passengers/Passengers";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/tickets/*" element={<TicketOfficeRoutes />} />
+      <Route path="/tickets/*" element={<TicketOffice />} />
     </Routes>
   );
 };
 
-const TicketOfficeRoutes = () => {
+export const TicketOfficeRoutes = (listOfTickets) => {
   return (
     <Routes>
-      <Route path="/" element={<TicketOffice />} />
+      <Route path="/" element={<TicketsList listOfTickets={listOfTickets} />} />
       <Route path="/seats" element={<Seats />} />
+      <Route path="/passengers" element={<Passengers />} />
     </Routes>
   );
-  }
+};
 
 export default AppRoutes;
