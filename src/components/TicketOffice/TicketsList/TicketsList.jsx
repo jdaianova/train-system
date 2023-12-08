@@ -2,7 +2,7 @@ import "./TicketsList.css";
 
 import { nanoid } from "nanoid";
 
-import TicketCard from "../TicketCard/TicketCard";
+import TicketCard from "./TicketCard/TicketCard";
 
 const TicketsList = ({listOfTickets}) => {
 

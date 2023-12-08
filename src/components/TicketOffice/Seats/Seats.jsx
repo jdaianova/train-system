@@ -1,8 +1,8 @@
 import "./Seats.css";
 
-import TrainCard from "../TicketCard/TrainCard/TrainCard";
 import IconTrainInCircle from "../commonTicketsComponents/IconTrainInCircle";
 import Arrow from "../commonTicketsComponents/Arrow";
+import TrainCard from "../TicketsList/TicketCard/TrainCard/TrainCard";
 
 const Seats = () => {
   return (

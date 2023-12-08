@@ -1,28 +1,29 @@
 import "./TicketCard.css";
 
-
 import { Link } from "react-router-dom";
 
-import cupIcon from "../../../data/img/cup-icon.png";
-import expressIcon from "../../../data/img/express-icon.png";
+import cupIcon from "../../../../data/img/cup-icon.png";
+import expressIcon from "../../../../data/img/express-icon.png";
 
-import TrainRoute from "../TicketCard/TrainRoute/TrainRoute";
-import TrainCard from "../TicketCard/TrainCard/TrainCard";
+import TrainRoute from "./TrainRoute/TrainRoute";
+import TrainCard from "./TrainCard/TrainCard";
 import SeatsCard from "./SeatsCard/SeatsCard";
 
+import { capitalizeLettersInCityName } from "../../../../utils/helpers";
+
 const TicketCard = ({ ticket }) => {
-  console.log(ticket);
+
+
   return (
     <div className="TicketCard">
       <TrainCard
         train={ticket.arrival.train}
-        cityFrom={ticket.arrival.from.city.name}
-        cityTo={ticket.arrival.to.city.name}
+        cityFrom={capitalizeLettersInCityName(ticket.arrival.from.city.name) }
+        cityTo={capitalizeLettersInCityName(ticket.arrival.to.city.name)}
       />
 
       <div className="TicketCard__routes">
         {ticket.departure && <TrainRoute route={ticket.departure} />}
-
         {ticket.arrival && <TrainRoute route={ticket.arrival} />}
       </div>
 

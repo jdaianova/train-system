@@ -1,6 +1,6 @@
 import "./TrainCard.css";
-import IconTrainInCircle from "../../commonTicketsComponents/IconTrainInCircle";
-import TrainInfo from "../../commonTicketsComponents/TrainInfo/TrainInfo";
+import IconTrainInCircle from "../../../commonTicketsComponents/IconTrainInCircle";
+import TrainInfo from "../../../commonTicketsComponents/TrainInfo/TrainInfo";
 
 const TrainCard = ({ train, cityFrom, cityTo }) => {
   return (

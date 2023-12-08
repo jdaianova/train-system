@@ -1,6 +1,6 @@
 import "./TrainRoute.css";
 import Destination from "../Destination/Destination";
-import Arrow from "../../commonTicketsComponents/Arrow";
+import Arrow from "../../../commonTicketsComponents/Arrow";
 
 const TrainRoute = ({ route }) => {
   return (

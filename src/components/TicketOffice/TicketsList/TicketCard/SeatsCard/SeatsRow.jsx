@@ -1,6 +1,6 @@
 import "./SeatsCard.css";
 
-import rubIcon from "../../../../data/img/rub-icon.png";
+import rubIcon from "../../../../../data/img/rub-icon.png";
 
 const SeatsRow = ({title, amount, price}) => {
   return (
