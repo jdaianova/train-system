@@ -2,7 +2,7 @@ import "./TrainCard.css";
 import trainIcon from "../../../../data/img/train-icon.png";
 
 const TrainCard = ({train, cityFrom, cityTo}) => {
-   // console.log(train);
+
   return (
     <div className="TrainCard">
       <div className="TrainCard-icon">

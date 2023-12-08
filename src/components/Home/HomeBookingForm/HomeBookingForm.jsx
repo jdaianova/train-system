@@ -1,13 +1,14 @@
 import "./HomeBookingForm.css";
 
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { ROUTES } from "../../../utils/routes";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import InputCity from "../../commonComponents/InputCity/InputCity";
 import InputDate from "../../commonComponents/InputDate/InputDate";
+
+import { ROUTES } from "../../../utils/routes";
 import {
   setDateEnd,
   setDateStart,
@@ -17,57 +18,62 @@ import {
   setToCityName,
 } from "../../../redux/ticketsFitersSlice";
 import { BASE_URL } from "../../../utils/constants";
-import { buildUrlCityId } from "../../../utils/helpers";
 
 export default function HomeBookingForm() {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     fromCityName: "",
     toCityName: "",
-    fromCityId: "",
-    toCityId: "",
-    dateStart: " ",
-    dateEnd: " ",
+    dateStart: "",
+    dateEnd: "",
   });
 
-  async function getfromCityId() {
-    const url = buildUrlCityId(formData.fromCityName);
+  const getFromCityId = async (cityName) => {
     try {
-      const response = await axios.get(`${BASE_URL}${url}`);
-      setFormData({...formData, fromCityId:response.data[0]._id});
+      const cityUrl = `${BASE_URL}/routes/cities?name=${encodeURI(cityName)}`;
+      const response = await axios.get(cityUrl);
+      if (
+        typeof response.data !== "undefined" &&
+        response.data[0].name.toLowerCase() === cityName.toLowerCase()
+      ) {
+        dispatch(setFromCityId(response.data[0]._id));
+      } else {
+        dispatch(setFromCityId(""));
+      }
     } catch (error) {
-      setFormData({...formData, fromCityId:''});
-      alert(error);
+      //alert(error);
     }
-  }
+  };
 
-  async function getToCityId() {
-    const url = buildUrlCityId(formData.toCityName);
+  const getToCityId = async (cityName) => {
     try {
-      const response = await axios.get(`${BASE_URL}${url}`);
-      setFormData({...formData, toCityId:response.data[0]._id});
+      const cityUrl = `${BASE_URL}/routes/cities?name=${encodeURI(cityName)}`;
+      const response = await axios.get(cityUrl);
+      if (
+        typeof response.data !== "undefined" &&
+        response.data[0].name.toLowerCase() === cityName.toLowerCase()
+      ) {
+        dispatch(setToCityId(response.data[0]._id));
+      } else {
+        dispatch(setToCityId(""));
+      }
     } catch (error) {
-      setFormData({...formData, toCityId:''});
-      alert(error);
+      //alert(error);
     }
-  }
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(formData);
-
-    await getfromCityId();
-    await getToCityId();
+  const handleSubmit = (e) => {
+    getFromCityId(formData.fromCityName);
+    getToCityId(formData.toCityName);
 
     dispatch(setFromCityName(formData.fromCityName));
     dispatch(setToCityName(formData.toCityName));
-    dispatch(setFromCityId(formData.fromCityId));
-    dispatch(setToCityId(formData.toCityId));
     dispatch(setDateStart(formData.dateStart));
     dispatch(setDateEnd(formData.dateEnd));
-    //navigate(ROUTES.TICKETS);
+
+    navigate(ROUTES.TICKETS);
   };
 
   return (

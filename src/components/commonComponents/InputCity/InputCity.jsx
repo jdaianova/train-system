@@ -1,37 +1,17 @@
 import "./InputCity.css";
 
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 
-import {
-  buildUrlCityId,
-  capitalizeLettersInCityName,
-} from "../../../utils/helpers";
-import { BASE_URL } from "../../../utils/constants";
+import { capitalizeLettersInCityName } from "../../../utils/helpers";
+import { useGetCityIdQuery } from "../../../redux/apSlice";
 
 const InputCity = ({ direction, initialCity, setFormData }) => {
-  const [city, setCity] = useState(initialCity);
-  const [searchListCities, setSearchListCities] = useState([]);
-
-  async function getListCities(cityName) {
-    const url = buildUrlCityId(cityName);
-    try {
-      const response = await axios.get(`${BASE_URL}${url}`);
-      setSearchListCities(response.data);
-      return response.data;
-    } catch (error) {
-      alert(error);
-    }
-  }
-
-  useEffect(() => {
-    getListCities(city);
-  }, [city]);
+  const [cityName, setCityName] = useState(initialCity);
+  const { data: searchListCities } = useGetCityIdQuery({ cityName });
 
   const handleChange = (cityName) => {
     const currentCity = capitalizeLettersInCityName(cityName);
-    setCity(currentCity);
-
+    setCityName(currentCity);
     direction === "Откуда"
       ? setFormData((prevFormData) => ({
           ...prevFormData,
@@ -48,26 +28,28 @@ const InputCity = ({ direction, initialCity, setFormData }) => {
       <input
         type="text"
         placeholder={direction}
-        value={city}
+        value={cityName}
         onChange={(e) => handleChange(e.target.value)}
         required
       />
-      {searchListCities.length >= 1 && (
-        <div className="InputCity-search_list">
-          {searchListCities[0].name.toLowerCase() !== city.toLowerCase() &&
-            searchListCities.map((elem) => {
-              return (
-                <div
-                  className="InputCity-search_list-element"
-                  key={elem._id}
-                  onClick={() => handleChange(elem.name)}
-                >
-                  {elem.name}
-                </div>
-              );
-            })}
-        </div>
-      )}
+      {typeof searchListCities !== "undefined" &&
+        searchListCities.length >= 1 && (
+          <div className="InputCity-search_list">
+            {searchListCities[0].name.toLowerCase() !==
+              cityName.toLowerCase() &&
+              searchListCities.map((elem) => {
+                return (
+                  <div
+                    className="InputCity-search_list-element"
+                    key={elem._id}
+                    onClick={() => handleChange(elem.name)}
+                  >
+                    {elem.name}
+                  </div>
+                );
+              })}
+          </div>
+        )}
     </div>
   );
 };

@@ -10,13 +10,10 @@ export const apiSlice = createApi({
         getTicketsRoutes: builder.query({
             query: ({ url }) => url,
         }),
-        getFromCityId: builder.query({
-            query: ({ urlFromCityId }) => urlFromCityId,
-        }),
-        getToCityId: builder.query({
-            query: ({ urlToCityId }) => urlToCityId,
+        getCityId: builder.query({
+            query: ({ cityName }) => `/routes/cities?name=${encodeURI(cityName)}`,
         }),
     })
 })
 
-export const { useGetTicketsRoutesQuery, useGetFromCityIdQuery, useGetToCityIdQuery } = apiSlice;
+export const { useGetTicketsRoutesQuery, useGetCityIdQuery, } = apiSlice;

@@ -43,6 +43,9 @@ export const ticketsFilterSlice = createSlice({
     setHaveFirstClass: (state, action) => {
       state.haveFirstClass = action.payload
     },
+    // updateFilters: (state, action) => {
+    //   return { ...state, filters: { ...state.filters, ...action.payload } };
+    // },
   },
 })
 

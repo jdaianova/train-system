@@ -16,19 +16,25 @@
     background-color: rgba(62, 60, 65, 1);
     position: relative;
     padding-left: 72px;
+    border: 1px solid rgba(62, 60, 65, 1) ;
 }
 
-.OrderStatusBar__element-arrow {
+.active-element {
+    background-color: rgba(255, 168, 0, 1);
+    border: 1px solid rgba(255, 168, 0, 1);
+}
+
+.OrderStatusBar__element::after {
     content: "";
-    width: 69px;
-    height: 69px;
-    transform: rotate(45deg);
-    position: absolute;
-    top: 14px;
-    right: -34px;
-    z-index: 999;
-    border-top: 1px solid rgba(229, 229, 229, 1);
-    border-right: 1px solid rgba(229, 229, 229, 1);
+position: absolute;
+top: 0;
+right: -37px; /* Ширина стрелки */
+width: 0;
+height: 0;
+border-top: 50px solid transparent; /* Половина высоты прямоугольника */
+border-bottom: 50px solid transparent; /* Половина высоты прямоугольника */
+border-left: 37px solid black; /* Цвет стрелки соответствует цвету прямоугольника */
+z-index: 999;
 }
 
 .OrderStatusBar__element:first-child {
@@ -57,8 +63,4 @@
     color: rgba(255, 255, 255, 1);
     font-size: 30px;
     font-weight: 700;
-}
-
-.active-element {
-    background-color: rgba(255, 168, 0, 1);
 }

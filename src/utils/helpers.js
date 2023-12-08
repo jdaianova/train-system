@@ -10,11 +10,6 @@ export const buildUrlRoutes = (filersParams) => {
     return currentUrl;
 }
 
-export const buildUrlCityId = (city) => {
-    const currentUrl = encodeURI(`/routes/cities?name=${city}`);
-    return currentUrl;
-}
-
 export function capitalizeLettersInCityName(str) {
     return str.replace(/(?:^|\s|-)\S/g, function (match) {
         return match.toUpperCase();

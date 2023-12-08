@@ -4,27 +4,13 @@ import arrowArrival from "../../../data/img/arrow-arrival.png";
 import arrowDeparture from "../../../data/img/arrow-departure.png";
 import cupIcon from "../../../data/img/cup-icon.png";
 import expressIcon from "../../../data/img/express-icon.png";
-//import cupIcon from "../../../data/img/cup-icon.png";
 
 import TrainRoute from "../TicketCard/TrainRoute/TrainRoute";
 import TrainCard from "../TicketCard/TrainCard/TrainCard";
 import SeatsCard from "./SeatsCard/SeatsCard";
+import { Link } from "react-router-dom";
 
 const TicketCard = ({ ticket }) => {
-  //console.log(ticket);
-  // console.log("--------------departure---------------");
-  // console.log(new Date(ticket.departure.from.datetime*1000));
-  // console.log(new Date(ticket.departure.to.datetime*1000));
-  // console.log("--------------arrival---------------");
-  // console.log(new Date(ticket.arrival.from.datetime*1000));
-  // console.log(new Date(ticket.arrival.to.datetime*1000));
-  //   const durationHours = Math.trunc(ticket.departure.duration / 1000 / 60);
-  //   const duration = ticket.departure.duration / 1000 / 60;
-  //   const durationHours = Math.trunc(ticket.departure.duration / 1000 / 60);
-  //   const durationHours = 55;
-  //   const durationHours = 55;
-  //   const durationMinuts = 22;
-
   return (
     <div className="TicketCard">
       <TrainCard
@@ -51,8 +37,9 @@ const TicketCard = ({ ticket }) => {
           <img src={expressIcon} alt="express icon" />
           <img src={cupIcon} alt="cup icon" />
         </div>
-
-        <button>Выбрать места</button>
+        <Link to={'seats'}>
+          <button>Выбрать места</button>
+        </Link>
       </div>
     </div>
   );
