@@ -11,6 +11,7 @@
 .TicketCard__routes {
     display: flex;
     flex-direction: column;
+    padding-top: 54px;
 }
 
 .TicketCard__seats {

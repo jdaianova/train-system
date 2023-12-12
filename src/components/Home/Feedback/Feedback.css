@@ -57,3 +57,17 @@
 .FeedbackCard__info-content_text font {
     line-height: 0px;
 }
+
+.custom-dot-class .dot {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background-color: rgba(229, 229, 229, 1);
+    /* обычный цвет точек */
+    margin: 0 5px;
+}
+
+.custom-dot-class li.slick-active .dot {
+    background-color: rgba(196, 196, 196, 1);
+    /* цвет активной точки */
+}

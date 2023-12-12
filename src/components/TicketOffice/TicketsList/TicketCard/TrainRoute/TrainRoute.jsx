@@ -1,8 +1,9 @@
 import "./TrainRoute.css";
 import Destination from "../Destination/Destination";
-import Arrow from "../../../commonTicketsComponents/Arrow";
+import Arrow from "../../../commonTicketsComponents/svgComponents/Arrow";
 
-const TrainRoute = ({ route }) => {
+const TrainRoute = ({ route, showDuration }) => {
+  //console.log("route", route);
   return (
     <div className="TrainRoute">
       <Destination
@@ -12,9 +13,11 @@ const TrainRoute = ({ route }) => {
       />
 
       <div className="TrainRoute-arrow">
-        <p>
-          {12} : {12}
-        </p>
+        {showDuration && <p>
+          {`${parseInt(route.duration / 3600)} : ${Math.floor(
+            (route.duration % 3600) / 60
+          )}`}
+        </p>}
         <Arrow
           direction={"left-to-right"}
           width={30}

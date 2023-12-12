@@ -3,6 +3,7 @@ import "./TicketOfficeBookingForm.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import InputCity from "../../commonComponents/InputCity/InputCity";
 import InputDate from "../../commonComponents/InputDate/InputDate";
@@ -16,8 +17,10 @@ import {
   setToCityName,
 } from "../../../redux/ticketsFitersSlice";
 import { BASE_URL } from "../../../utils/constants";
+import { ROUTES } from "../../../utils/routes";
 
 export default function TicketOfficeBookingForm() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const filters = useSelector(state => state.filters);
 
@@ -63,7 +66,7 @@ export default function TicketOfficeBookingForm() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     getFromCityId(formData.fromCityName);
     getToCityId(formData.toCityName);
 
@@ -71,6 +74,8 @@ export default function TicketOfficeBookingForm() {
     dispatch(setToCityName(formData.toCityName));
     dispatch(setDateStart(formData.dateStart));
     dispatch(setDateEnd(formData.dateEnd));
+
+    navigate(ROUTES.TICKETS);
   };
 
   return (

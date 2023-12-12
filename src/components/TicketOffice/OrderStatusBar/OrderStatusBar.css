@@ -7,6 +7,7 @@
 }
 
 .OrderStatusBar__element {
+    position: relative;
     width: 324px;
     flex: 1;
     display: flex;
@@ -14,27 +15,16 @@
     align-items: center;
     justify-content: flex-start;
     background-color: rgba(62, 60, 65, 1);
-    position: relative;
     padding-left: 72px;
-    border: 1px solid rgba(62, 60, 65, 1) ;
+    clip-path: polygon(0 0, calc(100% - 37px) 0, 100% 50%, calc(100% - 37px) 100%, 0 100%);
+}
+
+.OrderStatusBar__element:nth-child(n+2) {
+    margin-left: -39px;
 }
 
 .active-element {
     background-color: rgba(255, 168, 0, 1);
-    border: 1px solid rgba(255, 168, 0, 1);
-}
-
-.OrderStatusBar__element::after {
-    content: "";
-position: absolute;
-top: 0;
-right: -37px; /* Ширина стрелки */
-width: 0;
-height: 0;
-border-top: 50px solid transparent; /* Половина высоты прямоугольника */
-border-bottom: 50px solid transparent; /* Половина высоты прямоугольника */
-border-left: 37px solid black; /* Цвет стрелки соответствует цвету прямоугольника */
-z-index: 999;
 }
 
 .OrderStatusBar__element:first-child {

@@ -1,0 +1,60 @@
+.NumberOfTickets {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 49px;
+    border-bottom: 1px solid rgba(196, 196, 196, 1);
+}
+
+.NumberOfTickets__section {
+    height: 192px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.NumberOfTickets__info {
+    padding-left: 17px;
+    width: 240px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid rgba(146, 143, 148, 1);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.NumberOfTickets__info-input {
+    width: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    margin-left: 5px;
+}
+
+.NumberOfTickets__info-input:focus {
+    outline: none;
+}
+
+.NumberOfTickets__info-text {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.NumberOfTickets__info-content {
+    width: 240px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.NumberOfTickets__section_active {
+    background-color: rgba(247, 246, 246, 1);
+}
+
+.NumberOfTickets__section_positive {
+    border: 1px solid rgba(255, 168, 0, 0.79);
+}

@@ -1,0 +1,24 @@
+.TypeOfWagon {
+    display: flex;
+    flex-direction: row;
+}
+
+.TypeOfWagon__choosing-icon {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 146px;
+}
+
+.TypeOfWagon__choosing-icon p {
+    margin-top: 18px;
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(146, 143, 148, 1);
+}
+
+.TypeOfWagon__choosing-icon_active {
+    color: red;
+}

@@ -1,9 +1,13 @@
-import React from 'react'
+import PassengerCard from "./PassengerCard/PassengerCard";
+import "./Passengers.css";
 
 const Passengers = () => {
-  return (
-    <div>Passengers</div>
-  )
-}
 
-export default Passengers
+  return (
+    <div className="Passengers">
+      <PassengerCard />
+    </div>
+  );
+};
+
+export default Passengers;

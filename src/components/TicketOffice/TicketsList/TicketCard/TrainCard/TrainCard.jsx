@@ -1,8 +1,20 @@
 import "./TrainCard.css";
-import IconTrainInCircle from "../../../commonTicketsComponents/IconTrainInCircle";
+
+//import { useSelector } from "react-redux";
+
+import IconTrainInCircle from "../../../commonTicketsComponents/svgComponents/IconTrainInCircle";
 import TrainInfo from "../../../commonTicketsComponents/TrainInfo/TrainInfo";
 
+import { capitalizeLettersInCityName } from "../../../../../utils/helpers";
+
 const TrainCard = ({ train, cityFrom, cityTo }) => {
+  //const cityFromId = useSelector((state) => state.filters.fromCutyId);
+
+  //console.log(train);
+
+  const formattedCityFrom = capitalizeLettersInCityName(cityFrom);
+  const formattedCityTo = capitalizeLettersInCityName(cityTo);
+
   return (
     <div className="TrainCard">
       <IconTrainInCircle
@@ -10,7 +22,12 @@ const TrainCard = ({ train, cityFrom, cityTo }) => {
         size={"86"}
         strokeWidth={1}
       />
-      <TrainInfo cityFrom={cityFrom} cityTo={cityTo} trainName={train.name} />
+      <TrainInfo
+        cityFrom={formattedCityFrom}
+        cityTo={formattedCityTo}
+        trainName={train.name}
+        trainNumber={"?116C?"}
+      />
     </div>
   );
 };

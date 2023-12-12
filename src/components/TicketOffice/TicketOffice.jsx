@@ -2,7 +2,6 @@ import "./TicketOffice.css";
 
 import HeaderTicketOffice from "./HeaderTicketOffice/HeaderTicketOffice";
 import SideBar from "./Sidebar/SideBar";
-import TicketsList from "./TicketsList/TicketsList";
 import Footer from "../commonComponents/Footer/Footer";
 import OrderStatusBar from "./OrderStatusBar/OrderStatusBar";
 import Loading from "../commonComponents/Loading/Loading";

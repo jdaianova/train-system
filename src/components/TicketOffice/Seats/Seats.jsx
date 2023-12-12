@@ -1,46 +1,56 @@
 import "./Seats.css";
 
-import IconTrainInCircle from "../commonTicketsComponents/IconTrainInCircle";
-import Arrow from "../commonTicketsComponents/Arrow";
-import TrainCard from "../TicketsList/TicketCard/TrainCard/TrainCard";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+import Arrow from "../commonTicketsComponents/svgComponents/Arrow";
+import SeatsSectionInfo from "./SeatsSectionInfo/SeatsSectionInfo";
 
 const Seats = () => {
+  const order = useSelector((state) => state.order);
+  console.log("order", order);
+
   return (
     <div className="Seats-container">
       <h3>ВЫБОР МЕСТ</h3>
       <div className="Seats">
-        <div className="Seats__header Seats__section">
-          <div className="Seats__header__icon-arrow">
-            <Arrow
-              direction={"left-to-right"}
-              width={30}
-              height={20}
-              color={"rgba(255, 255, 255, 1)"}
-            />
+        <div className="Seats__from">
+          <div className="Seats__from__header Seats__section">
+            <div className="Seats__from__icon-arrow">
+              <Arrow
+                direction={"left-to-right"}
+                width={30}
+                height={20}
+                color={"rgba(255, 255, 255, 1)"}
+              />
+            </div>
+            <button className="Seats__from__button">
+              Выбрать другой поезд
+            </button>
           </div>
-          <button className="Seats__header__button">
-            Выбрать другой поезд
-          </button>
+          <SeatsSectionInfo route={order.departure} />
         </div>
 
-        <div className="Seats__schedule Seats__section">
-          <div className="Seats__schedule__train-info">
-            <IconTrainInCircle
-              color={"rgba(255, 168, 0, 1)"}
-              size={30}
-              strokeWidth={2}
-            />
-            <TrainCard train={"sdsfd"} cityFrom={"sdfdsf"} cityTo={"sdfs"} />
+        <div className="Seats__to">
+          <div className="Seats__to__header Seats__section">
+            <div className="Seats__to__icon-arrow">
+              <Arrow
+                direction={"left-to-right"}
+                width={30}
+                height={20}
+                color={"rgba(255, 255, 255, 1)"}
+              />
+            </div>
+            <button className="Seats__to__button">Выбрать другой поезд</button>
           </div>
-          <div className="Seats__schedule__destination-info">sdfs</div>
-          <div className="Seats__schedule__duration-info">sdfs</div>
+          <SeatsSectionInfo route={order.arrival} />
         </div>
+      </div>
 
-        <div className="Seats__number-of-tickets Seats__section"></div>
-
-        <div className="Seats__wagon-type Seats__section"></div>
-
-        <div className="Seats__wagon-layout Seats__section"></div>
+      <div className="Seats-btn">
+      <Link to={"/tickets/passengers"}>
+          <button>Далее</button>
+        </Link>
       </div>
     </div>
   );

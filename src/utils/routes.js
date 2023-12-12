@@ -1,7 +1,7 @@
 export const ROUTES = {
     HOME: '/',
     TICKETS: '/tickets',
-    PASSENGER: '/passengers',
+    PASSENGERS: '/passengers',
     PAYMENT: '/payment',
     CHECK: '/check',
 }

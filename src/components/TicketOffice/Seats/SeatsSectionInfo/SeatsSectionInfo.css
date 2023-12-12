@@ -1,0 +1,43 @@
+.Seats__section {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+}
+
+.Seats__schedule {
+    background-color: rgba(247, 246, 246, 1);
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 35px;
+}
+
+.Seats__schedule__train-info-icon {
+    margin-right: 25px;
+}
+
+.Seats__schedule__train-info,
+.Seats__schedule__destination-info,
+.Seats__schedule__duration-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Seats__schedule__duration-info {
+    width: 140px;
+    font-size: 18px;
+    font-weight: 400;
+    padding-right: 10px;
+}
+
+.Seats__schedule__duration-info p {
+    margin-left: 10px;
+}
+
+.Seats__number-of-tickets {
+    flex-direction: column;
+}
+
+.Seats__wagon-type {
+    flex-direction: column;
+}

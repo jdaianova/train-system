@@ -1,0 +1,61 @@
+.PassengerForm {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .PassengerForm__section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .PassengerForm__section span {
+    margin-bottom: 5px;
+  }
+  
+  .PassengerForm__section select,
+  .PassengerForm__section input {
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .PassengerForm__checkbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .PassengerForm__divider {
+    width: 100%;
+    border: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  
+  .PassengerForm__section--green {
+    background-color: #8f8;
+  }
+  
+  .PassengerForm__section--red {
+    background-color: #f88;
+  }
+
+  .PassengerForm__gender-selector {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .PassengerForm__gender-option {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .PassengerForm__gender-option.selected {
+    background-color: red;
+    color: white;
+  }
+  

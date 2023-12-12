@@ -1,13 +1,12 @@
 .Seats-container {
     width: 959px;
+    margin-bottom: 20px;
 }
 
 .Seats__section {
     width: 100%;
     background-color: rgb(255, 255, 255);
     display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
 .Seats-container h3 {
@@ -17,17 +16,38 @@
     margin-bottom: 48px;
 }
 
-.Seats {
+.Seats__section h4 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 40px 18px 13px;
+}
+
+.Seats__from,
+.Seats__to {
     border: 1px solid rgb(196, 196, 196);
 }
 
-.Seats__header {
+.Seats__from {
+    margin-bottom: 48px;
+}
+
+.Seats__to__header {
     flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 19px;
     padding-top: 36px;
     padding-bottom: 32px;
 }
 
-.Seats__header__icon-arrow {
+.Seats__from__header {
+    flex-direction: row;
+    padding-top: 36px;
+    padding-bottom: 32px;
+    padding-left: 19px;
+}
+
+.Seats__from__icon-arrow,
+.Seats__to__icon-arrow {
     width: 76px;
     height: 60px;
     background-color: rgba(255, 168, 0, 1);
@@ -40,7 +60,8 @@
     align-items: center;
 }
 
-.Seats__header__button {
+.Seats__from__button,
+.Seats__to__button {
     width: 325px;
     height: 60px;
     font-size: 24px;
@@ -52,10 +73,20 @@
     cursor: pointer;
 }
 
-.Seats__schedule {
-    background-color: rgba(247, 246, 246, 1);
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 15px;
-    padding-bottom: 15px;
+.Seats-btn {
+    text-align: right;
+    padding-top: 107px;
+}
+
+.Seats-btn button {
+    width: 222px;
+    height: 60px;
+    background-color: rgba(255, 168, 0, 1);
+    border: none;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
 }

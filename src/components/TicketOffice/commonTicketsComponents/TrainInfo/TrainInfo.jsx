@@ -1,9 +1,9 @@
 import React from "react";
 
-const TrainInfo = ({ cityFrom, cityTo, trainName }) => {
+const TrainInfo = ({ cityFrom, cityTo, trainName, trainNumber }) => {
   return (
     <div className="TrainInfo">
-      <div className="TrainInfo-number">{"???"}</div>
+      <div className="TrainInfo-number">{trainNumber}</div>
       <div className="TrainInfo-start">{"?Адлер?"} &#8594;</div>
       <div className="TrainInfo-from">{cityFrom} &#8594;</div>
       <div className="TrainInfo-to">{cityTo}</div>
