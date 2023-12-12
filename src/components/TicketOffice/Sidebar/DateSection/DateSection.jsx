@@ -1,20 +1,14 @@
 import "./DateSection.css";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setDateEnd, setDateStart } from "../../../../redux/ticketsFitersSlice";
+import { setFieldFilters } from "../../../../redux/ticketsFitersSlice";
 
 const DateSection = () => {
   const filters = useSelector((state) => state.filters);
   const dispatch = useDispatch();
 
-  const handleChangeDateStart = (e) => {
-    e.preventDefault();
-    dispatch(setDateStart(e.target.value));
-  };
-
-  const handleChangeDateEnd = (e) => {
-    e.preventDefault();
-    dispatch(setDateEnd(e.target.value));
+  const handleChange = (field, value) => {
+    dispatch(setFieldFilters(field, value));
   };
 
   return (
@@ -23,7 +17,7 @@ const DateSection = () => {
         Дата поездки
         <input
           type="date"
-          onChange={handleChangeDateStart}
+          onChange={e => handleChange('dateStart', e.target.value)}
           value={filters.dateStart}
         />
       </label>
@@ -32,7 +26,7 @@ const DateSection = () => {
         Дата возвращения
         <input
           type="date"
-          onChange={handleChangeDateEnd}
+          onChange={e => handleChange('dateEnd', e.target.value)}
           value={filters.dateEnd}
         />
       </label>

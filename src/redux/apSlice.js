@@ -16,4 +16,4 @@ export const apiSlice = createApi({
     })
 })
 
-export const { useGetTicketsRoutesQuery, useGetCityIdQuery, } = apiSlice;
+export const { useGetTicketsRoutesQuery, useGetCityIdQuery, useLazyGetCityIdQuery } = apiSlice;

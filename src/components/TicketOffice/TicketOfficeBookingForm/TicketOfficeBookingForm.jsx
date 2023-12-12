@@ -2,27 +2,17 @@ import "./TicketOfficeBookingForm.css";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 import InputCity from "../../commonComponents/InputCity/InputCity";
 import InputDate from "../../commonComponents/InputDate/InputDate";
 
-import {
-  setDateEnd,
-  setDateStart,
-  setFromCityId,
-  setFromCityName,
-  setToCityId,
-  setToCityName,
-} from "../../../redux/ticketsFitersSlice";
-import { BASE_URL } from "../../../utils/constants";
-import { ROUTES } from "../../../utils/routes";
+import { setFieldFilters } from "../../../redux/ticketsFitersSlice";
+import { useLazyGetCityIdQuery } from "../../../redux/apSlice";
 
 export default function TicketOfficeBookingForm() {
-  const navigate = useNavigate();
+  const [trigger] = useLazyGetCityIdQuery();
   const dispatch = useDispatch();
-  const filters = useSelector(state => state.filters);
+  const filters = useSelector((state) => state.filters);
 
   const [formData, setFormData] = useState({
     fromCityName: filters.fromCityName,
@@ -31,59 +21,35 @@ export default function TicketOfficeBookingForm() {
     dateEnd: filters.dateEnd,
   });
 
-  const getFromCityId = async (cityName) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      const cityUrl = `${BASE_URL}/routes/cities?name=${encodeURI(cityName)}`;
-      const response = await axios.get(cityUrl);
-      if (
-        typeof response.data !== "undefined" &&
-        response.data[0].name.toLowerCase() === cityName.toLowerCase()
-      ) {
-        dispatch(setFromCityId(response.data[0]._id));
-      } else {
-        dispatch(setFromCityId(""));
-      }
+      const firstResponse = await trigger({
+        cityName: formData.fromCityName,
+      }).unwrap();
+      dispatch(setFieldFilters(["fromCityId", firstResponse[0]._id || ""]));
     } catch (error) {
-      //alert(error);
+      dispatch(setFieldFilters(["fromCityId", ""]));
     }
-  };
 
-  const getToCityId = async (cityName) => {
     try {
-      const cityUrl = `${BASE_URL}/routes/cities?name=${encodeURI(cityName)}`;
-      const response = await axios.get(cityUrl);
-      if (
-        typeof response.data !== "undefined" &&
-        response.data[0].name.toLowerCase() === cityName.toLowerCase()
-      ) {
-        dispatch(setToCityId(response.data[0]._id));
-      } else {
-        dispatch(setToCityId(""));
-      }
+      const secondResponse = await trigger({
+        cityName: formData.toCityName,
+      }).unwrap();
+      dispatch(setFieldFilters(["toCityId", secondResponse[0]._id || ""]));
     } catch (error) {
-      //alert(error);
+      dispatch(setFieldFilters(["toCityId", ""]));
     }
-  };
 
-  const handleSubmit = (e) => {
-    //e.preventDefault();
-    getFromCityId(formData.fromCityName);
-    getToCityId(formData.toCityName);
-
-    dispatch(setFromCityName(formData.fromCityName));
-    dispatch(setToCityName(formData.toCityName));
-    dispatch(setDateStart(formData.dateStart));
-    dispatch(setDateEnd(formData.dateEnd));
-
-    navigate(ROUTES.TICKETS);
+    Object.entries(formData).forEach((key, value) => {
+      dispatch(setFieldFilters(key, value));
+    });
   };
 
   return (
     <div className="TicketOfficeBookingForm">
-      <form
-        className="TicketOfficeBookingForm__Form"
-        onSubmit={(e) => handleSubmit(e)}
-      >
+      <form className="TicketOfficeBookingForm__Form" onSubmit={handleSubmit}>
         <div className="TicketOfficeBookingForm__Form-container">
           <label className="TicketOfficeBookingForm_Form-direction">
             Направление

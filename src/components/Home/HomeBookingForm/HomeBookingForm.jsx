@@ -3,25 +3,17 @@ import "./HomeBookingForm.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
 import InputCity from "../../commonComponents/InputCity/InputCity";
 import InputDate from "../../commonComponents/InputDate/InputDate";
 
-import { ROUTES } from "../../../utils/routes";
-import {
-  setDateEnd,
-  setDateStart,
-  setFromCityId,
-  setFromCityName,
-  setToCityId,
-  setToCityName,
-} from "../../../redux/ticketsFitersSlice";
-import { BASE_URL } from "../../../utils/constants";
+import { setFieldFilters } from "../../../redux/ticketsFitersSlice";
+import { useLazyGetCityIdQuery } from "../../../redux/apSlice";
 
 export default function HomeBookingForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [trigger, { isLoading }] = useLazyGetCityIdQuery();
 
   const [formData, setFormData] = useState({
     fromCityName: "",
@@ -30,50 +22,38 @@ export default function HomeBookingForm() {
     dateEnd: "",
   });
 
-  const getFromCityId = async (cityName) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Обработка запроса для fromCityName
     try {
-      const cityUrl = `${BASE_URL}/routes/cities?name=${encodeURI(cityName)}`;
-      const response = await axios.get(cityUrl);
-      if (
-        typeof response.data !== "undefined" &&
-        response.data[0].name.toLowerCase() === cityName.toLowerCase()
-      ) {
-        dispatch(setFromCityId(response.data[0]._id));
-      } else {
-        dispatch(setFromCityId(""));
-      }
+      const firstResponse = await trigger({
+        cityName: formData.fromCityName,
+      }).unwrap();
+      //console.log("First city response:", firstResponse[0]._id);
+      dispatch(setFieldFilters(["fromCityId", firstResponse[0]._id || ""]));
     } catch (error) {
-      //alert(error);
+      //console.error('Error fetching fromCityId:', error);
+      dispatch(setFieldFilters(["fromCityId", ""]));
     }
-  };
 
-  const getToCityId = async (cityName) => {
+    // Обработка запроса для toCityName
     try {
-      const cityUrl = `${BASE_URL}/routes/cities?name=${encodeURI(cityName)}`;
-      const response = await axios.get(cityUrl);
-      if (
-        typeof response.data !== "undefined" &&
-        response.data[0].name.toLowerCase() === cityName.toLowerCase()
-      ) {
-        dispatch(setToCityId(response.data[0]._id));
-      } else {
-        dispatch(setToCityId(""));
-      }
+      const secondResponse = await trigger({
+        cityName: formData.toCityName,
+      }).unwrap();
+      //console.log("Second city response:", secondResponse[0]._id);
+      dispatch(setFieldFilters(["toCityId", secondResponse[0]._id || ""]));
     } catch (error) {
-      //alert(error);
+      //console.error('Error fetching toCityId:', error);
+      dispatch(setFieldFilters(["toCityId", ""]));
     }
-  };
 
-  const handleSubmit = (e) => {
-    getFromCityId(formData.fromCityName);
-    getToCityId(formData.toCityName);
+    Object.entries(formData).forEach((key, value) => {
+      dispatch(setFieldFilters(key, value));
+    });
 
-    dispatch(setFromCityName(formData.fromCityName));
-    dispatch(setToCityName(formData.toCityName));
-    dispatch(setDateStart(formData.dateStart));
-    dispatch(setDateEnd(formData.dateEnd));
-
-    navigate(ROUTES.TICKETS);
+    if (!isLoading) navigate("/tickets");
   };
 
   return (
