@@ -48,7 +48,7 @@ const Seats = () => {
       </div>
 
       <div className="Seats-btn">
-      <Link to={"/tickets/passengers"}>
+      <Link to={"/train-system/tickets/passengers"}>
           <button>Далее</button>
         </Link>
       </div>
