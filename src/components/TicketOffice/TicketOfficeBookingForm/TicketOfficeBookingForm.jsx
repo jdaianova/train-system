@@ -2,6 +2,7 @@ import "./TicketOfficeBookingForm.css";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import InputCity from "../../commonComponents/InputCity/InputCity";
 import InputDate from "../../commonComponents/InputDate/InputDate";
@@ -10,9 +11,10 @@ import { setFieldFilters } from "../../../redux/ticketsFitersSlice";
 import { useLazyGetCityIdQuery } from "../../../redux/apSlice";
 
 export default function TicketOfficeBookingForm() {
-  const [trigger] = useLazyGetCityIdQuery();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
+  const [trigger, isLoading] = useLazyGetCityIdQuery();
 
   const [formData, setFormData] = useState({
     fromCityName: filters.fromCityName,
@@ -45,6 +47,8 @@ export default function TicketOfficeBookingForm() {
     Object.entries(formData).forEach((key, value) => {
       dispatch(setFieldFilters(key, value));
     });
+
+    if (!isLoading) navigate("/tickets");
   };
 
   return (

@@ -14,7 +14,9 @@ import { buildUrlRoutes } from "../../utils/helpers";
 const TicketOffice = () => {
   const filters = useSelector((state) => state.filters);
   const url = buildUrlRoutes(filters);
-  const listOfTickets = useGetTicketsRoutesQuery({ url });
+  const { data: listOfTickets, isLoading, isError } = useGetTicketsRoutesQuery({ url });
+  console.log(url)
+  console.log(listOfTickets, isLoading, isError )
 
   return (
     <div className="TicketOffice">
@@ -22,15 +24,18 @@ const TicketOffice = () => {
       <OrderStatusBar />
 
       <div className="TicketOffice__main">
-        {listOfTickets.status === "pending" && <Loading />}
+        {isLoading && <Loading />}
 
-        {listOfTickets.status === "fulfilled" &&
-          typeof listOfTickets !== "undefined" && (
-            <div className="TicketOffice__Content">
-              <SideBar />
-              {TicketOfficeRoutes(listOfTickets)}
-            </div>
-          )}
+        {!isLoading && isError && <p>Произошла ошибка при загрузке данных.</p>}
+
+        {!isLoading && !isError && listOfTickets?.items && listOfTickets.items.length > 0 ? (
+          <div className="TicketOffice__Content">
+            <SideBar />
+            {TicketOfficeRoutes(listOfTickets)}
+          </div>
+        ) : (
+          <p>Ничего не найдено</p>
+        )}
       </div>
       <Footer />
     </div>
