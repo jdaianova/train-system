@@ -13,7 +13,7 @@ import { useLazyGetCityIdQuery } from "../../../redux/apSlice";
 export default function HomeBookingForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [trigger, { isLoading }] = useLazyGetCityIdQuery();
+  const [trigger] = useLazyGetCityIdQuery();
 
   const [formData, setFormData] = useState({
     fromCityName: "",
@@ -63,7 +63,7 @@ export default function HomeBookingForm() {
       dispatch(setFieldFilters(key, value));
     });
 
-    if (!isLoading) navigate("/train-system/tickets");
+    navigate("/train-system/tickets");
   };
 
   return (

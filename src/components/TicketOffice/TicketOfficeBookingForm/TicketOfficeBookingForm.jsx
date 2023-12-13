@@ -14,7 +14,7 @@ export default function TicketOfficeBookingForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
-  const [trigger, isLoading] = useLazyGetCityIdQuery();
+  const [trigger] = useLazyGetCityIdQuery();
 
   const [formData, setFormData] = useState({
     fromCityName: filters.fromCityName,
@@ -64,7 +64,7 @@ export default function TicketOfficeBookingForm() {
       dispatch(setFieldFilters(key, value));
     });
 
-    if (!isLoading) navigate("/train-system/tickets");
+    navigate("/train-system/tickets");
   };
 
   return (
