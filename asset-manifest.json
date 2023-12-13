@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/train-system/static/css/main.f4eaadd1.css",
-    "main.js": "/train-system/static/js/main.de502df6.js",
+    "main.js": "/train-system/static/js/main.8e1e50f0.js",
     "static/media/howItWorks-background.png": "/train-system/static/media/howItWorks-background.69ad7c3c698aba91a60e.png",
     "static/media/header-background.png": "/train-system/static/media/header-background.46971fe03c262913a9d7.png",
     "static/media/background_ticket-office.png": "/train-system/static/media/background_ticket-office.f9adb22faaf9e7f9fc81.png",
@@ -115,10 +115,10 @@
     "static/media/icon-monitor.svg": "/train-system/static/media/icon-monitor.dc3acccc8d8296f7896f5213931c3afd.svg",
     "index.html": "/train-system/index.html",
     "main.f4eaadd1.css.map": "/train-system/static/css/main.f4eaadd1.css.map",
-    "main.de502df6.js.map": "/train-system/static/js/main.de502df6.js.map"
+    "main.8e1e50f0.js.map": "/train-system/static/js/main.8e1e50f0.js.map"
   },
   "entrypoints": [
     "static/css/main.f4eaadd1.css",
-    "static/js/main.de502df6.js"
+    "static/js/main.8e1e50f0.js"
   ]
 }
