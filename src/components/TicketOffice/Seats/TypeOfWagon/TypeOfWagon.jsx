@@ -1,6 +1,6 @@
 import "./TypeOfWagon.css";
 
-import ForthClassIcon from "../../commonTicketsComponents/svgComponents/ForthClassIcon";
+import FourthClassIcon from "../../commonTicketsComponents/svgComponents/FourthClassIcon";
 import ThirdClassIcon from "../../commonTicketsComponents/svgComponents/ThirdClassIcon";
 import SecondClassIcon from "../../commonTicketsComponents/svgComponents/SecondClassIcon";
 import FirstClassIcon from "../../commonTicketsComponents/svgComponents/FirstClassIcon";
@@ -9,7 +9,7 @@ const TypeOfWagon = () => {
   return (
     <div className="TypeOfWagon">
       <div className="TypeOfWagon__choosing-icon">
-        <ForthClassIcon />
+        <FourthClassIcon />
         <p>Сидячий</p>
       </div>
       <div className="TypeOfWagon__choosing-icon">

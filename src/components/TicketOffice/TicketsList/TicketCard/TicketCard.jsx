@@ -15,8 +15,9 @@ import {
 } from "../../../../redux/orderSlice";
 
 const TicketCard = ({ ticket }) => {
-  const dispatch = useDispatch();
   //console.log(ticket);
+
+  const dispatch = useDispatch();
   const handleChooseTicket = () => {
     dispatch(setOrderDeparture(ticket.departure));
     dispatch(setOrderArrival(ticket.arrival));

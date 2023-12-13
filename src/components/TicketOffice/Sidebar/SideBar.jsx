@@ -1,14 +1,15 @@
-import CheckBoxes from './CheckBoxes/CheckBoxes';
+import './SideBar.css';
+
 import DateSection from './DateSection/DateSection';
 import PriceSlider from './PriceSlider/PriceSlider';
-import './SideBar.css';
+import SwitchSection from './SwitchSection/SwitchSection';
 
 const SideBar = () => {
 
   return (
     <aside className='SideBar'>
       <DateSection/>
-      <CheckBoxes />
+      <SwitchSection />
       <PriceSlider />
     </aside>
   );

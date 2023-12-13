@@ -1,14 +1,26 @@
-export const buildUrlRoutes = (filersParams) => {
-    let currentUrl = `/routes?`;
-    if (filersParams.fromCityId) { currentUrl += `from_city_id=${filersParams.fromCityId}` };
-    if (filersParams.toCityId) { currentUrl += `&to_city_id=${filersParams.toCityId}` };
-    if (filersParams.dateStart) { currentUrl += `&date_start=${filersParams.dateStart}` };
-    if (filersParams.dateEnd) { currentUrl += `&date_end=${filersParams.dateEnd}` };
-    if (filersParams.haveWifi) { currentUrl += `&have_wifi=${filersParams.haveWifi}` };
-    if (filersParams.isExpress) { currentUrl += `&have_express=${filersParams.isExpress}` };
-    if (filersParams.haveFirstClass) { currentUrl += `&have_first_class=${filersParams.haveFirstClass}` };
-    return currentUrl;
-}
+export const buildUrlRoutes = (filtersParams) => {
+  const queryParams = [];
+  for (const key in filtersParams) {
+    const value = filtersParams[key];
+    if (value && key !== 'fromCityName' && key !== 'toCityName') {
+      const apiParamName = key.replace(/([A-Z])/g, '_$1').toLowerCase();
+      queryParams.push(`${apiParamName}=${value}`);
+    }
+  }
+  return `/routes?${queryParams.join('&')}`;
+};
+
+// export const buildUrlRoutesOld = (filersParams) => {
+//     let currentUrl = `/routes?`;
+//     if (filersParams.fromCityId) { currentUrl += `from_city_id=${filersParams.fromCityId}` };
+//     if (filersParams.toCityId) { currentUrl += `&to_city_id=${filersParams.toCityId}` };
+//     if (filersParams.dateStart) { currentUrl += `&date_start=${filersParams.dateStart}` };
+//     if (filersParams.dateEnd) { currentUrl += `&date_end=${filersParams.dateEnd}` };
+//     if (filersParams.haveWifi) { currentUrl += `&have_wifi=${filersParams.haveWifi}` };
+//     if (filersParams.isExpress) { currentUrl += `&have_express=${filersParams.isExpress}` };
+//     if (filersParams.haveFirstClass) { currentUrl += `&have_first_class=${filersParams.haveFirstClass}` };
+//     return currentUrl;
+// }
 
 export function capitalizeLettersInCityName(str) {
     return str.replace(/(?:^|\s|-)\S/g, function (match) {

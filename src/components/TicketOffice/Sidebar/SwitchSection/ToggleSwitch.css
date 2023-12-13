@@ -1,0 +1,60 @@
+.ToggleSwitch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 34px 0px 60px;
+  }
+  
+  .ToggleSwitch__icon {
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ToggleSwitch__label {
+    flex-grow: 1;
+    padding-left: 34px;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+  }
+  
+  .ToggleSwitch__toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .ToggleSwitch__slider {
+    position: relative;
+    display: inline-block;
+    width: 72px; 
+    height: 19px; 
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.6s;
+  }
+  
+  .ToggleSwitch__slider::before {
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    left: 0px;
+    bottom: -4px;
+    background-color: rgba(196, 196, 196, 1);
+    border-radius: 50%;
+    transition: transform 0.6s;
+  }
+  
+  .ToggleSwitch__toggle:checked + .ToggleSwitch__slider {
+    background-color: rgba(252, 220, 157, 1);
+  }
+  
+  .ToggleSwitch__toggle:checked + .ToggleSwitch__slider::before {
+    transform: translateX(44px);
+    background-color: rgba(255, 168, 0, 1);
+  }
+  

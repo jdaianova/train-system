@@ -15,8 +15,6 @@ const TicketOffice = () => {
   const filters = useSelector((state) => state.filters);
   const url = buildUrlRoutes(filters);
   const { data: listOfTickets, isLoading, isError } = useGetTicketsRoutesQuery({ url });
-  console.log(url)
-  console.log(listOfTickets, isLoading, isError )
 
   return (
     <div className="TicketOffice">

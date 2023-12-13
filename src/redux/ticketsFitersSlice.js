@@ -19,9 +19,14 @@ const initialState = {
   toCityId: "641037eb5c49ea004632ee6f",
   dateStart: "2023-12-12",
   dateEnd: "2023-12-18",
-  haveWifi: null,
-  isExpress: null,
-  haveFirstClass: null,
+  haveAirConditioning: false,
+  haveFirstClass: false,
+  haveFourthClass: false,
+  haveSecondClass: false,
+  haveThirdClass: false,
+  haveWifi: false,
+  isExpress: false,
+  minPrice: 529,
 };
 
 export const ticketsFilterSlice = createSlice({
