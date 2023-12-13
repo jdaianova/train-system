@@ -9,8 +9,8 @@ import Passengers from "../TicketOffice/Passengers/Passengers";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/tickets/*" element={<TicketOffice />} />
+      <Route path="/train-system/" element={<Home />} />
+      <Route path="/train-system/tickets/*" element={<TicketOffice />} />
     </Routes>
   );
 };
