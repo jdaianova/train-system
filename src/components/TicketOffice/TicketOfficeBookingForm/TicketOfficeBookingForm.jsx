@@ -64,7 +64,7 @@ export default function TicketOfficeBookingForm() {
       dispatch(setFieldFilters(key, value));
     });
 
-    if (!isLoading) navigate("/tickets");
+    if (!isLoading) navigate("/train-system/tickets");
   };
 
   return (
