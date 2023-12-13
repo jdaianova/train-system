@@ -25,27 +25,37 @@ export default function HomeBookingForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Обработка запроса для fromCityName
     try {
       const firstResponse = await trigger({
         cityName: formData.fromCityName,
       }).unwrap();
-      //console.log("First city response:", firstResponse[0]._id);
-      dispatch(setFieldFilters(["fromCityId", firstResponse[0]._id || ""]));
+      if (
+        firstResponse.length > 0 &&
+        firstResponse[0].name.toLowerCase() ===
+          formData.fromCityName.toLowerCase()
+      ) {
+        dispatch(setFieldFilters(["fromCityId", firstResponse[0]._id]));
+      } else {
+        dispatch(setFieldFilters(["fromCityId", ""]));
+      }
     } catch (error) {
-      //console.error('Error fetching fromCityId:', error);
       dispatch(setFieldFilters(["fromCityId", ""]));
     }
 
-    // Обработка запроса для toCityName
     try {
       const secondResponse = await trigger({
         cityName: formData.toCityName,
       }).unwrap();
-      //console.log("Second city response:", secondResponse[0]._id);
-      dispatch(setFieldFilters(["toCityId", secondResponse[0]._id || ""]));
+      if (
+        secondResponse.length > 0 &&
+        secondResponse[0].name.toLowerCase() ===
+          formData.toCityName.toLowerCase()
+      ) {
+        dispatch(setFieldFilters(["toCityId", secondResponse[0]._id]));
+      } else {
+        dispatch(setFieldFilters(["toCityId", ""]));
+      }
     } catch (error) {
-      //console.error('Error fetching toCityId:', error);
       dispatch(setFieldFilters(["toCityId", ""]));
     }
 

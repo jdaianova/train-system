@@ -1,56 +1,48 @@
-import "./InputCity.css";
-
-import { useState } from "react";
-
-import { capitalizeLettersInCityName } from "../../../utils/helpers";
+import React, { useState } from "react";
 import { useGetCityIdQuery } from "../../../redux/apSlice";
+import { capitalizeLettersInCityName } from "../../../utils/helpers";
+import "./InputCity.css";
+import CityList from "./CityList";
 
 const InputCity = ({ direction, initialCity, setFormData }) => {
   const [cityName, setCityName] = useState(initialCity);
+  const [showList, setShowList] = useState(false);
   const { data: searchListCities } = useGetCityIdQuery({ cityName });
 
-  const handleChange = (cityName) => {
-    const currentCity = capitalizeLettersInCityName(cityName);
-    setCityName(currentCity);
-    direction === "Откуда"
-      ? setFormData((prevFormData) => ({
-          ...prevFormData,
-          fromCityName: currentCity,
-        }))
-      : setFormData((prevFormData) => ({
-          ...prevFormData,
-          toCityName: currentCity,
-        }));
+  const handleChange = (newCityName) => {
+    const capitalizedCity = capitalizeLettersInCityName(newCityName);
+    setCityName(capitalizedCity);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [direction === "Откуда" ? "fromCityName" : "toCityName"]: capitalizedCity,
+    }));
+  };
+
+  const handleFocus = () => {
+    setShowList(true);
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => setShowList(false), 200);
   };
 
   return (
     <div className="InputCity">
-      <input
-        type="text"
-        placeholder={direction}
-        value={cityName}
-        onChange={(e) => handleChange(e.target.value)}
-        required
-      />
-      {typeof searchListCities !== "undefined" &&
-        searchListCities.length >= 1 && (
-          <div className="InputCity-search_list">
-            {searchListCities[0].name.toLowerCase() !==
-              cityName.toLowerCase() &&
-              searchListCities.map((elem) => {
-                return (
-                  <div
-                    className="InputCity-search_list-element"
-                    key={elem._id}
-                    onClick={() => handleChange(elem.name)}
-                  >
-                    {elem.name}
-                  </div>
-                );
-              })}
-          </div>
-        )}
-    </div>
+    <input
+      type="text"
+      placeholder={direction}
+      value={cityName}
+      onChange={(e) => handleChange(e.target.value)}
+      onFocus={handleFocus}
+        onBlur={handleBlur}
+      required
+    />
+   { showList && <CityList 
+      cities={searchListCities} 
+      onCitySelect={handleChange} 
+      excludedCity={cityName} 
+    />}
+  </div>
   );
 };
 

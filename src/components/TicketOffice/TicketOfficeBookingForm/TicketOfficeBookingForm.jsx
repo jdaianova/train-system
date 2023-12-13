@@ -30,7 +30,15 @@ export default function TicketOfficeBookingForm() {
       const firstResponse = await trigger({
         cityName: formData.fromCityName,
       }).unwrap();
-      dispatch(setFieldFilters(["fromCityId", firstResponse[0]._id || ""]));
+      if (
+        firstResponse.length > 0 &&
+        firstResponse[0].name.toLowerCase() ===
+          formData.fromCityName.toLowerCase()
+      ) {
+        dispatch(setFieldFilters(["fromCityId", firstResponse[0]._id]));
+      } else {
+        dispatch(setFieldFilters(["fromCityId", ""]));
+      }
     } catch (error) {
       dispatch(setFieldFilters(["fromCityId", ""]));
     }
@@ -39,7 +47,15 @@ export default function TicketOfficeBookingForm() {
       const secondResponse = await trigger({
         cityName: formData.toCityName,
       }).unwrap();
-      dispatch(setFieldFilters(["toCityId", secondResponse[0]._id || ""]));
+      if (
+        secondResponse.length > 0 &&
+        secondResponse[0].name.toLowerCase() ===
+          formData.toCityName.toLowerCase()
+      ) {
+        dispatch(setFieldFilters(["toCityId", secondResponse[0]._id]));
+      } else {
+        dispatch(setFieldFilters(["toCityId", ""]));
+      }
     } catch (error) {
       dispatch(setFieldFilters(["toCityId", ""]));
     }
