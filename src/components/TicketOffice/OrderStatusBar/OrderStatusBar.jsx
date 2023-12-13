@@ -6,12 +6,15 @@ import { useLocation } from "react-router-dom";
 const OrderStatusBar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
+  //console.log(currentPath);
 
   return (
     <ul className="OrderStatusBar">
       <li
         className={`OrderStatusBar__element ${
-          currentPath === "/tickets/" || currentPath === "/tickets/seats" || currentPath === "/tickets/passengers"
+          currentPath === "/train-system/tickets" ||
+          currentPath === "/train-system/tickets/seats" ||
+          currentPath === "/train-system/tickets/passengers"
             ? "active-element"
             : ""
         }`}
@@ -20,15 +23,19 @@ const OrderStatusBar = () => {
         <div className="OrderStatusBar__element-number">1</div>
         <div className="OrderStatusBar__element-name">Билеты</div>
       </li>
+
       <li
         className={`OrderStatusBar__element ${
-          currentPath === "/tickets/passengers" ? "active-element" : ""
+          currentPath === "/train-system/tickets/passengers"
+            ? "active-element"
+            : ""
         }`}
         style={{ zIndex: "3" }}
       >
         <div className="OrderStatusBar__element-number">2</div>
         <div className="OrderStatusBar__element-name">Пассажиры</div>
       </li>
+
       <li
         className={`OrderStatusBar__element ${
           currentPath === "/payment" ? "active-element" : ""

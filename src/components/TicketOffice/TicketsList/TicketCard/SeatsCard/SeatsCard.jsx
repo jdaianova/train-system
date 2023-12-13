@@ -2,7 +2,7 @@ import "./SeatsCard.css";
 import SeatsRow from "./SeatsRow";
 
 const SeatsCard = ({ info }) => {
-console.log(info.have_fourth_class)
+
   return (
     <div className="SeatsCard">
       {info.have_fourth_class && (
