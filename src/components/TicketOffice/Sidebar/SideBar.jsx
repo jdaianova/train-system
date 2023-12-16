@@ -3,6 +3,7 @@ import './SideBar.css';
 import DateSection from './DateSection/DateSection';
 import PriceSlider from './PriceSlider/PriceSlider';
 import SwitchSection from './SwitchSection/SwitchSection';
+import TimeSlider from './TimeSlider/TimeSlider';
 
 const SideBar = () => {
 
@@ -11,6 +12,7 @@ const SideBar = () => {
       <DateSection/>
       <SwitchSection />
       <PriceSlider />
+      <TimeSlider />
     </aside>
   );
 };
