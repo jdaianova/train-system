@@ -5,6 +5,7 @@ import SideBar from "./Sidebar/SideBar";
 import Footer from "../commonComponents/Footer/Footer";
 import OrderStatusBar from "./OrderStatusBar/OrderStatusBar";
 import Loading from "../commonComponents/Loading/Loading";
+import ErrorPopUp from "../commonComponents/ErrorPopUp/ErrorPopUp";
 
 import { useGetTicketsRoutesQuery } from "../../redux/apSlice";
 import { TicketOfficeRoutes } from "../Routes/Routes";
@@ -14,7 +15,11 @@ import { buildUrlRoutes } from "../../utils/helpers";
 const TicketOffice = () => {
   const filters = useSelector((state) => state.filters);
   const url = buildUrlRoutes(filters);
-  const { data: listOfTickets, isLoading, isError } = useGetTicketsRoutesQuery({ url });
+  const {
+    data: listOfTickets,
+    isLoading,
+    isError,
+  } = useGetTicketsRoutesQuery({ url });
 
   return (
     <div className="TicketOffice">
@@ -22,19 +27,29 @@ const TicketOffice = () => {
       <OrderStatusBar />
 
       <div className="TicketOffice__main">
-        {isLoading && <Loading />}
-
-        {!isLoading && isError && <p>Произошла ошибка при загрузке данных.</p>}
-
-        {!isLoading && !isError && listOfTickets?.items && listOfTickets.items.length > 0 ? (
+        {isLoading ? (
+          <Loading />
+        ) : (
           <div className="TicketOffice__Content">
             <SideBar />
-            {TicketOfficeRoutes(listOfTickets)}
+
+            <div>
+              {isError && <ErrorPopUp />}
+
+              {!isError &&
+              listOfTickets?.items &&
+              listOfTickets.items.length > 0 ? (
+                <div>{TicketOfficeRoutes(listOfTickets)}</div>
+              ) : (
+                <div className="TicketOffice__Error">
+                  <ErrorPopUp textErrorTop={'НИЧЕГО НЕ НАЙДЕНО'} textErrorBottom={'проверьте введенные данные'}/>
+                </div>
+              )}
+            </div>
           </div>
-        ) : (
-          <p>Ничего не найдено</p>
         )}
       </div>
+
       <Footer />
     </div>
   );

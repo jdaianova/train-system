@@ -1,8 +1,6 @@
 .Loading {
-    width: 1920px;
-    background-image: url('../../../data/img/train.gif');
-    background-position: center;
-    background-size: cover;
+    width: 100%;
+    background-color: #3e3c41;
 }
 
 .Loading__pending {
