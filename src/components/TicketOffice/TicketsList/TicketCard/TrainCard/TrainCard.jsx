@@ -5,15 +5,13 @@ import "./TrainCard.css";
 import IconTrainInCircle from "../../../commonTicketsComponents/svgComponents/IconTrainInCircle";
 import TrainInfo from "../../../commonTicketsComponents/TrainInfo/TrainInfo";
 
-import { capitalizeLettersInCityName } from "../../../../../utils/helpers";
+import { capitalizeLettersInCityName, extractNameAndNumber } from "../../../../../utils/helpers";
 
 const TrainCard = ({ train, cityFrom, cityTo }) => {
-  //const cityFromId = useSelector((state) => state.filters.fromCutyId);
-
-  //console.log(train);
 
   const formattedCityFrom = capitalizeLettersInCityName(cityFrom);
   const formattedCityTo = capitalizeLettersInCityName(cityTo);
+  const formattedTrainInfo = extractNameAndNumber(train.name);
 
   return (
     <div className="TrainCard">
@@ -25,8 +23,8 @@ const TrainCard = ({ train, cityFrom, cityTo }) => {
       <TrainInfo
         cityFrom={formattedCityFrom}
         cityTo={formattedCityTo}
-        trainName={train.name}
-        trainNumber={"?116C?"}
+        trainName={formattedTrainInfo.name}
+        trainNumber={formattedTrainInfo.number}
       />
     </div>
   );

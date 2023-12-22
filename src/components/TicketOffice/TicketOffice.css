@@ -1,26 +1,19 @@
 .TicketOffice {
     display: flex;
     flex-direction: column;
+    background-color: rgba(245, 244, 246, 1);
+}
+
+.TicketOffice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .TicketOffice__main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: rgba(247, 245, 249, 1);
-    
-}
-
-.TicketOffice__Content {
     width: 1406px;
     display: flex;
     flex-direction: row;
     padding-top: 95px;
-}
-
-.TicketOffice__Error {
-    width: 1059px;
-    display: flex;
-    justify-content: center;    
-    padding-top: 95px;
+    padding-bottom: 95px;
 }

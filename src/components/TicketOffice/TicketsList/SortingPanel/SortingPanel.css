@@ -1,0 +1,58 @@
+.SortingPanel {
+    padding-left: 83px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SortingPanel p {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(146, 143, 148, 1);
+}
+
+.SortingPanel-right-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.SortingPanel__variants {
+    margin-right: 48px;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(146, 143, 148, 1);
+    display: flex;
+    align-items: center;
+}
+
+#SortingPanel__variants-select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+    color: black;
+    padding-left: 15px;
+    background-color: transparent;
+}
+
+.SortingPanel__variants select:focus {
+    outline: none;
+  }
+  
+
+.SortingPanel__variants-per-page button {
+    padding: 5px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(146, 143, 148, 1);
+}
+
+
+.SortingPanel__variants-per-page .activPerPage {
+    font-weight: 700;
+    color: black;
+}

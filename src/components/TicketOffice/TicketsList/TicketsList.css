@@ -1,6 +1,11 @@
 .TicketsList {
+
+}
+
+.TicketsList__list {
+    padding-top: 50px;
+    width: 1042px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 70px;
+    align-items: flex-end;
 }

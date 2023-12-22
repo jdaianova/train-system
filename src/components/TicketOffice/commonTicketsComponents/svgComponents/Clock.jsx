@@ -1,4 +1,4 @@
-const Clock = (width, height, color) => {
+const Clock = () => {
   return (
     <div>
       <svg

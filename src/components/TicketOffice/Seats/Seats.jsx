@@ -1,7 +1,7 @@
 import "./Seats.css";
 
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import Arrow from "../commonTicketsComponents/svgComponents/Arrow";
 import SeatsSectionInfo from "./SeatsSectionInfo/SeatsSectionInfo";
@@ -9,6 +9,12 @@ import SeatsSectionInfo from "./SeatsSectionInfo/SeatsSectionInfo";
 const Seats = () => {
   const order = useSelector((state) => state.order);
   console.log("order", order);
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/ticketoffice/passengers');
+  };
 
   return (
     <div className="Seats-container">
@@ -48,9 +54,9 @@ const Seats = () => {
       </div>
 
       <div className="Seats-btn">
-      <Link to={"/train-system/tickets/passengers"}>
-          <button>Далее</button>
-        </Link>
+  
+          <button onClick={handleNavigate}>Далее</button>
+
       </div>
     </div>
   );

@@ -63,7 +63,7 @@ export default function HomeBookingForm() {
       dispatch(setFieldFilters(key, value));
     });
 
-    navigate("/train-system/tickets");
+    navigate("/ticketoffice");
   };
 
   return (

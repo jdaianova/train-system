@@ -1,12 +1,22 @@
 .Loading {
-    width: 100%;
+    width: 1920px;
+    min-height: 770px;
     background-color: #3e3c41;
+    background-image: url('../../../data/img/train.gif');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Loading__pending {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: gray;
+    color: rgba(146, 143, 148, 1);
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: -150px;
 }

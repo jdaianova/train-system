@@ -1,0 +1,72 @@
+.TimeSliders {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 43px 36px 43px 28px;
+    border-bottom: 1px solid rgba(229, 229, 229, 1);
+    color: white;
+    background-color: rgba(62, 60, 65, 1);
+}
+
+.TimeSlider__Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.TimeSlider__Header-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.TimeSlider__Header p {
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 12px;
+}
+
+.TimeSlider__Header p::first-letter {
+    text-transform: uppercase;
+}
+
+.TimeSlider__Header-arrow {
+    background-color: rgba(255, 168, 0, 1);
+    width: 32px;
+    height: 26px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TimeSlider__Header button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(196, 196, 196, 1);
+    background-color: transparent;
+    border-radius: 5px;
+    color: rgba(196, 196, 196, 1);
+    font-size: 20px;
+}
+
+.TimeSlider__Details {
+    padding-top: 20px;
+}
+
+.TimeSlider__Details p {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.TimeSlider__Details__from {
+    margin-bottom: 45px;
+}
+
+.TimeSlider__Details__to {
+    text-align: right;
+}

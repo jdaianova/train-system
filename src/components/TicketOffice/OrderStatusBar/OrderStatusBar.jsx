@@ -12,9 +12,9 @@ const OrderStatusBar = () => {
     <ul className="OrderStatusBar">
       <li
         className={`OrderStatusBar__element ${
-          currentPath === "/train-system/tickets" ||
-          currentPath === "/train-system/tickets/seats" ||
-          currentPath === "/train-system/tickets/passengers"
+          currentPath === "/tickets" ||
+          currentPath === "/tickets/seats" ||
+          currentPath === "/tickets/passengers"
             ? "active-element"
             : ""
         }`}

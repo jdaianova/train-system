@@ -1,0 +1,96 @@
+.LastOrders {
+    background-color: trasparent;
+}
+
+.LastOrders h5 {
+    font-size: 30px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    margin-top: 94px;
+    margin-bottom: 28px;
+}
+
+.LastOrderCard {
+    width: 360px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-bottom: 17px;
+    box-shadow: 0px 2px 2px 0px rgba(62, 60, 65, 0.25);
+    padding: 18px;
+}
+
+.LastOrderCard__stations {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.LastOrderCard__stations-from,
+.LastOrderCard__stations-to {
+    display: flex;
+    flex-direction: column;
+}
+
+.LastOrderCard__stations-to {
+    align-items: flex-end;
+}
+
+.LastOrderCard__stations h6 {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(41, 41, 41, 1);
+}
+
+.LastOrderCard__stations p {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(146, 143, 148, 1);
+}
+
+.LastOrderCard__info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.LastOrderCard__info__comfort {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.LastOrderCard__info__comfort > * {
+    margin-right: 10px;
+}
+
+.LastOrderCard__info__price {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.LastOrderCard__info__price p {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(146, 143, 148, 1);
+    margin-right: 5px;
+}
+
+.LastOrderCard__info__price span {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 0.7em;
+    color: rgba(255, 168, 0, 1);
+}
+
+.LastOrderCard__info__price img {
+    margin-left: 8px;
+    height: 25px;
+}

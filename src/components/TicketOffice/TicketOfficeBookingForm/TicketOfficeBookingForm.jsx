@@ -2,7 +2,6 @@ import "./TicketOfficeBookingForm.css";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import InputCity from "../../commonComponents/InputCity/InputCity";
 import InputDate from "../../commonComponents/InputDate/InputDate";
@@ -10,8 +9,7 @@ import InputDate from "../../commonComponents/InputDate/InputDate";
 import { setFieldFilters } from "../../../redux/ticketsFitersSlice";
 import { useLazyGetCityIdQuery } from "../../../redux/apSlice";
 
-export default function TicketOfficeBookingForm() {
-  const navigate = useNavigate();
+const TicketOfficeBookingForm = () => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const [trigger] = useLazyGetCityIdQuery();
@@ -37,10 +35,10 @@ export default function TicketOfficeBookingForm() {
       ) {
         dispatch(setFieldFilters(["fromCityId", firstResponse[0]._id]));
       } else {
-        dispatch(setFieldFilters(["fromCityId", ""]));
+        dispatch(setFieldFilters(["fromCityId", null]));
       }
     } catch (error) {
-      dispatch(setFieldFilters(["fromCityId", ""]));
+      dispatch(setFieldFilters(["fromCityId", null]));
     }
 
     try {
@@ -54,17 +52,16 @@ export default function TicketOfficeBookingForm() {
       ) {
         dispatch(setFieldFilters(["toCityId", secondResponse[0]._id]));
       } else {
-        dispatch(setFieldFilters(["toCityId", ""]));
+        dispatch(setFieldFilters(["toCityId", null]));
       }
     } catch (error) {
-      dispatch(setFieldFilters(["toCityId", ""]));
+      dispatch(setFieldFilters(["toCityId", null]));
     }
 
     Object.entries(formData).forEach((key, value) => {
       dispatch(setFieldFilters(key, value));
     });
 
-    navigate("/train-system/tickets");
   };
 
   return (
@@ -110,4 +107,6 @@ export default function TicketOfficeBookingForm() {
       </form>
     </div>
   );
-}
+};
+
+export default TicketOfficeBookingForm;

@@ -15,7 +15,9 @@ const Arrow = ({ direction, width, height, color }) => {
         />
       </svg>
     ) : (
-      <div></div>
+      <div>
+       
+      </div>
     );
 
   return <div>{arrow}</div>;

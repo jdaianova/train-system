@@ -1,20 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// const initialState = {
-//   fromCityName: "",
-//   toCityName: "",
-//   fromCityId: "",
-//   toCityId: "",
-//   dateStart: "",
-//   dateEnd: "",
-//   haveWifi: null,
-//   isExpress: null,
-//   haveFirstClass: null,
-// };
-
 const initialState = {
   fromCityName: "Москва",
-  toCityName: "Санкт-Петербург",
+  toCityName: "Анапа",
   fromCityId: "641037eb5c49ea004632ee6e",
   toCityId: "641037eb5c49ea004632ee6f",
   dateStart: "2023-12-12",
@@ -26,7 +14,20 @@ const initialState = {
   haveThirdClass: false,
   haveWifi: false,
   isExpress: false,
-  minPrice: 529,
+  priceFrom: 0,
+  priceTo: 10000,
+  start_departure_hour_from: 0,
+  start_departure_hour_to: 24,
+  start_arrival_hour_from: 0,
+  start_arrival_hour_to: 24,
+  end_departure_hour_from: 0,
+  end_departure_hour_to: 24,
+  end_arrival_hour_from: 0,
+  end_arrival_hour_to: 24,
+  sortOrder: 'time', // 'price', 'duration', 'time'
+  currentPage: 1,
+  ticketsPerPage: 10,
+  totalPages: 1,
 };
 
 export const ticketsFilterSlice = createSlice({

@@ -1,13 +1,12 @@
-import React from "react";
+import "./TrainInfo.css";
 
 const TrainInfo = ({ cityFrom, cityTo, trainName, trainNumber }) => {
   return (
     <div className="TrainInfo">
       <div className="TrainInfo-number">{trainNumber}</div>
-      <div className="TrainInfo-start">{"?Адлер?"} &#8594;</div>
-      <div className="TrainInfo-from">{cityFrom} &#8594;</div>
-      <div className="TrainInfo-to">{cityTo}</div>
-      <div className="TrainInfo-name"> &#171;{trainName}&#187;</div>
+      <div className="TrainInfo-cities">{cityFrom} &#8594;</div>
+      <div className="TrainInfo-cities">{cityTo}</div>
+      <div className="TrainInfo-cities"> &#171;{trainName}&#187;</div>
     </div>
   );
 };

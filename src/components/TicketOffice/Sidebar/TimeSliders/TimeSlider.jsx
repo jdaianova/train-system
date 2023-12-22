@@ -1,28 +1,25 @@
-import { useState } from "react";
-import { Range, getTrackBackground } from "react-range";
 import { useDispatch } from "react-redux";
-import "./PriceSlider.css";
+import "./TimeSliders.css";
+import { useState } from "react";
 import { setFieldFilters } from "../../../../redux/ticketsFitersSlice";
+import { Range, getTrackBackground } from "react-range";
 
-const PriceSlider = () => {
-  const min=0;
-  const max=10000;
+const TimeSlider = ({ timeDirection, direction }) => {
+  const minFieldFilters = `${timeDirection}_${direction}_hour_from`;
+  const maxFieldFilters = `${timeDirection}_${direction}_hour_to`;
+  const min = 0;
+  const max = 24;
   const dispatch = useDispatch();
   const [values, setValues] = useState([min, max]);
 
   const handleChange = (newValues) => {
     setValues(newValues);
-    dispatch(setFieldFilters(["priceFrom", newValues[0]]));
-    dispatch(setFieldFilters(["priceTo", newValues[1]]));
+    dispatch(setFieldFilters([minFieldFilters, newValues[0]]));
+    dispatch(setFieldFilters([maxFieldFilters, newValues[1]]));
   };
 
   return (
-    <div className="PriceSlider">
-      <div className="PriceSlider-title">Стоимость</div>
-      <div className="PriceSlider-value">
-        <span>от</span>
-        <span>до</span>
-      </div>
+    <div className="TimeSlider">
       <div>
         <Range
           step={1}
@@ -44,7 +41,7 @@ const PriceSlider = () => {
               <div
                 ref={props.ref}
                 style={{
-                  height: "19px",
+                  height: "10px",
                   width: "294px",
                   borderRadius: "8px",
                   background: getTrackBackground({
@@ -70,8 +67,8 @@ const PriceSlider = () => {
               {...props}
               style={{
                 ...props.style,
-                height: "24px",
-                width: "24px",
+                height: "18px",
+                width: "18px",
                 borderRadius: "50%",
                 backgroundColor: "rgba(255, 255, 255, 1)",
                 display: "flex",
@@ -89,7 +86,7 @@ const PriceSlider = () => {
                   backgroundColor: "transparent",
                 }}
               >
-                {values[index]}
+                {`${values[index]}:00`}
               </div>
             </div>
           )}
@@ -99,4 +96,4 @@ const PriceSlider = () => {
   );
 };
 
-export default PriceSlider;
+export default TimeSlider;

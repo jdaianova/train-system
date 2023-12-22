@@ -33,6 +33,7 @@
     color: rgba(255, 255, 255, 1);
     margin-top: 18px;
     margin-bottom: 23px;
+    cursor: pointer;
 }
 
 .TicketCard__seats-comfort {
@@ -42,3 +43,7 @@
     justify-content: flex-end;
     margin-top: 31px;
 }
+
+.TicketCard__seats-comfort > *:not(:last-child) {
+    margin-right: 18px;
+  }
