@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/train-system/static/css/main.4e1129fe.css",
-    "main.js": "/train-system/static/js/main.de5c2165.js",
+    "main.css": "/train-system/static/css/main.7d0847b7.css",
+    "main.js": "/train-system/static/js/main.80b3c011.js",
     "static/media/howItWorks-background.png": "/train-system/static/media/howItWorks-background.69ad7c3c698aba91a60e.png",
     "static/media/header-background.png": "/train-system/static/media/header-background.46971fe03c262913a9d7.png",
     "static/media/background_ticket-office.png": "/train-system/static/media/background_ticket-office.f9adb22faaf9e7f9fc81.png",
@@ -114,11 +114,11 @@
     "static/media/icon-building.svg": "/train-system/static/media/icon-building.12cf67773e12a02cbcb5fcf69e5ad8ab.svg",
     "static/media/icon-monitor.svg": "/train-system/static/media/icon-monitor.dc3acccc8d8296f7896f5213931c3afd.svg",
     "index.html": "/train-system/index.html",
-    "main.4e1129fe.css.map": "/train-system/static/css/main.4e1129fe.css.map",
-    "main.de5c2165.js.map": "/train-system/static/js/main.de5c2165.js.map"
+    "main.7d0847b7.css.map": "/train-system/static/css/main.7d0847b7.css.map",
+    "main.80b3c011.js.map": "/train-system/static/js/main.80b3c011.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e1129fe.css",
-    "static/js/main.de5c2165.js"
+    "static/css/main.7d0847b7.css",
+    "static/js/main.80b3c011.js"
   ]
 }
