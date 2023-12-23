@@ -5,6 +5,7 @@ import OrderStatusBar from "./OrderStatusBar/OrderStatusBar";
 import TicketOfficeRoutes from "../Routes/TicketOfficeRoutes";
 
 const TicketOffice = () => {
+
   return (
     <div className="TicketOffice">
       <HeaderTicketOffice />

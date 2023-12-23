@@ -3,7 +3,10 @@ import Destination from "../Destination/Destination";
 import Arrow from "../../../commonTicketsComponents/svgComponents/Arrow";
 
 const TrainRoute = ({ route, showDuration }) => {
-  //console.log("route", route);
+
+  if (!route || route.route_direction_id === '') {
+    return null;
+  }
   return (
     <div className="TrainRoute">
       <Destination
@@ -13,13 +16,15 @@ const TrainRoute = ({ route, showDuration }) => {
       />
 
       <div className="TrainRoute-arrow">
-        {showDuration && <p>
-          {`${parseInt(route.duration / 3600)} : ${Math.floor(
-            (route.duration % 3600) / 60
-          )}`}
-        </p>}
+        {showDuration && (
+          <p>
+            {`${parseInt(route.duration / 3600)} : ${Math.floor(
+              (route.duration % 3600) / 60
+            )}`}
+          </p>
+        )}
         <Arrow
-          direction={"left-to-right"}
+          direction={"departure"}
           width={30}
           height={20}
           color={"rgba(255, 168, 0, 0.79)"}

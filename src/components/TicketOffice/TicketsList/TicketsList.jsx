@@ -1,3 +1,6 @@
+import "./TicketsList.css";
+
+import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { buildUrlRoutes } from "../../../utils/helpers";
 import { useGetTicketsRoutesQuery } from "../../../redux/apSlice";
@@ -6,11 +9,13 @@ import ErrorPopUp from "../../commonComponents/ErrorPopUp/ErrorPopUp";
 import SortingPanel from "../TicketsList/SortingPanel/SortingPanel";
 import PagesNumbers from "../TicketsList/PagesNumbers/PagesNumbers";
 import TicketCard from "../TicketsList/TicketCard/TicketCard";
-import { nanoid } from "nanoid";
+import { useEffect } from "react";
 
-const TicketsList = () => {
+const TicketsList = ({ setIsShowSideBar }) => {
   const filters = useSelector((state) => state.filters);
+  const { currentPage, limit } = filters;
   const url = buildUrlRoutes(filters);
+  console.log(url);
 
   const {
     data: listOfTickets,
@@ -18,31 +23,53 @@ const TicketsList = () => {
     isError,
   } = useGetTicketsRoutesQuery({ url });
 
+  useEffect(() => {
+    if (isLoading || isError) {
+      setIsShowSideBar(false);
+    } else if (listOfTickets && listOfTickets?.items?.length > 0) {
+      setIsShowSideBar(true);
+    }
+  }, [isLoading, isError, listOfTickets, setIsShowSideBar]);
+
   return (
-    <div>
+    <div className="TicketsList">
       {isLoading && <Loading />}
 
-      {isError || !listOfTickets?.items ? (
+      {!isLoading && isError && (
         <div className="TicketsList__error">
           <ErrorPopUp
-            key={Date.now()}
-            textErrorTop={isError ? "ОШИБКА ЗАГРУЗКИ" : "НИЧЕГО НЕ НАЙДЕНО"}
-            textErrorBottom={
-              isError ? "Попробуйте снова" : "Проверьте введенные данные"
-            }
+            textErrorTop="ОШИБКА ЗАГРУЗКИ"
+            textErrorBottom="Попробуйте снова"
           />
         </div>
-      ) : (
+      )}
+
+      {!isLoading && !isError && listOfTickets?.items?.length === 0 && (
+        <div className="TicketsList__error">
+          <ErrorPopUp
+            textErrorTop="НИЧЕГО НЕ НАЙДЕНО"
+            textErrorBottom="Проверьте введенные данные"
+          />
+        </div>
+      )}
+
+      {!isLoading && !isError && listOfTickets?.items?.length > 0 && (
         <div className="TicketOffice__main">
           {listOfTickets?.items && listOfTickets?.items.length > 0 && (
             <div className="TicketsList">
               <SortingPanel foundedTickets={listOfTickets.items.length} />
               <div className="TicketsList__list">
-                {listOfTickets.items.map((ticket) => (
-                  <TicketCard key={nanoid()} ticket={ticket} />
-                ))}
+                {listOfTickets.items
+                  .slice((currentPage - 1) * limit, currentPage * limit)
+                  .map((ticket) => (
+                    <TicketCard key={nanoid()} ticket={ticket} />
+                  ))}
               </div>
-              <PagesNumbers />
+              <PagesNumbers
+                numberOfPages={`${Math.ceil(
+                  listOfTickets.items.length / filters.limit
+                )}`}
+              />
             </div>
           )}
         </div>

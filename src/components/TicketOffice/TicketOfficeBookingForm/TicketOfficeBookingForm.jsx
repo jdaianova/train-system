@@ -8,8 +8,12 @@ import InputDate from "../../commonComponents/InputDate/InputDate";
 
 import { setFieldFilters } from "../../../redux/ticketsFitersSlice";
 import { useLazyGetCityIdQuery } from "../../../redux/apSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const TicketOfficeBookingForm = () => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const [trigger] = useLazyGetCityIdQuery();
@@ -62,6 +66,9 @@ const TicketOfficeBookingForm = () => {
       dispatch(setFieldFilters(key, value));
     });
 
+    if (location.pathname !== "/ticketoffice") {
+      navigate("/ticketoffice");
+    }
   };
 
   return (

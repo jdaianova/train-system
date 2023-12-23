@@ -47,3 +47,7 @@
 .TicketCard__seats-comfort > *:not(:last-child) {
     margin-right: 18px;
   }
+
+  .TicketCard__route {
+    margin-bottom: 50px;
+  }

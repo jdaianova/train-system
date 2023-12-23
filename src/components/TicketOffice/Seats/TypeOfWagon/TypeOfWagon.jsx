@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./TypeOfWagon.css";
 
 import FourthClassIcon from "../../commonTicketsComponents/svgComponents/FourthClassIcon";
@@ -6,24 +7,45 @@ import SecondClassIcon from "../../commonTicketsComponents/svgComponents/SecondC
 import FirstClassIcon from "../../commonTicketsComponents/svgComponents/FirstClassIcon";
 
 const TypeOfWagon = () => {
+  const [selectedType, setSelectedType] = useState(null);
+
+  const handleSelectType = (type) => {
+    setSelectedType(type);
+  };
+
+  const isActive = (type) => selectedType === type;
+
   return (
     <div className="TypeOfWagon">
-      <div className="TypeOfWagon__choosing-icon">
-        <FourthClassIcon />
-        <p>Сидячий</p>
-      </div>
-      <div className="TypeOfWagon__choosing-icon">
-        <ThirdClassIcon />
-        <p>Плацкарт</p>
-      </div>
-      <div className="TypeOfWagon__choosing-icon">
-        <SecondClassIcon />
-        <p>Купе</p>
-      </div>
-      <div className="TypeOfWagon__choosing-icon">
-        <FirstClassIcon />
-        <p>Люкс</p>
-      </div>
+      {["fourth", "third", "second", "first"].map((type, index) => {
+        const IconComponent = {
+          fourth: FourthClassIcon,
+          third: ThirdClassIcon,
+          second: SecondClassIcon,
+          first: FirstClassIcon,
+        }[type];
+
+        const text = {
+          fourth: "Сидячий",
+          third: "Плацкарт",
+          second: "Купе",
+          first: "Люкс",
+        }[type];
+
+        return (
+          <div
+            key={index}
+            className="TypeOfWagon__choosing-icon"
+            onClick={() => handleSelectType(type)}
+          >
+            <IconComponent
+              height={50}
+              color={isActive(type) ? "rgba(255, 168, 0, 1)" : "rgba(196, 196, 196, 1)"}
+            />
+            <p style={{ color: isActive(type) ? "rgba(255, 168, 0, 1)" : "inherit" }}>{text}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };

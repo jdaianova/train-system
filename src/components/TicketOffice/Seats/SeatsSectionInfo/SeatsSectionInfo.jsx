@@ -8,9 +8,20 @@ import TypeOfWagon from "../TypeOfWagon/TypeOfWagon";
 import TrainInfo from "../../commonTicketsComponents/TrainInfo/TrainInfo";
 import TrainRoute from "../../TicketsList/TicketCard/TrainRoute/TrainRoute";
 
-import { secondsToHoursMinutes } from "../../../../utils/helpers";
+import {
+  capitalizeLettersInCityName,
+  extractNameAndNumber,
+  secondsToHoursMinutes,
+} from "../../../../utils/helpers";
+import CoachSection from "../CoachSection/CoachSection";
 
 const SeatsSectionInfo = ({ route }) => {
+  if (!route) return null;
+  console.log(route);
+
+  const trainInfo = extractNameAndNumber(route.train.name);
+  console.log(trainInfo);
+
   return (
     <div className="SeatsSectionInfo">
       <div className="Seats__schedule Seats__section">
@@ -24,15 +35,17 @@ const SeatsSectionInfo = ({ route }) => {
             />
           </div>
           <TrainInfo
-            train={"sdsfd"}
-            cityFrom={"sdfdsf"}
-            cityTo={"sdfs"}
-            trainNumber={"?116C?"}
+            trainName={trainInfo.name}
+            cityFrom={capitalizeLettersInCityName(route.from.city.name)}
+            cityTo={capitalizeLettersInCityName(route.to.city.name)}
+            trainNumber={trainInfo.number}
           />
         </div>
+
         <div className="Seats__schedule__destination-info">
           {route && <TrainRoute route={route} showDuration={false} />}
         </div>
+
         <div className="Seats__schedule__duration-info">
           <Clock />
           <p>{secondsToHoursMinutes(route.duration)}</p>
@@ -48,6 +61,8 @@ const SeatsSectionInfo = ({ route }) => {
         <h4>Тип вагона</h4>
         <TypeOfWagon />
       </div>
+
+      <CoachSection />
 
       <div className="Seats__wagon-layout Seats__section"></div>
     </div>

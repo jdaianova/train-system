@@ -1,7 +1,5 @@
 import "./TrainCard.css";
 
-//import { useSelector } from "react-redux";
-
 import IconTrainInCircle from "../../../commonTicketsComponents/svgComponents/IconTrainInCircle";
 import TrainInfo from "../../../commonTicketsComponents/TrainInfo/TrainInfo";
 

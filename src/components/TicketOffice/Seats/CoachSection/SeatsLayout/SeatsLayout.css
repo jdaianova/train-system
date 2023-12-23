@@ -1,0 +1,37 @@
+.SeatsLayout {
+  padding: 50px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.SeatsLayout__coach {
+  width: 820px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px; 
+  margin-right: -10px;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.SeatsLayout__coach-seat {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.available {
+  color: rgba(0, 0, 0, 1);
+  background-color: rgba(243, 243, 243, 1);
+  font-weight: 700;
+}
+
+.unavailable {
+  color: white;
+  background-color: rgb(186, 177, 177);
+}

@@ -1,0 +1,41 @@
+.DataSidebar {
+    width: 360px;
+    background-color: rgba(62, 60, 65, 1);
+    margin-bottom: 30px;
+    flex-grow: 0;
+}
+
+.DataSidebar h4 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 500;
+    color: rgba(229, 229, 229, 1);
+    padding: 35px;
+    border-bottom: 1px solid rgba(229, 229, 229, 1);
+}
+
+.DataSidebar__total {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(229, 229, 229, 1);
+    padding: 45px 28px;
+}
+
+.DataSidebar__total h3 {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+    color: rgba(229, 229, 229, 1);
+}
+
+.DataSidebar__total p {
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(255, 168, 0, 1);
+    text-align: right;
+    flex-grow: 1;
+    margin-right: 10px;
+}

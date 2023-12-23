@@ -8,6 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -95px;
+    margin-left: -260px;
 }
 
 .Loading__pending {

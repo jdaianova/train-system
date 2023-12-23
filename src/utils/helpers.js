@@ -3,11 +3,9 @@ export const buildUrlRoutes = (filtersParams) => {
   const excludeKeys = [
     'fromCityName',
     'toCityName',
-    'sortOrder',
     'currentPage',
-    'ticketsPerPage',
-    'totalPages',
-    'priceInterval'
+    'offset',
+    'limit'
   ]; // исключаемые поля
 
   for (const key in filtersParams) {

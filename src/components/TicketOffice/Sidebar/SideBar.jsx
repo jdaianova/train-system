@@ -7,16 +7,20 @@ import TimeSliders from "./TimeSliders/TimeSliders";
 import PriceSlider from "./PriceSlider/PriceSlider";
 import LastOrders from "./LastOrders/LastOrders";
 
-const SideBar = () => {
+const SideBar = ({ isShowSideBar }) => {
   return (
-    <aside className="SideBar">
-      <DateSection />
-      <SwitchSection />
-      <PriceSlider />
-      <TimeSliders timeDirection={'start'}/>
-      <TimeSliders timeDirection={'end'}/>
-      <LastOrders />
-    </aside>
+    <>
+      {isShowSideBar && (
+        <aside className="SideBar">
+          <DateSection />
+          <SwitchSection />
+          <PriceSlider />
+          <TimeSliders timeDirection={"start"} />
+          <TimeSliders timeDirection={"end"} />
+          <LastOrders />
+        </aside>
+      )}
+    </>
   );
 };
 

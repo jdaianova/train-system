@@ -1,7 +1,6 @@
 .TrainRoute {
     display: flex;
     flex-direction: row;
-    margin-bottom: 63px;
 }
 
 .TrainRoute-arrow {

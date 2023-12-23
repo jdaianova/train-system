@@ -4,7 +4,7 @@ const initialState = {
   fromCityName: "Москва",
   toCityName: "Анапа",
   fromCityId: "641037eb5c49ea004632ee6e",
-  toCityId: "641037eb5c49ea004632ee6f",
+  toCityId: "641037eb5c49ea004632ee73",
   dateStart: "2023-12-12",
   dateEnd: "2023-12-18",
   haveAirConditioning: false,
@@ -24,10 +24,10 @@ const initialState = {
   end_departure_hour_to: 24,
   end_arrival_hour_from: 0,
   end_arrival_hour_to: 24,
-  sortOrder: 'time', // 'price', 'duration', 'time'
+  sort: 'date', // 'price', 'duration', 'date'
   currentPage: 1,
-  ticketsPerPage: 10,
-  totalPages: 1,
+  limit: 10,
+  offset: 1,
 };
 
 export const ticketsFilterSlice = createSlice({

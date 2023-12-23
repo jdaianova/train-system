@@ -1,19 +1,24 @@
 import "./Seats.css";
 
-import { useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import Arrow from "../commonTicketsComponents/svgComponents/Arrow";
 import SeatsSectionInfo from "./SeatsSectionInfo/SeatsSectionInfo";
+import { useEffect } from "react";
 
-const Seats = () => {
-  const order = useSelector((state) => state.order);
-  console.log("order", order);
+const Seats = ({ setIsShowSideBar }) => {
+  const savedDeparture = JSON.parse(localStorage.getItem("selectedDeparture"));
+  const savedArrival = JSON.parse(localStorage.getItem("selectedArrival"));
+  //console.log(savedDeparture)
+
+  useEffect(() => {
+    setIsShowSideBar(true);
+  }, [setIsShowSideBar]);
 
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate('/ticketoffice/passengers');
+    navigate("/ticketoffice/passengers");
   };
 
   return (
@@ -30,11 +35,14 @@ const Seats = () => {
                 color={"rgba(255, 255, 255, 1)"}
               />
             </div>
-            <button className="Seats__from__button">
+            <button
+              className="Seats__from__button"
+              onClick={() => navigate("/ticketoffice")}
+            >
               Выбрать другой поезд
             </button>
           </div>
-          <SeatsSectionInfo route={order.departure} />
+          <SeatsSectionInfo route={savedDeparture} />
         </div>
 
         <div className="Seats__to">
@@ -47,16 +55,19 @@ const Seats = () => {
                 color={"rgba(255, 255, 255, 1)"}
               />
             </div>
-            <button className="Seats__to__button">Выбрать другой поезд</button>
+            <button
+              className="Seats__to__button"
+              onClick={() => navigate("/ticketoffice")}
+            >
+              Выбрать другой поезд
+            </button>
           </div>
-          <SeatsSectionInfo route={order.arrival} />
+          <SeatsSectionInfo route={savedArrival} />
         </div>
       </div>
 
       <div className="Seats-btn">
-  
-          <button onClick={handleNavigate}>Далее</button>
-
+        <button onClick={handleNavigate}>Далее</button>
       </div>
     </div>
   );

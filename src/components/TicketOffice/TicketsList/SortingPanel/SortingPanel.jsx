@@ -5,20 +5,18 @@ import "./SortingPanel.css";
 
 const SortingPanel = ({ foundedTickets }) => {
   const [activPerPage, setActivPerPage] = useState(10);
-  const [sortValue, setSortValue] = useState("time");
+  const [sortValue, setSortValue] = useState("date");
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const newValue = e.target.value;
     setSortValue(newValue);
-    dispatch(setFieldFilters(["sortOrder", newValue]));
+    dispatch(setFieldFilters(["sort", newValue]));
   };
 
-  const handleTicketsPerPage = (ticketsPerPage) => {
-    setActivPerPage(ticketsPerPage);
-    dispatch(setFieldFilters(["ticketsPerPage", ticketsPerPage]));
-    const totalPages = Math.ceil(foundedTickets / ticketsPerPage);;
-    dispatch(setFieldFilters(["totalPages", totalPages]));
+  const handlePerPageChange = (newPerPage) => {
+    setActivPerPage(newPerPage);
+    dispatch(setFieldFilters(["limit", newPerPage]));
   };
 
   return (
@@ -32,18 +30,18 @@ const SortingPanel = ({ foundedTickets }) => {
             value={sortValue}
             onChange={handleChange}
           >
-            <option value="time">времени</option>
-            <option value="price">стоимости</option>
+            <option value="date">времени</option>
+            <option value="price_min">стоимости</option>
             <option value="duration">длительности</option>
           </select>
         </div>
         <div className="SortingPanel__variants-per-page">
           показывать по:
-          {[2, 3, 10].map((ticketsPerPage) => (
+          {[2, 5, 10].map((ticketsPerPage) => (
             <button
               key={ticketsPerPage}
               className={ticketsPerPage === activPerPage ? "activPerPage" : ""}
-              onClick={() => handleTicketsPerPage(ticketsPerPage)}
+              onClick={() => handlePerPageChange(ticketsPerPage)}
             >
               {ticketsPerPage}
             </button>

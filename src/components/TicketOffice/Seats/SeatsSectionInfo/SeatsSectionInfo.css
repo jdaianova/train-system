@@ -16,8 +16,8 @@
 }
 
 .Seats__schedule__train-info,
-.Seats__schedule__destination-info,
-.Seats__schedule__duration-info {
+.Seats__schedule__duration-info,
+.Seats__schedule__destination-info {
     display: flex;
     flex-direction: row;
     align-items: center;

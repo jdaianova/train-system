@@ -6,15 +6,17 @@ import { useLocation } from "react-router-dom";
 const OrderStatusBar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  //console.log(currentPath);
+ // console.log(currentPath);
 
   return (
     <ul className="OrderStatusBar">
       <li
         className={`OrderStatusBar__element ${
-          currentPath === "/tickets" ||
-          currentPath === "/tickets/seats" ||
-          currentPath === "/tickets/passengers"
+          currentPath === "/ticketoffice" ||
+          currentPath === "/ticketoffice/seats" ||
+          currentPath === "/ticketoffice/passengers" ||
+          currentPath === "/ticketoffice/pay" ||
+          currentPath === "/ticketoffice/confirmation"
             ? "active-element"
             : ""
         }`}
@@ -26,7 +28,9 @@ const OrderStatusBar = () => {
 
       <li
         className={`OrderStatusBar__element ${
-          currentPath === "/train-system/tickets/passengers"
+          currentPath === "/ticketoffice/passengers" ||
+          currentPath === "/ticketoffice/pay" ||
+          currentPath === "/ticketoffice/confirmation"
             ? "active-element"
             : ""
         }`}
@@ -38,7 +42,10 @@ const OrderStatusBar = () => {
 
       <li
         className={`OrderStatusBar__element ${
-          currentPath === "/payment" ? "active-element" : ""
+          currentPath === "/ticketoffice/pay" ||
+          currentPath === "/ticketoffice/confirmation"
+            ? "active-element"
+            : ""
         }`}
         style={{ zIndex: "2" }}
       >
@@ -47,7 +54,7 @@ const OrderStatusBar = () => {
       </li>
       <li
         className={`OrderStatusBar__element ${
-          currentPath === "/check" ? "active-element" : ""
+          currentPath === "/ticketoffice/confirmation" ? "active-element" : ""
         }`}
         style={{ zIndex: "1" }}
       >

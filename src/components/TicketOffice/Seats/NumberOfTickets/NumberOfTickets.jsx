@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./NumberOfTickets.css";
-//import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addPassenger } from "../../../../redux/passemgersSlice";
 
 const NumberOfTickets = () => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [tabAdult, setTabAdult] = useState(0);
   const [tabTeen, setTabTeen] = useState(0);
   const [tabChild, setTabChild] = useState(0);
@@ -13,14 +14,14 @@ const NumberOfTickets = () => {
   const handleInputAdult = (num) => {
     if (num <= 5 && num >= 0) {
       setTabAdult(num);
-
+      dispatch(addPassenger(true));
     }
   };
 
   const handleInputTeen = (num) => {
     if (num <= 4 && num >= 0) {
       setTabTeen(num);
-
+      dispatch(addPassenger(false));
     }
   };
 
