@@ -1,42 +1,58 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./NumberOfTickets.css";
 import { useDispatch } from "react-redux";
-import { addPassenger } from "../../../../redux/passemgersSlice";
+import {
+  setAdultPassengers,
+  setChildPassengers,
+  setWithOutSeats,
+} from "../../../../redux/ticketsSlice";
 
-const NumberOfTickets = () => {
+const NumberOfTickets = ({ direction }) => {
+  const inputRefAdult = useRef(null);
+  const inputRefTeen = useRef(null);
+  const inputRefChild = useRef(null);
+
   const dispatch = useDispatch();
-  const [tabAdult, setTabAdult] = useState(0);
-  const [tabTeen, setTabTeen] = useState(0);
-  const [tabChild, setTabChild] = useState(0);
+  const [tabAdult, setTabAdult] = useState("");
+  const [tabTeen, setTabTeen] = useState("");
+  const [tabChild, setTabChild] = useState("");
 
   const [activeTab, setActiveTab] = useState(null);
 
-  const handleInputAdult = (num) => {
+  const handleInputAdult = (e) => {
+    const num = e.target.value;
     if (num <= 5 && num >= 0) {
       setTabAdult(num);
-      dispatch(addPassenger(true));
+      dispatch(setAdultPassengers({ value: num, direction: direction }));
     }
   };
 
-  const handleInputTeen = (num) => {
+  const handleInputTeen = (e) => {
+    const num = e.target.value;
     if (num <= 4 && num >= 0) {
       setTabTeen(num);
-      dispatch(addPassenger(false));
+      dispatch(setChildPassengers({ value: num, direction: direction }));
     }
   };
 
-  const handleInputChild = (num) => {
+  const handleInputChild = (e) => {
+    const num = e.target.value;
     if (num >= 0) {
       setTabChild(num);
-
+      dispatch(setWithOutSeats({ value: num, direction: direction }));
     }
   };
 
   const handleTabClick = (i) => {
-    if (activeTab === i) {
-      return null;
-    } else {
-      setActiveTab(i);
+    setActiveTab(i);
+    if (i === 1 && inputRefAdult.current) {
+      inputRefAdult.current.focus();
+    }
+    if (i === 2 && inputRefTeen.current) {
+      inputRefTeen.current.focus();
+    }
+    if (i === 3 && inputRefChild.current) {
+      inputRefChild.current.focus();
     }
   };
 
@@ -52,11 +68,12 @@ const NumberOfTickets = () => {
         <div className="NumberOfTickets__info">
           <p className="NumberOfTickets__info-text">Взрослых — </p>
           <input
+            type="number"
+            ref={inputRefAdult}
             className="NumberOfTickets__info-input"
-            name="tabAdult"
             value={tabAdult}
             placeholder="0"
-            onChange={(e) => handleInputAdult(e.target.value)}
+            onChange={handleInputAdult}
           />
         </div>
         <p className="NumberOfTickets__info-content">
@@ -73,11 +90,12 @@ const NumberOfTickets = () => {
         <div className="NumberOfTickets__info">
           <p className="NumberOfTickets__info-text">Детских — </p>
           <input
+            type="number"
+            ref={inputRefTeen}
             className="NumberOfTickets__info-input"
-            name="tabTeen"
             value={tabTeen}
             placeholder="0"
-            onChange={(e) => handleInputTeen(e.target.value)}
+            onChange={handleInputTeen}
           />
         </div>
         <p className="NumberOfTickets__info-content">
@@ -95,11 +113,12 @@ const NumberOfTickets = () => {
         <div className="NumberOfTickets__info">
           <p className="NumberOfTickets__info-text">Детских «без места» — </p>
           <input
+            type="number"
+            ref={inputRefChild}
             className="NumberOfTickets__info-input"
-            name="tabChild"
             value={tabChild}
             placeholder="0"
-            onChange={(e) => handleInputChild(e.target.value)}
+            onChange={handleInputChild}
           />
         </div>
       </div>

@@ -28,7 +28,7 @@ const TicketOfficeRoutes = () => {
           path="seats"
           element={
             <div className="container">
-              <DataSidebar />
+              <Sidebar isShowSideBar={isShowSideBar} />
               <Seats setIsShowSideBar={setIsShowSideBar} />
             </div>
           }

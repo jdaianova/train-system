@@ -1,16 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from './apSlice';
 import { ticketsFilterSlice } from './ticketsFitersSlice';
-import { passengersSlice } from './passemgersSlice';
-import { seatsSlice } from './seatsSlice';
+import { ticketsSlice } from './ticketsSlice';
+import { seatsFiltersSlice } from './seatsFiltersSlice';
+import { seatsSelectedSlice } from './seatsSelectedSlice';
 
 
 export const store = configureStore({
     reducer: {
         [apiSlice.reducerPath]: apiSlice.reducer,
         filters: ticketsFilterSlice.reducer,
-        seats: seatsSlice.reducer,
-        passengers: passengersSlice.reducer
+        seatsFilters: seatsFiltersSlice.reducer,
+        tickets: ticketsSlice.reducer,
+        seatsSelected: seatsSelectedSlice.reducer,
     },
     middleware: (getMiddleware) => getMiddleware().concat(apiSlice.middleware),
     devTools: true,

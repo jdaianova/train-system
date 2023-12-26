@@ -1,9 +1,9 @@
-.TypeOfWagon {
+.TypeOfCoach {
     display: flex;
     flex-direction: row;
 }
 
-.TypeOfWagon__choosing-icon {
+.TypeOfCoach__choosing-icon {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -12,13 +12,13 @@
     height: 146px;
 }
 
-.TypeOfWagon__choosing-icon p {
+.TypeOfCoach_choosing-icon p {
     margin-top: 18px;
     font-size: 24px;
     font-weight: 400;
     color: rgba(146, 143, 148, 1);
 }
 
-.TypeOfWagon__choosing-icon_active {
+.TypeOfCoach__choosing-icon_active {
     color: red;
 }

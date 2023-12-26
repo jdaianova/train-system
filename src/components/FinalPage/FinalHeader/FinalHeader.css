@@ -1,0 +1,28 @@
+.FinalHeader {
+    width: 1920px;
+    height: 834px;
+    padding-left: 258px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.FinalHeader::before {
+    content: "";
+    width: 1920px;
+    height: 834px;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: -5;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.FinalHeader__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -4;
+}

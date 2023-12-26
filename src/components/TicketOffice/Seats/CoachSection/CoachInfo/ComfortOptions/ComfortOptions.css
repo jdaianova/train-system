@@ -1,0 +1,17 @@
+.ComfortOptions {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.ComfortOptions-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    transition: background-color 0.3s ease;
+}

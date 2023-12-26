@@ -4,7 +4,6 @@ import IconTrainInCircle from "../../commonTicketsComponents/svgComponents/IconT
 import Clock from "../../commonTicketsComponents/svgComponents/Clock";
 
 import NumberOfTickets from "../NumberOfTickets/NumberOfTickets";
-import TypeOfWagon from "../TypeOfWagon/TypeOfWagon";
 import TrainInfo from "../../commonTicketsComponents/TrainInfo/TrainInfo";
 import TrainRoute from "../../TicketsList/TicketCard/TrainRoute/TrainRoute";
 
@@ -14,13 +13,14 @@ import {
   secondsToHoursMinutes,
 } from "../../../../utils/helpers";
 import CoachSection from "../CoachSection/CoachSection";
+import { useState } from "react";
+import TypeOfCoach from "../TypeOfCoach/TypeOfCoach";
 
-const SeatsSectionInfo = ({ route }) => {
+const SeatsSectionInfo = ({ route, direction }) => {
+  const [typeOfWagon, setTypeOfWagon] = useState(null);
+
   if (!route) return null;
-  console.log(route);
-
   const trainInfo = extractNameAndNumber(route.train.name);
-  console.log(trainInfo);
 
   return (
     <div className="SeatsSectionInfo">
@@ -54,17 +54,15 @@ const SeatsSectionInfo = ({ route }) => {
 
       <div className="Seats__number-of-tickets Seats__section">
         <h4>Количество билетов</h4>
-        <NumberOfTickets />
+        <NumberOfTickets direction={direction} />
       </div>
 
       <div className="Seats__wagon-type Seats__section">
         <h4>Тип вагона</h4>
-        <TypeOfWagon />
+        <TypeOfCoach setTypeOfWagon={setTypeOfWagon} />
       </div>
 
-      <CoachSection />
-
-      <div className="Seats__wagon-layout Seats__section"></div>
+      <CoachSection direction={direction} typeOfWagon={typeOfWagon} />
     </div>
   );
 };

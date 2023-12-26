@@ -1,61 +1,117 @@
 .PassengerForm {
-    font-family: Arial, sans-serif;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .PassengerForm__section {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  .PassengerForm__section span {
-    margin-bottom: 5px;
-  }
-  
-  .PassengerForm__section select,
-  .PassengerForm__section input {
-    padding: 5px;
-    margin-bottom: 5px;
-  }
-  
-  .PassengerForm__checkbox {
-    display: flex;
-    align-items: center;
-  }
-  
-  .PassengerForm__divider {
-    width: 100%;
-    border: 1px solid #ccc;
-    margin: 20px 0;
-  }
-  
-  .PassengerForm__section--green {
-    background-color: #8f8;
-  }
-  
-  .PassengerForm__section--red {
-    background-color: #f88;
-  }
+  padding-top: 38px;
+}
 
-  .PassengerForm__gender-selector {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .PassengerForm__gender-option {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ccc;
-    cursor: pointer;
-  }
-  
-  .PassengerForm__gender-option.selected {
-    background-color: red;
-    color: white;
-  }
-  
+.PassengerForm-box {
+  border: 1px solid rgba(146, 143, 148, 1);
+  height: 50px;
+  border-radius: 5px;
+  width: 280px;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 0 15px;
+  background-color: transparent;
+}
+
+.PassengerForm-box:focus {
+  outline: 1px solid gray;
+}
+
+.PassengerForm__row {
+  width: 100%;
+  margin-bottom: 45px;
+  display: flex;
+  flex-direction: row;
+  padding: 0 35px;
+}
+
+.PassengerForm label {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(146, 143, 148, 1);
+  line-height: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.name-row {
+  gap: 24px;
+}
+
+.gender-row {
+  margin-right: 35px;
+}
+
+.PassengerForm__gender-option {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.PassengerForm-gender-button {
+  border: 1px solid rgba(146, 143, 148, 1);
+  height: 50px;
+  border-radius: 5px;
+  background-color: transparent;
+  width: 101px;
+  font-size: 30px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 1);
+}
+
+.gender-button_selected {
+  background-color: rgba(255, 168, 0, 1);
+}
+
+.PassengerForm__mobility-row label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 35px 30px 35px;
+  border-bottom: 1px solid rgba(146, 143, 148, 1);
+}
+
+.mobility-box {
+  width: 28px;
+  height: 28px;
+  margin-right: 20px;
+}
+
+.document-row {
+  padding: 27px 35px 31px 35px;
+  border-bottom: 1px solid rgba(146, 143, 148, 1);
+  margin-bottom: 0px;
+}
+
+.document-type-box {
+  width: 444px;
+  margin-right: 35px;
+  border-bottom: 1px solid rgba(146, 143, 148, 1);
+}
+
+.PassengerForm__footer {
+  height: 118px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 35px;
+}
+
+.submit-button {
+  width: 303px;
+  border: 1px solid rgba(41, 41, 41, 1)
+}
+
+.footer_valid {
+  background-color: rgba(178, 246, 161, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.footer_invalid {}

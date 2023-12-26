@@ -1,10 +1,10 @@
 import PassengerForm from "../PassengerForm/PassengerForm";
-import "./PassengerCard.css";
+import "./PassengerCollapseFormContainer.css";
 
 import { useState } from "react";
 
-const PassengerCard = ({ index = 1 }) => {
-  const [isCollapsed, setCollapsed] = useState(false);
+const PassengerCollapseFormContainer = ({ indexPassenger }) => {
+  const [isCollapsed, setCollapsed] = useState(true);
 
   const handleToggleCollapsed = () => {
     setCollapsed(!isCollapsed);
@@ -24,7 +24,7 @@ const PassengerCard = ({ index = 1 }) => {
           />
         </div>
 
-        <h5 className="PassengerCard__header-title">Пассажир {index}</h5>
+        <h5 className="PassengerCard__header-title">Пассажир {indexPassenger}</h5>
       </div>
       {isCollapsed && (
         <div className="PassengerCard__main">
@@ -35,4 +35,4 @@ const PassengerCard = ({ index = 1 }) => {
   );
 };
 
-export default PassengerCard;
+export default PassengerCollapseFormContainer;

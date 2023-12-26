@@ -15,13 +15,13 @@ const TicketsList = ({ setIsShowSideBar }) => {
   const filters = useSelector((state) => state.filters);
   const { currentPage, limit } = filters;
   const url = buildUrlRoutes(filters);
-  console.log(url);
 
   const {
     data: listOfTickets,
     isLoading,
     isError,
   } = useGetTicketsRoutesQuery({ url });
+
 
   useEffect(() => {
     if (isLoading || isError) {

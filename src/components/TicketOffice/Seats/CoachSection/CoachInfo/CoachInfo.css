@@ -28,7 +28,7 @@
 }
 
 .CoachInfo__details__coach-number p {
-    font-size: 72px;
+    font-size: 20px;
     font-weight: 700;
     color: rgba(41, 41, 41, 1);
 }
@@ -59,21 +59,4 @@
     width: 255px;
     padding: 30px 0px 0px 50px;
     text-align: left;
-}
-
-.CoachInfo__details__comfort {
-    width: 255px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.CoachInfo__details__comfort-icon {
-    width: 36px;
-    height: 36px;
-    margin-right: 12px;
-    display: flex;
-    justify-content: center;
-    padding-top: 8px;
 }

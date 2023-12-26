@@ -63,10 +63,30 @@ export function extractNameAndNumber(str) {
     return { name: parts[0].trim(), number: parseInt(parts[1], 10) };
   } else if (parts.length === 1) {
     const isNumber = !isNaN(parseInt(parts[0], 10));
-    return isNumber 
-      ? { name: null, number: parseInt(parts[0], 10) } 
+    return isNumber
+      ? { name: null, number: parseInt(parts[0], 10) }
       : { name: parts[0].trim(), number: null };
   } else {
     return { name: null, number: null };
+  }
+}
+
+export const getAdultEnding = (n) => {
+  if (n % 10 === 1 && n % 100 !== 11) {
+    return 'Взрослый'; // 1 взрослый
+  } else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) {
+    return 'Взрослых'; // 2 взрослых, 3 взрослых, 4 взрослых
+  } else {
+    return 'Взрослых'; // 5 взрослых, 11 взрослых и т.д.
+  }
+}
+
+export const getChildEnding = (n) => {
+  if (n % 10 === 1 && n % 100 !== 11) {
+    return 'Ребенок'; // 1 ребенок
+  } else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) {
+    return 'Ребенка'; // 2 ребенка, 3 ребенка, 4 ребенка
+  } else {
+    return 'Детей'; // 5 детей, 11 детей и т.д.
   }
 }

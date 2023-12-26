@@ -1,20 +1,32 @@
 import "./TicketCard.css";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TrainRoute from "./TrainRoute/TrainRoute";
 import TrainCard from "./TrainCard/TrainCard";
 import SeatsCard from "./SeatsCard/SeatsCard";
 import AirConditioningIcon from "../../commonTicketsComponents/svgComponents/AirConditioningIcon";
 import WiFiIcon from "../../commonTicketsComponents/svgComponents/WiFiIcon";
 import ExpressIcon from "../../commonTicketsComponents/svgComponents/ExpressIcon";
+import { setFieldSeatsFilters } from "../../../../redux/seatsFiltersSlice";
+import { useDispatch } from "react-redux";
 
 const TicketCard = ({ ticket }) => {
+  const dispatch =useDispatch();
   const navigate = useNavigate();
+  const location  = useLocation();
   const handleChooseTicket = () => {
-    localStorage.setItem("selectedDeparture", JSON.stringify(ticket.departure));
+    localStorage.setItem("selectedDeparture", JSON.stringify(ticket?.departure));
     localStorage.setItem("selectedArrival", JSON.stringify(ticket.arrival));
+    dispatch(setFieldSeatsFilters(['id', ticket.departure._id, 'departure']));
+    dispatch(setFieldSeatsFilters(['id', ticket.arrival._id, 'arrival']));
     navigate("/ticketoffice/seats");
   };
+
+  const handleChooseTrain = () => {
+    navigate('/ticketoffice');
+  };
+
+
 
   return (
     <div className="TicketCard">
@@ -52,7 +64,10 @@ const TicketCard = ({ ticket }) => {
           )}
         </div>
 
-        <button onClick={handleChooseTicket}>Выбрать места</button>
+        {location.pathname === '/ticketoffice' && <button onClick={handleChooseTicket}>Выбрать места</button>}
+
+        {location.pathname === '/ticketoffice/confirmation' && <button onClick={handleChooseTrain}>Изменить</button>}
+
       </div>
     </div>
   );
