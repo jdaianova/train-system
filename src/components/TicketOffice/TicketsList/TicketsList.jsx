@@ -12,6 +12,10 @@ import TicketCard from "../TicketsList/TicketCard/TicketCard";
 import { useEffect } from "react";
 
 const TicketsList = ({ setIsShowSideBar }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const filters = useSelector((state) => state.filters);
   const { currentPage, limit } = filters;
   const url = buildUrlRoutes(filters);
@@ -21,8 +25,6 @@ const TicketsList = ({ setIsShowSideBar }) => {
     isLoading,
     isError,
   } = useGetTicketsRoutesQuery({ url });
-
-  //console.log(isLoading,isError)
 
   useEffect(() => {
     if (isLoading || isError) {

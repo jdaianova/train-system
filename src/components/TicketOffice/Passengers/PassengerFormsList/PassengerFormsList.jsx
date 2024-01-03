@@ -67,7 +67,7 @@ const PassengerFormsList = ({ numOfPassengersForms, setIsFormsFilled }) => {
   return (
     <div className="PassengerFormsList">
       {formIds.map((id, index) => (
-        <div key={id} className="PassengerCard">
+        <div key={id} className="PassengerFormCard">
           <div className="PassengerCard__header">
             <div
               className="PassengerCard__header-icon"

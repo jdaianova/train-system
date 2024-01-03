@@ -76,3 +76,8 @@
     color: rgba(255, 61, 0, 0.76);
     border-color: rgba(255, 61, 0, 0.76);
 }
+
+.PassengerForm__footer {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -33,6 +33,7 @@
     font-weight: 400;
     border: none;
     margin-left: 5px;
+    box-sizing: border-box;
 }
 
 .NumberOfTickets__info-input:focus {

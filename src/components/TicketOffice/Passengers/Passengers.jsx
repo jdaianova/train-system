@@ -30,7 +30,7 @@ const Passengers = () => {
         setIsFormsFilled={setIsFormsFilled}
       />
       <button
-        className={`Passengers-submit ${isFormsFilled ? "active" : "inactive"}`}
+        className={`submit-btn ${isFormsFilled ? "enabled-btn" : "disabled-btn"}`}
         onClick={handleNavigate}
         disabled={!isFormsFilled}
       >

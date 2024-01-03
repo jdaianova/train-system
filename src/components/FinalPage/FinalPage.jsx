@@ -2,8 +2,10 @@ import "./FinalPage.css";
 import FinalHeader from "../FinalPage/FinalHeader/FinalHeader";
 import { useSelector } from "react-redux";
 import RatingStars from "./RatingStars";
+import { useNavigate } from "react-router-dom";
 
 const FinalPage = () => {
+  const navigate = useNavigate();
   const passengersFormsData = useSelector((state) => state.passengersFormsData);
   const payingClient = passengersFormsData.payingClient;
 
@@ -43,7 +45,7 @@ const FinalPage = () => {
 
             <div className="FinalPage__main-window__footer">
               <RatingStars />
-              <button>Вернуться на главную</button>
+              <button onClick={() =>navigate('/')}>Вернуться на главную</button>
             </div>
           </div>
         </div>

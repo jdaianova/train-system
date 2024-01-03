@@ -225,13 +225,7 @@ const PayPage = () => {
       </div>
 
       {/* Индикатор состояния и кнопка */}
-      <div
-        className={`PassengerForm__footer ${
-          isFormValid() ? "footer_valid" : "footer_invalid"
-        }`}
-      >
-        <div> {isFormValid() ? "Готово" : " "}</div>
-
+      <div className="PassengerForm__footer">
         <button
           className={`submit-btn ${
             !isFormValid() ? "disabled-btn" : "enabled-btn"
