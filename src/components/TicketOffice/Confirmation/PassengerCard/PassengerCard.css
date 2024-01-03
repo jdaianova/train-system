@@ -1,0 +1,40 @@
+.PassengerCard {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border: none;
+    box-shadow: none;
+}
+
+.PassengerCard__icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.PassengerCard__icon p {
+   font-size: 18px;
+   font-weight: 400;
+   color: rgba(41, 41, 41, 1);
+}
+
+.PassengerCard__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.PassengerCard__info span {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(41, 41, 41, 1);
+    margin-bottom: 15px;
+}
+
+.PassengerCard__info p {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(146, 143, 148, 1);
+    margin-bottom: 10px;
+}

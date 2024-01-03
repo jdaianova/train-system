@@ -94,3 +94,41 @@
     height: 161px;
     background-color: rgba(255, 168, 0, 0.88);
 }
+
+.FinalPage__main-window__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 83px;
+}
+
+.RatingStars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.RatingStars p {
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(41, 41, 41, 1);
+    margin-right: 25px;
+}
+
+.RatingStars-container {
+    display: flex;
+    flex-direction: row;
+    gap:20px
+}
+
+.FinalPage__main-window__footer button {
+    height: 60px;
+    border: 1px solid rgba(62, 60, 65, 1);
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(41, 41, 41, 1);
+    background-color: transparent;
+    text-transform: uppercase;
+    padding: 0 20px;
+}

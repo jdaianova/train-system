@@ -1,9 +1,14 @@
 import "./FinalPage.css";
 import FinalHeader from "../FinalPage/FinalHeader/FinalHeader";
+import { useSelector } from "react-redux";
+import RatingStars from "./RatingStars";
 
 const FinalPage = () => {
+  const passengersFormsData = useSelector((state) => state.passengersFormsData);
+  const payingClient = passengersFormsData.payingClient;
+
   const totalPrice = 1000;
-  const userName = "Ирина Эдуардовна";
+  const userName = `${payingClient.firstName} ${payingClient.middleName}`;
   const orderNumber = "285АА";
 
   return (
@@ -36,7 +41,10 @@ const FinalPage = () => {
               </span>
             </div>
 
-            <div className="FinalPage__main-window__footer">footer</div>
+            <div className="FinalPage__main-window__footer">
+              <RatingStars />
+              <button>Вернуться на главную</button>
+            </div>
           </div>
         </div>
       </div>

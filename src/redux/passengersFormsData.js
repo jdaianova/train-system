@@ -6,9 +6,10 @@ const initialState = {
     lastName: "",
     firstName: "",
     middleName: "",
-    phone: '',
-    email: '',
-    payingType: 'online' //cash или online
+    phone: "",
+    email: "",
+    payingCash: "",
+    payingOnline: true,
   },
 };
 
