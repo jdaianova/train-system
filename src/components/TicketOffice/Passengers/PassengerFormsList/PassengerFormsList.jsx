@@ -1,45 +1,115 @@
-import { useState } from "react";
-import PassengerCollapseFormContainer from "../PassengerCollapseFormContainer/PassengerCollapseFormContainer";
+import React, { useState, useCallback, useEffect } from "react";
+import PassengerForm from "../PassengerForm/PassengerForm";
 import "./PassengerFormsList.css";
+import { nanoid } from "nanoid";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addPassengerForm,
+  clearPassengerForms,
+  removePassengerForm,
+} from "../../../../redux/passengersFormsData";
+import CollapsIconMinus from "../../commonTicketsComponents/svgComponents/CollapsIconMinus";
+import CollapsIconPlus from "../../commonTicketsComponents/svgComponents/CollapsIconPlus";
+import RemoveIcon from "../../commonTicketsComponents/svgComponents/RemoveIcon";
+import AddIcon from "../../commonTicketsComponents/svgComponents/AddIcon";
 
-const PassengerFormsList = ({ numOfPassengersForms }) => {
+const PassengerFormsList = ({ numOfPassengersForms, setIsFormsFilled }) => {
+  const dispatch = useDispatch();
   const [activeForms, setActiveForms] = useState(1);
+  const [formIds, setFormIds] = useState([]);
+  const [collapsedForms, setCollapsedForms] = useState({});
+
+  const passengersFormsData = useSelector((state) => state.passengersFormsData);
+  const listPassengersFormsData = passengersFormsData.passengersFormsData;
+
+  useEffect(() => {
+    dispatch(clearPassengerForms());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (formIds.length === 0) {
+      const initialId = nanoid();
+      setFormIds([initialId]);
+      dispatch(addPassengerForm({ idPassenger: initialId }));
+    }
+  }, [dispatch, formIds.length]);
+
+  const checkIsFormsFilled = useCallback(() => {
+    if (listPassengersFormsData.length === numOfPassengersForms) {
+      return listPassengersFormsData.every((passenger) => passenger.isValid);
+    }
+    return false;
+  }, [numOfPassengersForms, listPassengersFormsData]);
+
+  useEffect(() => {
+    setIsFormsFilled(checkIsFormsFilled());
+  }, [listPassengersFormsData, checkIsFormsFilled, setIsFormsFilled]);
 
   const handleAddForm = () => {
     if (activeForms < numOfPassengersForms) {
+      const newId = nanoid();
       setActiveForms(activeForms + 1);
+      setFormIds((currentIds) => [...currentIds, newId]);
+      dispatch(addPassengerForm({ idPassenger: newId }));
     }
+  };
+
+  const removePassenger = (idToRemove) => {
+    setActiveForms(activeForms - 1);
+    setFormIds((currentIds) => currentIds.filter((id) => id !== idToRemove));
+    dispatch(removePassengerForm(idToRemove));
+  };
+
+  const toggleFormCollapse = (id) => {
+    setCollapsedForms((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   return (
     <div className="PassengerFormsList">
-      {Array.from({ length: activeForms }, (_, index) => (
-        <PassengerCollapseFormContainer
-          key={index}
-          indexPassenger={index + 1}
-        />
+      {formIds.map((id, index) => (
+        <div key={id} className="PassengerCard">
+          <div className="PassengerCard__header">
+            <div
+              className="PassengerCard__header-icon"
+              onClick={() => toggleFormCollapse(id)}
+            >
+              <span>
+                {collapsedForms[id] ? (
+                  <CollapsIconPlus />
+                ) : (
+                  <CollapsIconMinus />
+                )}
+              </span>
+            </div>
+
+            <h5 className="PassengerCard__header-title">
+              Пассажир {index + 1}
+            </h5>
+
+            <button
+              className="PassengerCard__header-remove"
+              onClick={() => removePassenger(id)}
+            >
+              <RemoveIcon />
+            </button>
+          </div>
+
+          {!collapsedForms[id] && (
+            <div className="PassengerCard__main">
+              <PassengerForm idPassenger={id} />
+            </div>
+          )}
+        </div>
       ))}
+
       {activeForms < numOfPassengersForms && (
-        <div
+        <button
           className="PassengerFormsList__add-new-passenger"
           onClick={handleAddForm}
         >
           <p>Добавить пассажира</p>
-          <div>
-            <svg
-              width="19"
-              height="19"
-              viewBox="0 0 19 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7.98836 1.50727L7.98836 7.98839L1.50724 7.98839C0.904343 7.98839 0.452171 8.44056 0.452171 9.04346C0.452171 9.64635 0.904343 10.0985 1.50724 10.0985L7.98836 10.0985L7.98836 16.5796C7.98836 17.1825 8.44053 17.6347 8.96807 17.5594L9.11879 17.5594C9.72169 17.5594 10.1739 17.1072 10.0985 16.5796L10.0985 10.0985L16.4289 10.0985C17.0318 10.0985 17.484 9.64635 17.484 9.04346C17.484 8.44056 17.0318 7.98839 16.4289 7.98839L10.0985 7.98839L10.0985 1.50727C10.0985 0.904371 9.64632 0.4522 9.11879 0.527562L8.96807 0.527561C8.36517 0.527561 7.913 0.979733 7.98836 1.50727Z"
-                fill="#FFA800"
-              />
-            </svg>
-          </div>
-        </div>
+          <AddIcon />
+        </button>
       )}
     </div>
   );

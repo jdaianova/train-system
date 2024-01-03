@@ -2,15 +2,10 @@ import { useState } from "react";
 import "./Passengers.css";
 import { useNavigate } from "react-router-dom";
 import PassengerFormsList from "./PassengerFormsList/PassengerFormsList";
-//import { useSelector } from "react-redux";
 
 const Passengers = () => {
   const [isFormsFilled, setIsFormsFilled] = useState(false);
   const navigate = useNavigate();
-
-  // const selectedTickets = localStorage.getItem("tickets")
-  //   ? JSON.parse(localStorage.getItem("tickets"))
-  //   : [];
 
   const amountOfPassengers = localStorage.getItem("amountOfPassengers")
     ? JSON.parse(localStorage.getItem("amountOfPassengers"))
@@ -34,7 +29,11 @@ const Passengers = () => {
         }
         setIsFormsFilled={setIsFormsFilled}
       />
-      <button className="Passengers-submit" onClick={handleNavigate} disabled={isFormsFilled}>
+      <button
+        className={`Passengers-submit ${isFormsFilled ? "active" : "inactive"}`}
+        onClick={handleNavigate}
+        disabled={!isFormsFilled}
+      >
         Далее
       </button>
     </div>

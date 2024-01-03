@@ -22,13 +22,14 @@ const TicketsList = ({ setIsShowSideBar }) => {
     isError,
   } = useGetTicketsRoutesQuery({ url });
 
+  //console.log(isLoading,isError)
 
   useEffect(() => {
     if (isLoading || isError) {
       setIsShowSideBar(false);
     } else if (listOfTickets && listOfTickets?.items?.length > 0) {
       setIsShowSideBar(true);
-    }
+    };
   }, [isLoading, isError, listOfTickets, setIsShowSideBar]);
 
   return (

@@ -9,3 +9,22 @@
    width: 1920px;
    padding-bottom: 10px;
  }
+
+ .submit-btn {
+   width: 323px;
+   height: 60px;
+   border-radius: 5px;
+   border: none;
+   font-size: 24px;
+   font-weight: 700;
+   color: rgba(255, 255, 255, 1);
+   text-transform: uppercase;
+ }
+
+ .disabled-btn {
+   background-color: rgba(146, 143, 148, 1);
+ }
+
+ .enabled-btn {
+   background-color: rgba(255, 168, 0, 1);
+ }

@@ -25,3 +25,54 @@
 .PayPage label {
     line-height: 2em;
 }
+
+.phone-number-box, .email-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.PassengerForm-online-row {
+    border-bottom: 1px solid rgba(146, 143, 148, 1);
+    padding: 0px 292px 20px 35px;
+}
+
+.PassengerForm-cash-row {
+    border-bottom: 1px solid rgba(146, 143, 148, 1);
+    padding: 63px 292px 67px 35px;
+}
+
+.PassengerForm-pay-box-titles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: rgba(41, 41, 41, 1);
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.PassengerForm-pay-checkbox {
+    width: 28px;
+    margin-right: 10px;
+}
+
+
+.PassengerForm-pay-checkbox-title {
+    color: rgba(146, 143, 148, 1);
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.PassengerForm-pay-checkbox-title.inactive {
+    color: rgba(146, 143, 148, 1);
+}
+
+.PassengerForm-pay-checkbox-title.active {
+    color: rgba(255, 168, 0, 1)
+}
+
+.invalid {
+    color: rgba(255, 61, 0, 0.76);
+    border-color: rgba(255, 61, 0, 0.76);
+}

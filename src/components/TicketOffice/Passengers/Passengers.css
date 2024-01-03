@@ -6,15 +6,6 @@
 }
 
 .Passengers-submit {
-    width: 222px;
-    height: 60px;
-    border-radius: 5px;
-    border: none;
-    font-size: 24px;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 1);
-    text-transform: uppercase;
-    background-color: rgba(255, 168, 0, 1);
     margin-bottom: 50px;
 }
 
@@ -23,5 +14,5 @@
 }
 
 .Passengers-submit.inactive {
-    background-color: gray;
+    background-color: rgba(146, 143, 148, 1);
 }

@@ -1,22 +1,33 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PayPage.css";
+import { useDispatch } from "react-redux";
+import { updatePayingClient } from "../../../redux/passengersFormsData";
 
 const PayPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [formValidation, setFormValidation] = useState({
+    lastNameValid: true,
+    firstNameValid: true,
+    middleNameValid: true,
+    phoneValid: true,
+    emailValid: true,
+  });
 
   const [formData, setFormData] = useState({
-    type: "", // детский=child, взрослый=adult
     lastName: "",
     firstName: "",
     middleName: "",
-    phoneNumber: "",
+    phone: "",
     email: "",
-    payingOnline: "",
     payingCash: "",
+    payingOnline: "",
   });
 
   const handleNavigate = () => {
+    dispatch(updatePayingClient(formData));
     navigate("/ticketoffice/confirmation");
   };
 
@@ -25,6 +36,12 @@ const PayPage = () => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+
+    // Обновляем состояние валидации для поля
+    setFormValidation((prev) => ({
+      ...prev,
+      [`${name}Valid`]: validateField(name, value),
     }));
   };
 
@@ -49,8 +66,44 @@ const PayPage = () => {
   };
 
   const isFormValid = () => {
-    // логика валидации
-    return Object.values(formData).every((val) => val);
+    // Проверка на отсутствие цифр и спецсимволов в строке и что строка не пустая
+    const isValidName = (name) =>
+      /^[A-Za-zА-Яа-яЁё\s]+$/.test(name) && name.trim() !== "";
+
+    // Проверка формата телефона и что он не пустой
+    const isValidPhone = (phone) =>
+      /^\+7\d{10}$/.test(phone) && phone.trim() !== "";
+
+    // Проверка формата электронной почты и что она не пустая
+    const isValidEmail = (email) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.trim() !== "";
+
+    // Проверка, что хотя бы один из способов оплаты выбран
+    const isPaymentSelected = formData.payingCash || formData.payingOnline;
+
+    return (
+      isValidName(formData.lastName) &&
+      isValidName(formData.firstName) &&
+      isValidName(formData.middleName) &&
+      isValidPhone(formData.phone) &&
+      isValidEmail(formData.email) &&
+      isPaymentSelected
+    );
+  };
+
+  const validateField = (name, value) => {
+    switch (name) {
+      case "lastName":
+      case "firstName":
+      case "middleName":
+        return /^[A-Za-zА-Яа-яЁё\s]+$/.test(value) && value.trim() !== "";
+      case "phone":
+        return /^\+7\d{10}$/.test(value) && value.trim() !== "";
+      case "email":
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.trim() !== "";
+      default:
+        return true;
+    }
   };
 
   return (
@@ -63,9 +116,10 @@ const PayPage = () => {
           <label>
             Фамилия
             <input
-              className="PassengerForm-box"
+              className={`PassengerForm-box ${
+                !formValidation.lastNameValid ? "invalid" : ""
+              }`}
               name="lastName"
-              placeholder=""
               value={formData.lastName}
               onChange={handleChange}
             />
@@ -73,7 +127,9 @@ const PayPage = () => {
           <label>
             Имя
             <input
-              className="PassengerForm-box"
+              className={`PassengerForm-box ${
+                !formValidation.firstNameValid ? "invalid" : ""
+              }`}
               name="firstName"
               placeholder=""
               value={formData.firstName}
@@ -83,7 +139,9 @@ const PayPage = () => {
           <label>
             Отчество
             <input
-              className="PassengerForm-box"
+              className={`PassengerForm-box ${
+                !formValidation.middleNameValid ? "invalid" : ""
+              }`}
               name="middleName"
               placeholder=""
               value={formData.middleName}
@@ -96,11 +154,13 @@ const PayPage = () => {
           <label>
             Контактный телефон
             <input
-              className="PassengerForm-box document-number-box"
-              name="documentNumber"
+              className={`PassengerForm-box phone-number-box ${
+                !formValidation.phoneValid ? "invalid" : ""
+              }`}
+              name="phone"
               placeholder="+7 ___ ___ __ __"
-              value={formData.documentNumber}
-              onChange={handleCheckbox}
+              value={formData.phone}
+              onChange={handleChange}
             />
           </label>
         </div>
@@ -109,21 +169,28 @@ const PayPage = () => {
           <label>
             E-mail
             <input
-              className="PassengerForm-box document-number-box"
-              name="documentNumber"
+              className={`PassengerForm-box email-box ${
+                !formValidation.emailValid ? "invalid" : ""
+              }`}
+              name="email"
               placeholder="inbox@gmail.com"
-              value={formData.documentNumber}
-              onChange={handleCheckbox}
+              value={formData.email}
+              onChange={handleChange}
             />
           </label>
         </div>
 
-        <div className="PayPage__form-title">Персональные данные</div>
+        <div className="PayPage__form-title">Способ оплаты</div>
 
         <div>
-          <div>
-            <label>
+          <div className="PassengerForm-online-row">
+            <label
+              className={`PassengerForm-pay-checkbox-title ${
+                formData.payingOnline ? "active" : "inactive"
+              }`}
+            >
               <input
+                className="PassengerForm-pay-checkbox"
                 type="checkbox"
                 name="payingOnline"
                 checked={formData.payingOnline}
@@ -131,16 +198,21 @@ const PayPage = () => {
               />
               Онлайн
             </label>
-            <div>
+            <div className="PassengerForm-pay-box-titles">
               <p>Банковской картой</p>
               <p>PayPal</p>
               <p>Visa QIWI Wallet</p>
             </div>
           </div>
 
-          <div>
-            <label>
+          <div className="PassengerForm-cash-row ">
+            <label
+              className={`PassengerForm-pay-checkbox-title ${
+                formData.payingCash ? "active" : "inactive"
+              }`}
+            >
               <input
+                className="PassengerForm-pay-checkbox"
                 type="checkbox"
                 name="payingCash"
                 checked={formData.payingCash}
@@ -160,7 +232,15 @@ const PayPage = () => {
       >
         <div> {isFormValid() ? "Готово" : " "}</div>
 
-        <button onClick={handleNavigate}>КУПИТЬ БИЛЕТЫ</button>
+        <button
+          className={`submit-btn ${
+            !isFormValid() ? "disabled-btn" : "enabled-btn"
+          }`}
+          onClick={handleNavigate}
+          disabled={!isFormValid()}
+        >
+          КУПИТЬ БИЛЕТЫ
+        </button>
       </div>
     </div>
   );
