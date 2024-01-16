@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/train-system/static/css/main.5b8e1d7d.css",
-    "main.js": "/train-system/static/js/main.b14f9ed3.js",
+    "main.css": "/train-system/static/css/main.3fc83069.css",
+    "main.js": "/train-system/static/js/main.9fc2df21.js",
     "static/media/finalBackgroundHeader.png": "/train-system/static/media/finalBackgroundHeader.e7afebda20a02f0b1740.png",
     "static/media/howItWorks-background.png": "/train-system/static/media/howItWorks-background.69ad7c3c698aba91a60e.png",
     "static/media/header-background.png": "/train-system/static/media/header-background.46971fe03c262913a9d7.png",
@@ -115,11 +115,11 @@
     "static/media/icon-building.svg": "/train-system/static/media/icon-building.12cf67773e12a02cbcb5fcf69e5ad8ab.svg",
     "static/media/icon-monitor.svg": "/train-system/static/media/icon-monitor.dc3acccc8d8296f7896f5213931c3afd.svg",
     "index.html": "/train-system/index.html",
-    "main.5b8e1d7d.css.map": "/train-system/static/css/main.5b8e1d7d.css.map",
-    "main.b14f9ed3.js.map": "/train-system/static/js/main.b14f9ed3.js.map"
+    "main.3fc83069.css.map": "/train-system/static/css/main.3fc83069.css.map",
+    "main.9fc2df21.js.map": "/train-system/static/js/main.9fc2df21.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b8e1d7d.css",
-    "static/js/main.b14f9ed3.js"
+    "static/css/main.3fc83069.css",
+    "static/js/main.9fc2df21.js"
   ]
 }
