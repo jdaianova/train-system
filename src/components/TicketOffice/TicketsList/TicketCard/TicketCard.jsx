@@ -7,26 +7,30 @@ import SeatsCard from "./SeatsCard/SeatsCard";
 import AirConditioningIcon from "../../commonTicketsComponents/svgComponents/AirConditioningIcon";
 import WiFiIcon from "../../commonTicketsComponents/svgComponents/WiFiIcon";
 import ExpressIcon from "../../commonTicketsComponents/svgComponents/ExpressIcon";
-import { setFieldSeatsFilters } from "../../../../redux/seatsFiltersSlice";
 import { useDispatch } from "react-redux";
+import { setCurrentRoutes } from "../../../../redux/currentRoutesSlice";
+import { clearPassengersForms } from "../../../../redux/passengersFormsData";
+import { clearAllSeatsSelection } from "../../../../redux/seatsSelectedSlice";
+import { clearAllTicketData } from "../../../../redux/ticketsSlice";
+import { clearSeatsFilters } from "../../../../redux/seatsFiltersSlice";
 
 const TicketCard = ({ ticket }) => {
-  const dispatch =useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location  = useLocation();
+  const location = useLocation();
+
   const handleChooseTicket = () => {
-    localStorage.setItem("selectedDeparture", JSON.stringify(ticket?.departure));
-    localStorage.setItem("selectedArrival", JSON.stringify(ticket.arrival));
-    dispatch(setFieldSeatsFilters(['id', ticket.departure._id, 'departure']));
-    dispatch(setFieldSeatsFilters(['id', ticket.arrival._id, 'arrival']));
+    dispatch(setCurrentRoutes(ticket));
+    dispatch(clearPassengersForms());
+    dispatch(clearAllSeatsSelection());
+    dispatch(clearAllTicketData());
+    dispatch(clearSeatsFilters());
     navigate("/ticketoffice/seats");
   };
 
   const handleChooseTrain = () => {
-    navigate('/ticketoffice');
+    navigate("/ticketoffice");
   };
-
-
 
   return (
     <div className="TicketCard">
@@ -64,10 +68,13 @@ const TicketCard = ({ ticket }) => {
           )}
         </div>
 
-        {location.pathname === '/ticketoffice' && <button onClick={handleChooseTicket}>Выбрать места</button>}
+        {location.pathname === "/ticketoffice" && (
+          <button onClick={handleChooseTicket}>Выбрать места</button>
+        )}
 
-        {location.pathname === '/ticketoffice/confirmation' && <button onClick={handleChooseTrain}>Изменить</button>}
-
+        {location.pathname === "/ticketoffice/confirmation" && (
+          <button onClick={handleChooseTrain}>Изменить</button>
+        )}
       </div>
     </div>
   );

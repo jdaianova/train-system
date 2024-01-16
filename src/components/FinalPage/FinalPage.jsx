@@ -3,13 +3,17 @@ import FinalHeader from "../FinalPage/FinalHeader/FinalHeader";
 import { useSelector } from "react-redux";
 import RatingStars from "./RatingStars";
 import { useNavigate } from "react-router-dom";
+import FinalInstractions from "./FinalInstractions/FinalInstractions";
 
 const FinalPage = () => {
   const navigate = useNavigate();
   const passengersFormsData = useSelector((state) => state.passengersFormsData);
   const payingClient = passengersFormsData.payingClient;
+  const { selectedPriceAdult, selectedlPriceChild, selectedPriceComfort } =
+    useSelector((state) => state.seatsSelected);
 
-  const totalPrice = 1000;
+  const totalPrice =
+    selectedPriceAdult + selectedlPriceChild + selectedPriceComfort;
   const userName = `${payingClient.firstName} ${payingClient.middleName}`;
   const orderNumber = "285АА";
 
@@ -27,9 +31,7 @@ const FinalPage = () => {
               </span>
             </div>
 
-            <div className="FinalPage__main-window__instructions">
-              window__instructions
-            </div>
+              <FinalInstractions />
 
             <div className="FinalPage__main-window__letter">
               <h6>{userName}!</h6>
@@ -45,7 +47,9 @@ const FinalPage = () => {
 
             <div className="FinalPage__main-window__footer">
               <RatingStars />
-              <button onClick={() =>navigate('/')}>Вернуться на главную</button>
+              <button onClick={() => navigate("/")}>
+                Вернуться на главную
+              </button>
             </div>
           </div>
         </div>

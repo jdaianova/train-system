@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 const OrderStatusBar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
- // console.log(currentPath);
 
   return (
     <ul className="OrderStatusBar">

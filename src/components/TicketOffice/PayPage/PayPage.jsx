@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PayPage.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updatePayingClient } from "../../../redux/passengersFormsData";
 
 const PayPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { payingClient } = useSelector((state) => state.passengersFormsData);
+
+  const defaultFormData = {
+    lastName: "",
+    firstName: "",
+    middleName: "",
+    phone: "",
+    email: "",
+    payingCash: false,
+    payingOnline: false,
+  };
+
+  const [formData, setFormData] = useState({
+    ...defaultFormData,
+    ...payingClient,
+  });
 
   const [formValidation, setFormValidation] = useState({
     lastNameValid: true,
@@ -16,18 +32,7 @@ const PayPage = () => {
     emailValid: true,
   });
 
-  const [formData, setFormData] = useState({
-    lastName: "",
-    firstName: "",
-    middleName: "",
-    phone: "",
-    email: "",
-    payingCash: "",
-    payingOnline: "",
-  });
-
   const handleNavigate = () => {
-    dispatch(updatePayingClient(formData));
     navigate("/ticketoffice/confirmation");
   };
 
@@ -38,7 +43,6 @@ const PayPage = () => {
       [name]: value,
     }));
 
-    // Обновляем состояние валидации для поля
     setFormValidation((prev) => ({
       ...prev,
       [`${name}Valid`]: validateField(name, value),
@@ -49,21 +53,18 @@ const PayPage = () => {
     const { name, checked } = e.target;
 
     setFormData((prevFormData) => {
-      if (name === "payingOnline") {
-        return {
-          ...prevFormData,
-          payingOnline: checked,
-          payingCash: !checked,
-        };
-      } else {
-        return {
-          ...prevFormData,
-          payingOnline: !checked,
-          payingCash: checked,
-        };
-      }
+      const updatedFormData = {
+        ...prevFormData,
+        payingOnline: name === "payingOnline" ? checked : false,
+        payingCash: name === "payingCash" ? checked : false,
+      };
+      return updatedFormData;
     });
   };
+
+  useEffect(() => {
+    dispatch(updatePayingClient(formData));
+  }, [formData, dispatch]);
 
   const isFormValid = () => {
     // Проверка на отсутствие цифр и спецсимволов в строке и что строка не пустая
@@ -120,7 +121,7 @@ const PayPage = () => {
                 !formValidation.lastNameValid ? "invalid" : ""
               }`}
               name="lastName"
-              value={formData.lastName}
+              value={formData.lastName || ""}
               onChange={handleChange}
             />
           </label>
@@ -132,7 +133,7 @@ const PayPage = () => {
               }`}
               name="firstName"
               placeholder=""
-              value={formData.firstName}
+              value={formData.firstName || ""}
               onChange={handleChange}
             />
           </label>
@@ -144,7 +145,7 @@ const PayPage = () => {
               }`}
               name="middleName"
               placeholder=""
-              value={formData.middleName}
+              value={formData.middleName || ""}
               onChange={handleChange}
             />
           </label>

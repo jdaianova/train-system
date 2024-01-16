@@ -8,7 +8,6 @@ const DateSection = () => {
   const dispatch = useDispatch();
 
   const handleChange = (field, value) => {
-    console.log(field, value)
     dispatch(setFieldFilters(field, value));
   };
 

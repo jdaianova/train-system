@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import "./NumberOfTickets.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setAdultPassengers,
   setChildPassengers,
@@ -13,9 +13,12 @@ const NumberOfTickets = ({ direction }) => {
   const inputRefChild = useRef(null);
 
   const dispatch = useDispatch();
-  const [tabAdult, setTabAdult] = useState("");
-  const [tabTeen, setTabTeen] = useState("");
-  const [tabChild, setTabChild] = useState("");
+  const { adultPassengers, childPassengers, withoutSeats } = useSelector(
+    (state) => state.tickets[direction]
+  );
+  const [tabAdult, setTabAdult] = useState(adultPassengers);
+  const [tabTeen, setTabTeen] = useState(childPassengers);
+  const [tabChild, setTabChild] = useState(withoutSeats);
 
   const [activeTab, setActiveTab] = useState(null);
 

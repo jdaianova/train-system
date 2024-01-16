@@ -1,9 +1,21 @@
 import { useState } from "react";
 import "./DataSideBarRoute.css";
 import Arrow from "../../commonTicketsComponents/svgComponents/Arrow";
+import {
+  capitalizeLettersInCityName,
+  extractNameAndNumber,
+} from "../../../../utils/helpers";
+import { format } from "date-fns";
 
-const DataSideBarRoute = ({ direction }) => {
+const DataSideBarRoute = ({ direction, route }) => {
   const [showDetails, setShowDetails] = useState(true);
+
+  if (!route) return null;
+  const trainInfo = extractNameAndNumber(route.train.name);
+  const cityFrom = capitalizeLettersInCityName(route.from.city.name);
+  const cityTo = capitalizeLettersInCityName(route.to.city.name);
+  const trainNumber = trainInfo.number;
+  const trainDate = format(new Date(route.to.datetime * 1000), "dd.MM.yyyy");
 
   return (
     <div className="DataSideBarRoute">
@@ -18,7 +30,7 @@ const DataSideBarRoute = ({ direction }) => {
 
         <h6>{direction === "departure" ? "Туда" : "Обратно"}</h6>
 
-        <div className="DataSideBarRoute__header-date">09.09.2018</div>
+        <div className="DataSideBarRoute__header-date">{trainDate}</div>
 
         <button
           className="DataSideBarRoute__header-button"
@@ -32,16 +44,16 @@ const DataSideBarRoute = ({ direction }) => {
         <div className="DataSideBarRoute__details">
           <div className="DataSideBarRoute__details__train-info">
             <p>&#8470; Поезда</p>
-            <span>{'116C'}</span>
+            <span>{trainNumber}</span>
           </div>
           <div className="DataSideBarRoute__details__train-info">
-          <p>Название</p>
-            <p>{'Aasdasd'}<br></br>{'1hgjghjghj'}</p>
+            <p>Название</p>
+            <div className="DataSideBarRoute__details__train-info-cities">
+              <p>{cityFrom}</p>
+              <p>{cityTo}</p>
+            </div>
           </div>
-          <div className="DataSideBarRoute__details__route">
-         
-          </div>
-        
+          <div className="DataSideBarRoute__details__route"></div>
         </div>
       )}
     </div>

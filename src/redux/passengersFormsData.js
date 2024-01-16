@@ -8,8 +8,8 @@ const initialState = {
     middleName: "",
     phone: "",
     email: "",
-    payingCash: "",
-    payingOnline: true,
+    payingCash: false,
+    payingOnline: false,
   },
 };
 
@@ -63,12 +63,37 @@ export const passengersFormsData = createSlice({
     },
 
     updatePayingClient: (state, action) => {
-      state.payingClient = action.payload;
+      state.payingClient = {
+        ...state.payingClient,
+        ...action.payload
+      };
+    },
+
+    clearPassengersForms: () => {
+      return {
+        passengersFormsData: [],
+        payingClient: {
+          lastName: "",
+          firstName: "",
+          middleName: "",
+          phone: "",
+          email: "",
+          payingCash: null,
+          payingOnline: null,
+        },
+      };
     },
 
   }
 });
 
-export const { removePassengerForm, updatePassengerForm, addPassengerForm, clearPassengerForms, updatePayingClient } = passengersFormsData.actions;
+export const {
+  removePassengerForm,
+  updatePassengerForm,
+  addPassengerForm,
+  clearPassengerForms,
+  updatePayingClient,
+  clearPassengersForms,
+} = passengersFormsData.actions;
 
 export default passengersFormsData.reducer;

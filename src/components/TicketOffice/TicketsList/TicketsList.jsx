@@ -3,7 +3,7 @@ import "./TicketsList.css";
 import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { buildUrlRoutes } from "../../../utils/helpers";
-import { useGetTicketsRoutesQuery } from "../../../redux/apSlice";
+import { useGetTicketsRoutesQuery } from "../../../redux/apiSlice";
 import Loading from "../../commonComponents/Loading/Loading";
 import ErrorPopUp from "../../commonComponents/ErrorPopUp/ErrorPopUp";
 import SortingPanel from "../TicketsList/SortingPanel/SortingPanel";

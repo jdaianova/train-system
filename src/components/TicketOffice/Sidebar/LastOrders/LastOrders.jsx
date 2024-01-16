@@ -1,4 +1,4 @@
-import { useGetTicketsRoutesQuery } from "../../../../redux/apSlice";
+import { useGetTicketsRoutesQuery } from "../../../../redux/apiSlice";
 import LastOrderCard from "./LastOrderCard";
 import "./LastOrders.css";
 

@@ -5,6 +5,11 @@ import "./DataSidebar.css";
 import { useSelector } from "react-redux";
 
 const DataSidebar = () => {
+  const currentRoutes = useSelector((state) => state.currentRoutes);
+  const tickets = useSelector((state) => state.tickets);
+  const savedDeparture = currentRoutes.currentRoutes.departure;
+  const savedArrival = currentRoutes.currentRoutes.arrival;
+
   const {
     selectedPriceAdult,
     selectedlPriceChild,
@@ -17,9 +22,9 @@ const DataSidebar = () => {
     <div className="DataSidebar">
       <h4>Детали поездки</h4>
 
-      <DataSideBarRoute direction={"departure"} />
+      {tickets.departure.currentPassengers >0 && <DataSideBarRoute direction={"departure"} route={savedDeparture} />}
 
-      <DataSideBarRoute direction={"arrival"} />
+      {tickets.arrival.currentPassengers >0 && <DataSideBarRoute direction={"arrival"} route={savedArrival} />}
 
       <DataSideBarPassengers
         selectedPriceAdult={selectedPriceAdult}

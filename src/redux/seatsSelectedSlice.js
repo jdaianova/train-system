@@ -77,10 +77,33 @@ export const seatsSelectedSlice = createSlice({
       }
     },
 
+    clearAllSeatsSelection: () => {
+      return {
+        departure: {
+          selectedSeats: [],
+          selectedComfort: [],
+        },
+        arrival: {
+          selectedSeats: [],
+          selectedComfort: [],
+        },
+        selectedPriceAdult: 0,
+        selectedlPriceChild: 0,
+        selectedNumAdult: 0,
+        selectedNumChild: 0,
+        selectedPriceComfort: 0,
+      };
+    },
 
   },
 });
 
-export const { addSelectedSeat, removeSelectedSeat, addComfortOption, removeComfortOption } = seatsSelectedSlice.actions;
+export const {
+  addSelectedSeat,
+  removeSelectedSeat,
+  addComfortOption,
+  removeComfortOption,
+  clearAllSeatsSelection, 
+} = seatsSelectedSlice.actions;
 
 export default seatsSelectedSlice.reducer;

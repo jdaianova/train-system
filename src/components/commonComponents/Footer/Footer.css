@@ -77,6 +77,18 @@
     color: rgba(229, 229, 229, 1);
 }
 
+.SubscribeForm-form button:hover {
+    background-color: rgba(255, 202, 98, 1);
+    color: rgba(45, 43, 47, 1);
+    border: none;
+}
+
+.SubscribeForm-form button:focus {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(45, 43, 47, 1);
+    border: none;
+}
+
 .Footer__social {
     margin-top: 44px;
 }
@@ -109,3 +121,51 @@
 .Footer__bottom img {
     cursor: pointer;
 }
+
+.subscription-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .subscription-popup {
+    width: 400px;
+    height: 200px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .subscription-popup h2 {
+    margin-bottom: 20px;
+    color: rgba(45, 43, 47, 1);
+  }
+  
+  .subscription-popup button {
+    background-color: rgba(45, 43, 47, 1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .subscription-popup button:hover {
+    background-color: white;
+    color: black;
+  }
+  

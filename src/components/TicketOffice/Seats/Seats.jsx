@@ -7,26 +7,25 @@ import SeatsSectionInfo from "./SeatsSectionInfo/SeatsSectionInfo";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFieldSeatsFilters } from "../../../redux/seatsFiltersSlice";
+import { clearPassengerForms } from "../../../redux/passengersFormsData";
 
 const Seats = ({ setIsShowSideBar }) => {
-  const selectedSeats = useSelector((state) => state.seatsSelected);
-  const tickets = useSelector((state) => state.tickets);
+  const dispatch = useDispatch();
 
-  const totalTickets =
-    Number(tickets.departure.adultPassengers) +
-    Number(tickets.departure.childPassengers) +
-    Number(tickets.arrival.adultPassengers) +
-    Number(tickets.arrival.childPassengers);
+  const selectedSeats = useSelector((state) => state.seatsSelected);
+
+  const tickets = useSelector((state) => state.tickets);
+  const { totalTickets } = tickets;
+
+  const currentRoutes = useSelector((state) => state.currentRoutes);
+  const savedDeparture = currentRoutes.currentRoutes.departure;
+  const savedArrival = currentRoutes.currentRoutes.arrival;
 
   const isEnoughSeatsSelected =
     totalTickets > 0 &&
     selectedSeats.departure.selectedSeats.length +
       selectedSeats.arrival.selectedSeats.length >=
       totalTickets;
-
-  const dispatch = useDispatch();
-  const savedDeparture = JSON.parse(localStorage.getItem("selectedDeparture"));
-  const savedArrival = JSON.parse(localStorage.getItem("selectedArrival"));
 
   useEffect(() => {
     dispatch(setFieldSeatsFilters(["id", savedDeparture._id, "departure"]));
@@ -36,56 +35,8 @@ const Seats = ({ setIsShowSideBar }) => {
 
   const navigate = useNavigate();
 
-  const handleSaveTickets = (e) => {
-    const amountOfAdultPassengers = Math.max(
-      Number(tickets.departure.adultPassengers),
-      Number(tickets.arrival.adultPassengers)
-    );
-
-    const amountOfChildPassengers = Math.max(
-      Number(tickets.departure.childPassengers),
-      Number(tickets.arrival.childPassengers)
-    );
-
-    const amountOfWithoutSeatPassengers = Math.max(
-      Number(tickets.departure.withoutSeats),
-      Number(tickets.arrival.withoutSeats)
-    );
-    const amountOfPassengers = {
-      amountOfAdultPassengers: amountOfAdultPassengers,
-      amountOfChildPassengers: amountOfChildPassengers,
-      amountOfWithoutSeatPassengers: amountOfWithoutSeatPassengers,
-    };
-    let ticketsArr = [];
-
-    ["departure", "arrival"].forEach((direction) => {
-      selectedSeats[direction].selectedSeats.forEach((seat) => {
-        let ticket = {
-          isAdult: seat.isAdult,
-          direction: direction,
-          coachId: seat.coachId,
-          coachName: seat.coachName,
-          seat: seat.seat,
-          price: seat.price,
-          optionComfort: {},
-        };
-
-        selectedSeats[direction].selectedComfort.forEach((option) => {
-          if (option.coachId === seat.coachId) {
-            ticket.optionComfort[option.optionComfort] = option.price;
-          }
-        });
-
-        ticketsArr.push(ticket);
-      });
-    });
-
-    localStorage.setItem("tickets", JSON.stringify(ticketsArr));
-    localStorage.setItem(
-      "amountOfPassengers",
-      JSON.stringify(amountOfPassengers)
-    );
-
+  const handleNavigate = () => {
+    dispatch(clearPassengerForms());
     navigate("/ticketoffice/passengers");
   };
 
@@ -140,7 +91,7 @@ const Seats = ({ setIsShowSideBar }) => {
 
       <div className="Seats-btn">
         <button
-          onClick={handleSaveTickets}
+          onClick={handleNavigate}
           disabled={!isEnoughSeatsSelected}
           className={`Seats-btn-button ${
             !isEnoughSeatsSelected ? "disableBtn" : ""

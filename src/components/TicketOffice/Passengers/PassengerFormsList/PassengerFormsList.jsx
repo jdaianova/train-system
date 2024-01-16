@@ -5,7 +5,6 @@ import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addPassengerForm,
-  clearPassengerForms,
   removePassengerForm,
 } from "../../../../redux/passengersFormsData";
 import CollapsIconMinus from "../../commonTicketsComponents/svgComponents/CollapsIconMinus";
@@ -15,7 +14,7 @@ import AddIcon from "../../commonTicketsComponents/svgComponents/AddIcon";
 
 const PassengerFormsList = ({ numOfPassengersForms, setIsFormsFilled }) => {
   const dispatch = useDispatch();
-  const [activeForms, setActiveForms] = useState(1);
+
   const [formIds, setFormIds] = useState([]);
   const [collapsedForms, setCollapsedForms] = useState({});
 
@@ -23,16 +22,20 @@ const PassengerFormsList = ({ numOfPassengersForms, setIsFormsFilled }) => {
   const listPassengersFormsData = passengersFormsData.passengersFormsData;
 
   useEffect(() => {
-    dispatch(clearPassengerForms());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (formIds.length === 0) {
-      const initialId = nanoid();
-      setFormIds([initialId]);
-      dispatch(addPassengerForm({ idPassenger: initialId }));
+    if (listPassengersFormsData.length > 0) {
+      setFormIds(listPassengersFormsData.map((form) => form.idPassenger));
+    } else {
+      const newFormIds = [];
+      for (let i = 0; i < numOfPassengersForms; i++) {
+        const newId = nanoid();
+        newFormIds.push(newId);
+        dispatch(addPassengerForm({ idPassenger: newId }));
+      }
+      setFormIds(newFormIds);
     }
-  }, [dispatch, formIds.length]);
+  }, [dispatch, numOfPassengersForms, listPassengersFormsData]);
+  
+  
 
   const checkIsFormsFilled = useCallback(() => {
     if (listPassengersFormsData.length === numOfPassengersForms) {
@@ -46,16 +49,15 @@ const PassengerFormsList = ({ numOfPassengersForms, setIsFormsFilled }) => {
   }, [listPassengersFormsData, checkIsFormsFilled, setIsFormsFilled]);
 
   const handleAddForm = () => {
-    if (activeForms < numOfPassengersForms) {
+    if (formIds.length < numOfPassengersForms) {
       const newId = nanoid();
-      setActiveForms(activeForms + 1);
       setFormIds((currentIds) => [...currentIds, newId]);
       dispatch(addPassengerForm({ idPassenger: newId }));
     }
   };
+  
 
   const removePassenger = (idToRemove) => {
-    setActiveForms(activeForms - 1);
     setFormIds((currentIds) => currentIds.filter((id) => id !== idToRemove));
     dispatch(removePassengerForm(idToRemove));
   };
@@ -102,7 +104,7 @@ const PassengerFormsList = ({ numOfPassengersForms, setIsFormsFilled }) => {
         </div>
       ))}
 
-      {activeForms < numOfPassengersForms && (
+      {formIds.length < numOfPassengersForms && (
         <button
           className="PassengerFormsList__add-new-passenger"
           onClick={handleAddForm}

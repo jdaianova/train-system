@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useGetSeatsQuery } from "../../../../redux/apSlice";
+import { useGetSeatsQuery } from "../../../../redux/apiSlice";
 import "./CoachSection.css";
 import CoachInfo from "./CoachInfo/CoachInfo";
 
@@ -8,7 +8,6 @@ const CoachSection = ({ direction, typeOfWagon }) => {
   const seatsFilters = useSelector((state) => state.seatsFilters);
   const { data: coaches } = useGetSeatsQuery(seatsFilters[direction]);
   const [selectedCoachId, setSelectedCoachId] = useState(null);
-  //const [selectedCoachName, setSelectedCoachName] = useState(null);
 
   useEffect(() => {
     if (coaches && typeOfWagon) {
@@ -17,14 +16,12 @@ const CoachSection = ({ direction, typeOfWagon }) => {
       );
       if (filteredCoaches.length > 0) {
         setSelectedCoachId(filteredCoaches[0].coach._id);
-        //setSelectedCoachName(filteredCoaches[0].coach.name);
       }
     }
   }, [coaches, typeOfWagon]);
 
   const handleSelectCoach = (coach) => {
     setSelectedCoachId(coach.coach._id);
-    //setSelectedCoachName(coach.coach.name);
   };
 
   const filteredCoaches = coaches?.filter(

@@ -15,7 +15,7 @@ export const apiSlice = createApi({
 
         createOrder: builder.mutation({
             query: (orderData) => ({
-                url: '/fe-diplom/order',
+                url: '/order',
                 method: 'POST',
                 body: orderData,
             }),

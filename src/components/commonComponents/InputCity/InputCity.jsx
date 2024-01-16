@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetCityIdQuery } from "../../../redux/apSlice";
+import { useGetCityIdQuery } from "../../../redux/apiSlice";
 import { capitalizeLettersInCityName } from "../../../utils/helpers";
 import "./InputCity.css";
 import CityList from "./CityList";

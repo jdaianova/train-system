@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  fromCityName: "Москва",
-  toCityName: "Анапа",
-  fromCityId: "641037eb5c49ea004632ee6e",
-  toCityId: "641037eb5c49ea004632ee73",
-  dateStart: "2023-12-12",
-  dateEnd: "2023-12-18",
+  fromCityName: "",
+  toCityName: "",
+  fromCityId: "",
+  toCityId: "",
+  dateStart: "",
+  dateEnd: "",
   haveAirConditioning: false,
   haveFirstClass: false,
   haveFourthClass: false,

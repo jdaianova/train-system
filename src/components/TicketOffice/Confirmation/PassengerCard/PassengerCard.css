@@ -4,6 +4,7 @@
     flex-direction: row;
     border: none;
     box-shadow: none;
+    margin-bottom: 40px;
 }
 
 .PassengerCard__icon {

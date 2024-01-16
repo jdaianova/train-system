@@ -24,7 +24,7 @@ const DataSideBarPassengers = ({
           <PassemgerIcon />
         </div>
 
-        <h6>Пассажиры</h6>
+        <h6>Билеты</h6>
 
         <button
           className="DataSideBarPassengers__header-button"

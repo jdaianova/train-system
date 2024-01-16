@@ -5,7 +5,6 @@ const RatingStars = () => {
   const [rating, setRating] = useState(0);
 
   const handleSetRating = (newRating) => {
-    console.log(newRating)
     setRating(newRating);
   };
 

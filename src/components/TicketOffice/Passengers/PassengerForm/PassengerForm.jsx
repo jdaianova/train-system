@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { updatePassengerForm } from "../../../../redux/passengersFormsData";
 
 const PassengerForm = ({ idPassenger }) => {
-  const [firstRender, setFirstRender] = useState(true);
-
   const dispatch = useDispatch();
   const formDataRedux = useSelector((state) =>
     state.passengersFormsData.passengersFormsData.find(
@@ -14,26 +12,21 @@ const PassengerForm = ({ idPassenger }) => {
     )
   );
 
-  const [formData, setFormData] = useState({
-    idPassenger: idPassenger,
-    type: "adult", // детский=child, взрослый=adult
-    lastName: "",
-    firstName: "",
-    middleName: "",
-    gender: "", // M или Ж
-    birthDate: "",
-    mobility: false, // ограниченная подвижность
-    documentType: "passport", // passport or birthCertificate
-    documentNumber: "",
-    isValid: false,
+  const [formData, setFormData] = useState(() => {
+    return formDataRedux || {
+      idPassenger: idPassenger,
+      type: "adult", // детский=child, взрослый=adult
+      lastName: "",
+      firstName: "",
+      middleName: "",
+      gender: "", // M или Ж
+      birthDate: "",
+      mobility: false, // ограниченная подвижность
+      documentType: "passport", // passport or birthCertificate
+      documentNumber: "",
+      isValid: false,
+    };
   });
-
-  useEffect(() => {
-    if (formDataRedux && firstRender) {
-      setFormData(formDataRedux);
-      setFirstRender(false);
-    }
-  }, [formDataRedux, firstRender]);
 
   const handleNextPassenger = (e) => {
     e.preventDefault();

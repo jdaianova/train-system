@@ -8,7 +8,7 @@ import InputCity from "../../commonComponents/InputCity/InputCity";
 import InputDate from "../../commonComponents/InputDate/InputDate";
 
 import { setFieldFilters } from "../../../redux/ticketsFitersSlice";
-import { useLazyGetCityIdQuery } from "../../../redux/apSlice";
+import { useLazyGetCityIdQuery } from "../../../redux/apiSlice";
 
 export default function HomeBookingForm() {
   const navigate = useNavigate();
