@@ -4,6 +4,7 @@ import TicketCard from "../TicketsList/TicketCard/TicketCard";
 import { useSelector } from "react-redux";
 import PassengerCard from "./PassengerCard/PassengerCard";
 import { useCreateOrderMutation } from "../../../redux/apiSlice";
+import creteOrderData from "./createOrderData";
 
 const Confirmation = () => {
   const navigate = useNavigate();
@@ -14,38 +15,25 @@ const Confirmation = () => {
   const savedDeparture = currentRoutes.currentRoutes.departure;
   const savedArrival = currentRoutes.currentRoutes.arrival;
   const trains = { departure: savedDeparture, arrival: savedArrival };
+  const seatsSelected = useSelector((state) => state.seatsSelected);
   const [createOrder] = useCreateOrderMutation();
 
   const handleNavigate = (path) => {
     navigate(path);
   };
 
-  const handleSubmitOrder = async () => {
-    // Подготовка данных для заказа
-    const orderData = {
-      user: {
-        first_name: payingClient.firstName,
-        last_name: payingClient.lastName,
-        patronymic: payingClient.middleName,
-        phone: payingClient.phone,
-        email: payingClient.email,
-        payment_method: payingClient.payingCash ? "cash" : "online",
-      },
-      departure: {
-        route_direction_id: "123431",
-        seats: [],
-      },
-    };
+  const handleSubmitOrder = async (e) => {
+    e.preventDefault();
+    const orderData = creteOrderData(passengersList,payingClient, currentRoutes,seatsSelected);
 
     try {
-      // Отправка запроса на создание заказа
+      // отправка запроса на создание заказа
       const response = await createOrder(orderData).unwrap();
       //console.log("response", response);
       if (response.status) navigate("/final");
     } catch (error) {
       //console.error("Failed to create order", error);
     }
-
   };
 
   return (

@@ -33,6 +33,17 @@ export const apiSlice = createApi({
             },
         }),
 
+        subscribe: builder.mutation({
+            query: ({ email }) => ({
+                url: `/subscribe?email=${encodeURIComponent(email)}`,
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                },
+            }),
+        }),
+
+
     }),
 });
 
@@ -41,5 +52,6 @@ export const {
     useGetCityIdQuery,
     useLazyGetCityIdQuery,
     useCreateOrderMutation,
-    useGetSeatsQuery 
+    useGetSeatsQuery,
+    useSubscribeMutation,
 } = apiSlice;
